@@ -139,8 +139,8 @@ const projects = (await getCollection('projects'))
     }
 
     .projects-overview :global(.projects-overview__workshop-image) {
-      height: auto;
-      aspect-ratio: 591 / 745;
+      height: 100%;
+      min-height: 0;
     }
 
     .projects-overview__list {
