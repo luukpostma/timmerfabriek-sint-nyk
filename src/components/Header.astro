@@ -1,0 +1,481 @@
+---
+import logo from '../assets/Logo.svg';
+import menuIcon from '../assets/icons/menu.svg';
+import closeIcon from '../assets/icons/x.svg';
+import Button from './Button.astro';
+import NavDropdown from './NavDropdown.astro';
+import { callToAction, mainNavigation, utilityNavigation } from '../data/navigation';
+
+const currentPath = Astro.url.pathname.endsWith('/')
+  ? Astro.url.pathname
+  : `${Astro.url.pathname}/`;
+---
+
+<header class="site-header" data-site-header>
+  <div class="site-header__mobile container">
+    <a class="site-header__logo-link" href="/" aria-label="Timmerfabriek Sint Nyk — home">
+      <img class="site-header__logo" src={logo.src} alt="Timmerfabriek Sint Nyk" width="216" height="40" />
+    </a>
+
+    <button
+      class="site-header__menu-toggle"
+      type="button"
+      aria-label="Menu openen"
+      aria-expanded="false"
+      aria-controls="mobile-navigation"
+      data-mobile-menu-toggle
+    >
+      <img data-menu-open-icon src={menuIcon.src} alt="" width="24" height="24" aria-hidden="true" />
+      <img data-menu-close-icon src={closeIcon.src} alt="" width="24" height="24" aria-hidden="true" hidden />
+    </button>
+  </div>
+
+  <nav
+    class="mobile-menu"
+    id="mobile-navigation"
+    aria-label="Mobiele hoofdnavigatie"
+    data-mobile-menu
+    hidden
+  >
+    <div class="mobile-menu__inner container">
+      <ul class="mobile-menu__list mobile-menu__list--main">
+        {mainNavigation.map((item, index) => (
+          <li>
+            {item.children ? (
+              <NavDropdown item={item} id={`mobile-dropdown-${index}`} mode="mobile" currentPath={currentPath} />
+            ) : (
+              <a
+                class="mobile-menu__link mobile-menu__link--main"
+                href={item.href}
+                aria-current={currentPath === item.href ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <ul class="mobile-menu__list mobile-menu__list--utility">
+        {utilityNavigation.map((item) => (
+          <li>
+            <a
+              class="mobile-menu__link mobile-menu__link--utility"
+              href={item.href}
+              aria-current={currentPath === item.href ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="mobile-menu__cta-wrap">
+        <Button class="mobile-menu__cta" href={callToAction.href} arrow>
+          {callToAction.label}
+        </Button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="desktop-header">
+    <div class="desktop-header__utility">
+      <nav class="container" aria-label="Secundaire navigatie">
+        <ul class="desktop-header__utility-list">
+          {utilityNavigation.map((item) => (
+            <li>
+              <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+
+    <div class="desktop-header__main">
+      <div class="desktop-header__main-inner container">
+        <a class="site-header__logo-link" href="/" aria-label="Timmerfabriek Sint Nyk — home">
+          <img class="site-header__logo site-header__logo--desktop" src={logo.src} alt="Timmerfabriek Sint Nyk" width="216" height="40" />
+        </a>
+
+        <nav class="desktop-header__navigation" aria-label="Hoofdnavigatie">
+          <ul class="desktop-header__main-list">
+            {mainNavigation.map((item, index) => (
+              <li>
+                {item.children ? (
+                  <NavDropdown item={item} id={`desktop-dropdown-${index}`} mode="desktop" currentPath={currentPath} />
+                ) : (
+                  <a
+                    class="desktop-header__main-link"
+                    href={item.href}
+                    aria-current={currentPath === item.href ? 'page' : undefined}
+                  >
+                    {item.label}
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <Button class="desktop-header__cta" href={callToAction.href} arrow>
+          {callToAction.label}
+        </Button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+
+  if (header) {
+    const mobileToggle = header.querySelector<HTMLButtonElement>('[data-mobile-menu-toggle]');
+    const mobileMenu = header.querySelector<HTMLElement>('[data-mobile-menu]');
+    const openIcon = header.querySelector<HTMLImageElement>('[data-menu-open-icon]');
+    const closeIcon = header.querySelector<HTMLImageElement>('[data-menu-close-icon]');
+    const desktopMedia = window.matchMedia('(min-width: 64rem)');
+    const hoverCloseTimers = new WeakMap<HTMLElement, number>();
+
+    const dropdownToggles = () =>
+      Array.from(header.querySelectorAll<HTMLButtonElement>('[data-dropdown-toggle]'));
+
+    const closeDropdowns = (mode?: string, except?: HTMLButtonElement) => {
+      dropdownToggles().forEach((toggle) => {
+        const dropdown = toggle.closest<HTMLElement>('[data-nav-dropdown]');
+        if (toggle === except || (mode && dropdown?.dataset.dropdownMode !== mode)) return;
+
+        const panel = dropdown?.querySelector<HTMLElement>('[data-dropdown-panel]');
+        toggle.setAttribute('aria-expanded', 'false');
+        if (panel) panel.hidden = true;
+      });
+    };
+
+    const setMobileMenu = (open: boolean) => {
+      if (!mobileToggle || !mobileMenu || !openIcon || !closeIcon) return;
+
+      mobileToggle.setAttribute('aria-expanded', String(open));
+      mobileToggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+      mobileMenu.hidden = !open;
+      openIcon.hidden = open;
+      closeIcon.hidden = !open;
+      document.body.classList.toggle('nav-open', open);
+
+      if (!open) closeDropdowns('mobile');
+    };
+
+    dropdownToggles().forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const dropdown = toggle.closest<HTMLElement>('[data-nav-dropdown]');
+        const panel = dropdown?.querySelector<HTMLElement>('[data-dropdown-panel]');
+        if (!dropdown || !panel) return;
+
+        const willOpen = toggle.getAttribute('aria-expanded') !== 'true';
+        closeDropdowns(dropdown.dataset.dropdownMode, toggle);
+        toggle.setAttribute('aria-expanded', String(willOpen));
+        panel.hidden = !willOpen;
+      });
+    });
+
+    header.querySelectorAll<HTMLElement>('[data-dropdown-mode="desktop"]').forEach((dropdown) => {
+      const toggle = dropdown.querySelector<HTMLButtonElement>('[data-dropdown-toggle]');
+      const panel = dropdown.querySelector<HTMLElement>('[data-dropdown-panel]');
+      if (!toggle || !panel) return;
+
+      dropdown.addEventListener('pointerenter', () => {
+        if (!desktopMedia.matches) return;
+
+        const closeTimer = hoverCloseTimers.get(dropdown);
+        if (closeTimer) window.clearTimeout(closeTimer);
+
+        closeDropdowns('desktop', toggle);
+        toggle.setAttribute('aria-expanded', 'true');
+        panel.hidden = false;
+      });
+
+      dropdown.addEventListener('pointerleave', () => {
+        if (!desktopMedia.matches) return;
+
+        hoverCloseTimers.set(dropdown, window.setTimeout(() => {
+          if (dropdown.matches(':hover') || dropdown.contains(document.activeElement)) return;
+          toggle.setAttribute('aria-expanded', 'false');
+          panel.hidden = true;
+        }, 100));
+      });
+    });
+
+    mobileToggle?.addEventListener('click', () => {
+      setMobileMenu(mobileToggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    mobileMenu?.querySelectorAll<HTMLAnchorElement>('a').forEach((link) => {
+      link.addEventListener('click', () => setMobileMenu(false));
+    });
+
+    document.addEventListener('click', (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      if (!target.closest('[data-nav-dropdown][data-dropdown-mode="desktop"]')) {
+        closeDropdowns('desktop');
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+
+      if (mobileToggle?.getAttribute('aria-expanded') === 'true') {
+        setMobileMenu(false);
+        mobileToggle.focus();
+        return;
+      }
+
+      const openDropdown = dropdownToggles().find(
+        (toggle) => toggle.getAttribute('aria-expanded') === 'true',
+      );
+      closeDropdowns();
+      openDropdown?.focus();
+    });
+
+    desktopMedia.addEventListener('change', (event) => {
+      if (event.matches) setMobileMenu(false);
+      closeDropdowns();
+    });
+  }
+</script>
+
+<style>
+  :global(body.nav-open) {
+    overflow: hidden;
+  }
+
+  .site-header {
+    position: relative;
+    z-index: 100;
+    color: var(--color-white);
+    background-color: var(--color-primary);
+  }
+
+  .site-header__mobile {
+    position: relative;
+    z-index: 102;
+    display: flex;
+    min-height: 4.5rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-primary);
+  }
+
+  .site-header__logo-link {
+    display: inline-flex;
+    flex: 0 0 auto;
+    border-radius: 0.25rem;
+  }
+
+  .site-header__logo-link:focus-visible,
+  .site-header__menu-toggle:focus-visible,
+  .mobile-menu__link:focus-visible,
+  .desktop-header a:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: 4px;
+  }
+
+  .site-header__logo {
+    width: min(13.5rem, 64vw);
+    height: auto;
+  }
+
+  .site-header__menu-toggle {
+    display: grid;
+    width: 3rem;
+    height: 3rem;
+    flex: 0 0 auto;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    border-radius: 0.25rem;
+    color: var(--color-white);
+    background: transparent;
+  }
+
+  .site-header__menu-toggle img[hidden] {
+    display: none;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    z-index: 101;
+    inset: 0;
+    overflow-y: auto;
+    color: var(--color-white);
+    background-color: var(--color-primary);
+  }
+
+  .mobile-menu[hidden] {
+    display: none;
+  }
+
+  .mobile-menu__inner {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    padding-top: 7.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .mobile-menu__list {
+    display: grid;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .mobile-menu__list--utility {
+    margin-top: 2.5rem;
+    gap: 1rem;
+  }
+
+  .mobile-menu__link {
+    display: flex;
+    width: fit-content;
+    color: var(--color-white);
+    text-decoration: none;
+    transition: color 200ms ease-out;
+  }
+
+  .mobile-menu__link:hover,
+  .mobile-menu__link[aria-current='page'] {
+    color: var(--color-secondary);
+  }
+
+  .mobile-menu__link--main {
+    min-height: 3rem;
+    align-items: center;
+    font-family: var(--font-family-ui);
+    font-size: var(--text-h5-size);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--text-h5-line-height);
+  }
+
+  .mobile-menu__link--utility {
+    font-family: var(--font-family-ui);
+    font-size: var(--text-navigation-size);
+    line-height: var(--text-body-line-height);
+  }
+
+  .mobile-menu__cta-wrap {
+    margin-top: auto;
+    padding-top: 4rem;
+  }
+
+  :global(.mobile-menu__cta) {
+    width: 100%;
+  }
+
+  .desktop-header {
+    display: none;
+  }
+
+  @media (min-width: 64rem) {
+    .site-header__mobile,
+    .mobile-menu {
+      display: none;
+    }
+
+    .desktop-header {
+      display: block;
+    }
+
+    .desktop-header__utility {
+      height: 2.25rem;
+      background-color: var(--color-sub-navigation-background);
+    }
+
+    .desktop-header__utility nav {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .desktop-header__utility-list,
+    .desktop-header__main-list {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .desktop-header__utility-list li + li {
+      border-left: 1px solid var(--color-sub-navigation-border);
+    }
+
+    .desktop-header__utility-list a {
+      display: block;
+      padding-inline: 1rem;
+      font-family: var(--font-family-ui);
+      font-size: var(--text-sub-navigation-size);
+      line-height: var(--text-sub-navigation-line-height);
+      color: var(--color-white);
+      text-decoration: none;
+      transition: color 200ms ease-out;
+    }
+
+    .desktop-header__utility-list li:last-child a {
+      padding-right: 0;
+    }
+
+    .desktop-header__utility-list a:hover,
+    .desktop-header__utility-list a[aria-current='page'],
+    .desktop-header__main-link:hover,
+    .desktop-header__main-link[aria-current='page'] {
+      color: var(--color-secondary);
+    }
+
+    .desktop-header__main-inner {
+      display: flex;
+      height: 5rem;
+      align-items: center;
+      gap: 1.5rem;
+      padding-block: 1rem;
+    }
+
+    .site-header__logo--desktop {
+      width: auto;
+      height: 3rem;
+    }
+
+    .desktop-header__navigation {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .desktop-header__main-list {
+      justify-content: flex-end;
+      gap: 2rem;
+    }
+
+    .desktop-header__main-link {
+      display: flex;
+      min-height: 3rem;
+      align-items: center;
+      font-family: var(--font-family-ui);
+      font-size: var(--text-navigation-size);
+      font-weight: var(--font-weight-medium);
+      line-height: normal;
+      color: var(--color-white);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 200ms ease-out;
+    }
+
+    :global(.desktop-header__cta.button) {
+      min-height: 3rem;
+      flex: 0 0 auto;
+      padding-block: 0.75rem;
+      white-space: nowrap;
+    }
+  }
+</style>

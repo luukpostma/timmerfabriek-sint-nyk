@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { placeholderPages, type NavigationItem } from '../data/navigation';
+
+export function getStaticPaths() {
+  return placeholderPages.map((page) => ({
+    params: { slug: page.href.replace(/^\//, '').replace(/\/$/, '') },
+    props: { page },
+  }));
+}
+
+interface Props {
+  page: NavigationItem;
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title={`${page.label} | Timmerfabriek Sint Nyk`}>
+  <main class="placeholder-page container">
+    <h1>{page.label}</h1>
+  </main>
+</BaseLayout>
+
+<style>
+  .placeholder-page {
+    padding-block: 4rem;
+  }
+</style>

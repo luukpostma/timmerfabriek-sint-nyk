@@ -1,0 +1,158 @@
+---
+import arrowRightSmall from '../assets/icons/arrow-right-small.svg';
+import ChevronDown from '../assets/icons/chevron-down.svg';
+import type { NavigationItem } from '../data/navigation';
+
+interface Props {
+  item: NavigationItem;
+  id: string;
+  mode: 'desktop' | 'mobile';
+  currentPath: string;
+}
+
+const { item, id, mode, currentPath } = Astro.props;
+const panelId = `${id}-panel`;
+---
+
+<div class:list={['nav-dropdown', `nav-dropdown--${mode}`]} data-nav-dropdown data-dropdown-mode={mode}>
+  <button
+    class="nav-dropdown__toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls={panelId}
+    data-dropdown-toggle
+  >
+    <span>{item.label}</span>
+    <span class="nav-dropdown__chevron" aria-hidden="true">
+      <ChevronDown />
+    </span>
+  </button>
+
+  <div class="nav-dropdown__panel" id={panelId} data-dropdown-panel hidden>
+    <ul class="nav-dropdown__list">
+      {item.children?.map((child) => (
+        <li>
+          <a
+            class="nav-dropdown__link"
+            href={child.href}
+            aria-current={currentPath === child.href ? 'page' : undefined}
+          >
+            <span>{child.label}</span>
+            <img src={arrowRightSmall.src} alt="" width="16" height="16" aria-hidden="true" />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+<style>
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .nav-dropdown__toggle {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0;
+    border: 0;
+    font-family: var(--font-family-ui);
+    font-size: var(--text-navigation-size);
+    font-weight: var(--font-weight-medium);
+    line-height: normal;
+    color: var(--color-white);
+    background: transparent;
+    transition: color 200ms ease-out;
+  }
+
+  .nav-dropdown__toggle:focus-visible,
+  .nav-dropdown__link:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: 4px;
+  }
+
+  .nav-dropdown__chevron {
+    display: block;
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+  }
+
+  .nav-dropdown__panel {
+    color: var(--color-heading);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  .nav-dropdown__panel[hidden] {
+    display: none;
+  }
+
+  .nav-dropdown__list {
+    display: grid;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0.75rem;
+    list-style: none;
+  }
+
+  .nav-dropdown__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 0.75rem;
+    border-radius: 0.5rem;
+    font-family: var(--font-family-ui);
+    font-size: var(--text-navigation-size);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--text-body-line-height);
+    color: var(--color-heading);
+    text-decoration: none;
+  }
+
+  .nav-dropdown__link:hover,
+  .nav-dropdown__link[aria-current='page'] {
+    background-color: var(--color-background);
+  }
+
+  .nav-dropdown__link:focus-visible {
+    outline-color: var(--color-primary);
+    outline-offset: -2px;
+  }
+
+  .nav-dropdown--mobile .nav-dropdown__toggle {
+    min-height: 3rem;
+    font-size: var(--text-h5-size);
+    line-height: var(--text-h5-line-height);
+  }
+
+  .nav-dropdown--mobile .nav-dropdown__panel {
+    margin-top: 1rem;
+  }
+
+  .nav-dropdown--desktop .nav-dropdown__toggle {
+    min-height: 3rem;
+    gap: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .nav-dropdown--desktop:hover .nav-dropdown__toggle,
+  .nav-dropdown--desktop .nav-dropdown__toggle[aria-expanded='true'] {
+    color: var(--color-secondary);
+  }
+
+  .nav-dropdown--desktop .nav-dropdown__panel {
+    position: absolute;
+    z-index: 20;
+    top: calc(100% + 0.5rem);
+    left: 50%;
+    width: 22rem;
+    transform: translateX(-50%);
+    box-shadow: 0 0.75rem 2rem rgb(3 7 18 / 12%);
+  }
+</style>

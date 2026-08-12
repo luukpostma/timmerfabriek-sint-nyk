@@ -1,0 +1,69 @@
+---
+import FastIcon from '../assets/icons/fast.svg';
+import HammerIcon from '../assets/icons/hammer.svg';
+import PhoneIcon from '../assets/icons/phone.svg';
+import RulerIcon from '../assets/icons/ruler.svg';
+
+const uspItems = [
+  { label: 'Persoonlijk contact', Icon: PhoneIcon },
+  { label: 'Fries vakmanschap', Icon: RulerIcon },
+  { label: 'Eigen werkplaats', Icon: HammerIcon },
+  { label: 'Levering door heel Nederland', Icon: FastIcon },
+];
+---
+
+<section class="usp-section" aria-label="Onze voordelen">
+  <div class="container">
+    <ul class="usp-section__list">
+      {uspItems.map(({ label, Icon }) => (
+        <li class="usp-section__item text-eyebrow">
+          <Icon class="usp-section__icon" aria-hidden="true" />
+          <span>{label}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .usp-section {
+    padding-block: 2rem;
+    background-color: var(--color-background);
+  }
+
+  .usp-section__list {
+    display: grid;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .usp-section__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-heading);
+  }
+
+  .usp-section__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex: 0 0 auto;
+    color: var(--color-secondary);
+  }
+
+  @media (min-width: 64rem) {
+    .usp-section__list {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .usp-section__item {
+      flex: 0 0 auto;
+    }
+  }
+</style>

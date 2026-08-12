@@ -1,0 +1,184 @@
+---
+import { Image } from 'astro:assets';
+import GoogleReviewStars from '../assets/icons/google-review.svg';
+import heroImage from '../assets/images/hero-image.jpg';
+import Button from './Button.astro';
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero__layout">
+      <div class="hero__content">
+        <div class="hero__copy">
+          <div class="hero__review">
+            <GoogleReviewStars class="hero__review-stars" aria-hidden="true" />
+            <span><strong>4.6</strong> /5 - 5 Google-beoordelingen</span>
+          </div>
+
+          <h1>Kozijnen op maat uit Friesland</h1>
+
+          <p>
+            Houten kozijnen, deuren en schuifpuien op maat. Gemaakt in eigen werkplaats, met
+            persoonlijk contact van aanvraag tot levering.
+          </p>
+        </div>
+
+        <div class="hero__actions">
+          <Button href="/contact/" variant="primary" arrow>Offerte aanvragen</Button>
+          <Button href="/kozijnen/" variant="secondary">Bekijk onze producten</Button>
+        </div>
+      </div>
+
+      <div class="hero__media">
+        <Image
+          class="hero__image"
+          src={heroImage}
+          alt="Twee vakmensen werken aan een houten kozijn in de werkplaats"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding-block: 4rem;
+    color: var(--color-white);
+    background-color: var(--color-primary);
+  }
+
+  .hero::before {
+    position: absolute;
+    inset: 0;
+    content: '';
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, var(--color-hero-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-hero-grid) 1px, transparent 1px);
+    background-size: 4.5rem 4.5rem;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 24%, #000 76%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 24%, #000 76%, transparent);
+  }
+
+  .hero::after {
+    position: absolute;
+    inset: 0;
+    content: '';
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      var(--color-primary),
+      transparent 4.5rem,
+      transparent calc(100% - 4.5rem),
+      var(--color-primary)
+    );
+  }
+
+  .hero > .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero__layout,
+  .hero__content,
+  .hero__copy,
+  .hero__actions {
+    display: grid;
+  }
+
+  .hero__layout {
+    gap: 3rem;
+  }
+
+  .hero__content {
+    gap: 2rem;
+  }
+
+  .hero__copy {
+    gap: 1.5rem;
+  }
+
+  .hero__review {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-family-body);
+    font-size: var(--text-body-small-size);
+    line-height: var(--text-body-small-line-height);
+    color: var(--color-white);
+  }
+
+  .hero__review-stars {
+    width: 86px;
+    height: 14px;
+    flex: 0 0 auto;
+    color: var(--color-review-star);
+  }
+
+  .hero__review strong {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .hero h1 {
+    color: var(--color-white);
+  }
+
+  .hero p {
+    max-width: 38rem;
+    color: rgb(255 255 255 / 88%);
+  }
+
+  .hero__actions {
+    gap: 1rem;
+  }
+
+  :global(.hero__actions .button) {
+    width: 100%;
+  }
+
+  .hero__media {
+    width: 100%;
+    height: 17.5rem;
+    overflow: hidden;
+    border-radius: 0.75rem;
+  }
+
+  .hero__media :global(.hero__image) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (min-width: 64rem) {
+    .hero {
+      padding-top: 4rem;
+      padding-bottom: 6rem;
+    }
+
+    .hero__layout {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: center;
+      gap: 4rem;
+    }
+
+    .hero__content {
+      gap: 3rem;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    :global(.hero__actions .button) {
+      width: auto;
+    }
+
+    .hero__media {
+      height: 30rem;
+    }
+  }
+</style>

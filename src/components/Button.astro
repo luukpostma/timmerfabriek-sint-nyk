@@ -1,0 +1,117 @@
+---
+import arrowRight from '../assets/icons/arrow-right.svg';
+
+interface Props {
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  class?: string;
+  disabled?: boolean;
+  'aria-label'?: string;
+  arrow?: boolean;
+  variant?: 'primary' | 'secondary';
+}
+
+const {
+  href,
+  type = 'button',
+  class: className,
+  disabled = false,
+  'aria-label': ariaLabel,
+  arrow = false,
+  variant = 'primary',
+} = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  href={href}
+  type={!href ? type : undefined}
+  class:list={['button', `button--${variant}`, className, { 'button--disabled': disabled }]}
+  disabled={!href ? disabled : undefined}
+  aria-disabled={href && disabled ? 'true' : undefined}
+  aria-label={ariaLabel}
+  tabindex={href && disabled ? -1 : undefined}
+>
+  <span><slot /></span>
+  {arrow && <img src={arrowRight.src} alt="" width="24" height="24" aria-hidden="true" />}
+</Tag>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 3.5rem;
+    padding: 1rem 1.5rem;
+    border: 0;
+    border-radius: 9999px;
+    font-family: var(--font-family-ui);
+    font-size: var(--text-button-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--text-button-line-height);
+    color: var(--color-white);
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      color 200ms ease-out,
+      background-color 200ms ease-out,
+      border-color 200ms ease-out;
+  }
+
+  .button--primary {
+    background-color: var(--color-secondary);
+  }
+
+  .button--primary:hover:not(.button--disabled) {
+    background-color: var(--color-secondary-hover);
+  }
+
+  .button--secondary {
+    border: 2px solid var(--color-white);
+    color: var(--color-white);
+    background-color: transparent;
+  }
+
+  .button--secondary:hover:not(.button--disabled) {
+    background-color: rgb(255 255 255 / 10%);
+  }
+
+  .button--secondary:active:not(.button--disabled) {
+    background-color: rgb(255 255 255 / 16%);
+  }
+
+  .button:focus-visible {
+    outline: 3px solid var(--color-white);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--color-primary);
+  }
+
+  .button--disabled,
+  .button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .button img {
+    flex: 0 0 auto;
+    transition: transform 200ms ease-out;
+  }
+
+  .button:hover:not(.button--disabled) img {
+    transform: translateX(4px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .button,
+    .button img {
+      transition: none;
+    }
+
+    .button:hover:not(.button--disabled) img {
+      transform: none;
+    }
+  }
+</style>
