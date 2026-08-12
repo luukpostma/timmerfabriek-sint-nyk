@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CategoryOverview from '../components/CategoryOverview.astro';
+import ProjectsOverview from '../components/ProjectsOverview.astro';
+import WindowsPage from '../components/WindowsPage.astro';
+import DoorsPage from '../components/DoorsPage.astro';
 import { placeholderPages, type NavigationItem } from '../data/navigation';
 import { getProductByHref } from '../data/products';
 
@@ -17,11 +20,20 @@ interface Props {
 
 const { page } = Astro.props;
 const categoryProduct = page.children ? getProductByHref(page.href) : undefined;
+const isProjectsOverview = page.href === '/projecten/';
+const isWindowsPage = page.href === '/kozijnen/';
+const isDoorsPage = page.href === '/deuren/';
 ---
 
 <BaseLayout title={`${page.label} | Timmerfabriek Sint Nyk`}>
   <main>
-    {categoryProduct ? (
+    {isWindowsPage ? (
+      <WindowsPage page={page} />
+    ) : isDoorsPage ? (
+      <DoorsPage page={page} />
+    ) : isProjectsOverview ? (
+      <ProjectsOverview />
+    ) : categoryProduct ? (
       <CategoryOverview page={page} product={categoryProduct} />
     ) : (
       <div class="placeholder-page container">

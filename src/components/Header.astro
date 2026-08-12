@@ -148,6 +148,9 @@ const currentPath = Astro.url.pathname.endsWith('/')
 
         const panel = dropdown?.querySelector<HTMLElement>('[data-dropdown-panel]');
         toggle.setAttribute('aria-expanded', 'false');
+        if (toggle.dataset.dropdownLabel) {
+          toggle.setAttribute('aria-label', `${toggle.dataset.dropdownLabel} submenu openen`);
+        }
         if (panel) panel.hidden = true;
       });
     };
@@ -174,6 +177,12 @@ const currentPath = Astro.url.pathname.endsWith('/')
         const willOpen = toggle.getAttribute('aria-expanded') !== 'true';
         closeDropdowns(dropdown.dataset.dropdownMode, toggle);
         toggle.setAttribute('aria-expanded', String(willOpen));
+        if (toggle.dataset.dropdownLabel) {
+          toggle.setAttribute(
+            'aria-label',
+            `${toggle.dataset.dropdownLabel} submenu ${willOpen ? 'sluiten' : 'openen'}`,
+          );
+        }
         panel.hidden = !willOpen;
       });
     });
@@ -191,6 +200,9 @@ const currentPath = Astro.url.pathname.endsWith('/')
 
         closeDropdowns('desktop', toggle);
         toggle.setAttribute('aria-expanded', 'true');
+        if (toggle.dataset.dropdownLabel) {
+          toggle.setAttribute('aria-label', `${toggle.dataset.dropdownLabel} submenu sluiten`);
+        }
         panel.hidden = false;
       });
 
@@ -200,6 +212,9 @@ const currentPath = Astro.url.pathname.endsWith('/')
         hoverCloseTimers.set(dropdown, window.setTimeout(() => {
           if (dropdown.matches(':hover') || dropdown.contains(document.activeElement)) return;
           toggle.setAttribute('aria-expanded', 'false');
+          if (toggle.dataset.dropdownLabel) {
+            toggle.setAttribute('aria-label', `${toggle.dataset.dropdownLabel} submenu openen`);
+          }
           panel.hidden = true;
         }, 100));
       });

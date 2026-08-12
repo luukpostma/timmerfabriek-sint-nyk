@@ -1,0 +1,112 @@
+---
+interface Props {
+  title: string;
+  parentLabel?: string;
+  parentHref?: string;
+}
+
+const { title, parentLabel = 'Home', parentHref = '/' } = Astro.props;
+---
+
+<section class="category-hero" aria-labelledby="category-hero-heading">
+  <div class="container category-hero__content">
+    <nav class="category-hero__breadcrumb" aria-label="Broodkruimelpad">
+      <ol>
+        <li><a href={parentHref}>{parentLabel}</a></li>
+        <li aria-current="page">{title}</li>
+      </ol>
+    </nav>
+
+    <h1 id="category-hero-heading">{title}</h1>
+  </div>
+</section>
+
+<style>
+  .category-hero {
+    position: relative;
+    padding-block: 4rem;
+    overflow: hidden;
+    color: var(--color-white);
+    background-color: var(--color-primary);
+  }
+
+  .category-hero::before {
+    position: absolute;
+    inset: 0;
+    content: '';
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, var(--color-hero-grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-hero-grid) 1px, transparent 1px);
+    background-size: 4.5rem 4.5rem;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 24%, #000 76%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 24%, #000 76%, transparent);
+  }
+
+  .category-hero::after {
+    position: absolute;
+    inset: 0;
+    content: '';
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      var(--color-primary),
+      transparent 4.5rem,
+      transparent calc(100% - 4.5rem),
+      var(--color-primary)
+    );
+  }
+
+  .category-hero__content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .category-hero__breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .category-hero__breadcrumb li {
+    font-family: var(--font-family-body);
+    font-size: var(--text-body-small-size);
+    line-height: var(--text-body-small-line-height);
+  }
+
+  .category-hero__breadcrumb li + li::before {
+    margin-right: 0.375rem;
+    color: rgb(255 255 255 / 64%);
+    content: '/';
+  }
+
+  .category-hero__breadcrumb a {
+    color: var(--color-white);
+    text-decoration: none;
+  }
+
+  .category-hero__breadcrumb a:hover {
+    color: var(--color-secondary);
+  }
+
+  .category-hero__breadcrumb a:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: 4px;
+  }
+
+  .category-hero h1 {
+    color: var(--color-white);
+  }
+
+  @media (min-width: 64rem) {
+    .category-hero {
+      min-height: 20rem;
+      padding-block: 6rem;
+    }
+  }
+</style>

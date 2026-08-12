@@ -8,6 +8,7 @@ import '@fontsource/space-grotesk/latin-500.css';
 import '@fontsource/space-grotesk/latin-600.css';
 import '@fontsource/space-grotesk/latin-700.css';
 import '../styles/global.css';
+import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 
 interface Props {
@@ -30,5 +31,6 @@ const { title, description } = Astro.props;
   <body>
     <Header />
     <slot />
+    <Footer />
   </body>
 </html>

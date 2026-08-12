@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="projects-page" aria-labelledby="projects-page-heading">
+  <div class="container">
+    <header class="projects-page__header">
+      <span class="projects-page__eyebrow text-eyebrow">Ons werk</span>
+      <h1 id="projects-page-heading">Projecten</h1>
+    </header>
+
+    <ul class="projects-page__grid">
+      {projects.map((project) => (
+        <li>
+          <ProjectCard project={project} headingLevel="h2" />
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .projects-page {
+    padding-block: 4rem;
+    background-color: var(--color-white);
+  }
+
+  .projects-page__header {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .projects-page__eyebrow {
+    width: fit-content;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-heading);
+  }
+
+  .projects-page__grid {
+    display: grid;
+    gap: 2rem;
+    margin: 4rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .projects-page__grid :global(.project-card) {
+    height: 100%;
+  }
+
+  @media (min-width: 48rem) {
+    .projects-page__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .projects-page {
+      padding-block: 6rem;
+    }
+
+    .projects-page__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

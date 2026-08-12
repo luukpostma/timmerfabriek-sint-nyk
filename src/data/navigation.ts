@@ -43,7 +43,14 @@ export const callToAction = {
   href: '/contact/',
 };
 
+export const legalNavigation: NavigationItem[] = [
+  { label: 'Privacyverklaring', href: '/privacyverklaring/' },
+  { label: 'Algemene voorwaarden', href: '/algemene-voorwaarden/' },
+  { label: 'Cookiebeleid', href: '/cookiebeleid/' },
+];
+
 export const placeholderPages = [
   ...mainNavigation.flatMap((item) => [item, ...(item.children ?? [])]),
   ...utilityNavigation,
+  ...legalNavigation,
 ];

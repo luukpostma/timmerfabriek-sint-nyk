@@ -1,0 +1,144 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  headingLevel?: 'h2' | 'h3';
+  horizontal?: boolean;
+}
+
+const { project, headingLevel = 'h3', horizontal = false } = Astro.props;
+const Heading = headingLevel;
+const month = new Intl.DateTimeFormat('nl-NL', { month: 'long' }).format(project.data.date);
+const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1);
+const formattedDate =
+  `${project.data.date.getDate()} ${capitalizedMonth}, ${project.data.date.getFullYear()}`;
+---
+
+<a
+  class:list={['project-card', { 'project-card--horizontal': horizontal }]}
+  href={`/projecten/${project.id}/`}
+>
+  <div class="project-card__media">
+    <Image
+      class="project-card__image"
+      src={project.data.image}
+      alt={project.data.imageAlt}
+      widths={[480, 656]}
+      sizes={horizontal
+        ? '(min-width: 64rem) 380px, calc(100vw - 34px)'
+        : '(min-width: 64rem) 384px, (min-width: 48rem) 50vw, calc(100vw - 34px)'}
+      loading="lazy"
+    />
+  </div>
+
+  <div class="project-card__content">
+    <span class="project-card__category text-eyebrow">{project.data.category}</span>
+    <Heading>{project.data.title}</Heading>
+    <time datetime={project.data.date.toISOString().slice(0, 10)}>{formattedDate}</time>
+  </div>
+</a>
+
+<style>
+  .project-card {
+    display: grid;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    color: var(--color-heading);
+    background-color: var(--color-white);
+    text-decoration: none;
+    transition: border-color 200ms ease-out;
+  }
+
+  .project-card:hover {
+    border-color: var(--color-secondary);
+  }
+
+  .project-card:focus-visible {
+    outline: 3px solid var(--color-secondary);
+    outline-offset: 3px;
+  }
+
+  .project-card__media {
+    width: 100%;
+    height: 16rem;
+    overflow: hidden;
+  }
+
+  .project-card :global(.project-card__image) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 250ms ease-out;
+  }
+
+  .project-card:hover :global(.project-card__image) {
+    transform: scale(1.03);
+  }
+
+  .project-card__content {
+    display: grid;
+    align-content: start;
+    gap: 0.75rem;
+    padding: 2rem;
+  }
+
+  .project-card__category {
+    width: fit-content;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-heading);
+    background-color: var(--color-white);
+  }
+
+  .project-card h2,
+  .project-card h3 {
+    font-size: var(--text-h4-size);
+    line-height: var(--text-h4-line-height);
+  }
+
+  .project-card time {
+    margin-top: 0.75rem;
+    font-family: var(--font-family-body);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+    color: var(--color-text);
+  }
+
+  @media (min-width: 64rem) {
+    .project-card--horizontal {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-card--horizontal .project-card__content {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .project-card--horizontal .project-card__media {
+      grid-column: 2;
+      grid-row: 1;
+      height: 100%;
+    }
+
+    .project-card--horizontal time {
+      align-self: end;
+      margin-top: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .project-card,
+    .project-card :global(.project-card__image) {
+      transition: none;
+    }
+
+    .project-card:hover :global(.project-card__image) {
+      transform: none;
+    }
+  }
+</style>

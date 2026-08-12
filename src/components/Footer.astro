@@ -1,0 +1,265 @@
+---
+import logo from '../assets/Logo.svg';
+import Button from './Button.astro';
+import { legalNavigation, mainNavigation, utilityNavigation } from '../data/navigation';
+
+const productNavigation = [
+  { label: 'Home', href: '/' },
+  ...mainNavigation.filter((item) => item.label !== 'Vouwwanden'),
+];
+---
+
+<footer class="site-footer">
+  <section class="site-footer__cta" aria-labelledby="footer-cta-heading">
+    <div class="container site-footer__cta-inner">
+      <div class="site-footer__cta-copy">
+        <span class="site-footer__eyebrow text-eyebrow">Neem contact met ons op</span>
+        <h2 id="footer-cta-heading">Klaar om te starten?</h2>
+        <p>Liever eerst overleggen? Neem gerust contact met ons op.</p>
+      </div>
+
+      <Button class="site-footer__cta-button" href="/contact/" arrow>Offerte aanvragen</Button>
+    </div>
+  </section>
+
+  <div class="site-footer__main">
+    <div class="container site-footer__main-grid">
+      <div class="site-footer__brand">
+        <a class="site-footer__logo-link" href="/" aria-label="Timmerfabriek Sint Nyk — home">
+          <img src={logo.src} alt="Timmerfabriek Sint Nyk" width="216" height="40" />
+        </a>
+        <p>Lorem ipsum dolor sit amet,<br />consectetur adipiscing elit.</p>
+      </div>
+
+      <nav class="site-footer__navigation" aria-label="Producten">
+        <h2>Producten</h2>
+        <ul>
+          {productNavigation.map((item) => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <nav class="site-footer__navigation" aria-label="Overige pagina's">
+        <h2>Overig</h2>
+        <ul>
+          {utilityNavigation.map((item) => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <section class="site-footer__contact" aria-labelledby="footer-contact-heading">
+        <h2 id="footer-contact-heading">Contactgegevens</h2>
+        <address>
+          <p>Bovenkuier 38</p>
+          <p>8521 MG Sint Nicolaasga</p>
+          <a href="tel:+31513123456">0513 – 123 456</a>
+          <a href="mailto:info@timmerfabrieksintnyk.nl">info@timmerfabrieksintnyk.nl</a>
+        </address>
+      </section>
+    </div>
+  </div>
+
+  <div class="site-footer__bottom">
+    <div class="container site-footer__bottom-inner">
+      <p>KvK: 12345678</p>
+
+      <nav aria-label="Juridische informatie">
+        <ul>
+          {legalNavigation.map((item) => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <p>© 2026 Timmerfabriek Sint Nyk</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+  }
+
+  .site-footer p,
+  .site-footer a,
+  .site-footer h2 {
+    color: var(--color-white);
+  }
+
+  .site-footer__cta {
+    padding-block: 4rem;
+  }
+
+  .site-footer__cta-inner,
+  .site-footer__cta-copy {
+    display: grid;
+  }
+
+  .site-footer__eyebrow {
+    width: fit-content;
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--color-white);
+    border-radius: 9999px;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .site-footer__cta h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  :global(.site-footer__cta-button.button) {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .site-footer__main,
+  .site-footer__bottom {
+    border-top: 1px solid var(--color-hero-grid);
+  }
+
+  .site-footer__main {
+    padding-block: 4rem;
+  }
+
+  .site-footer__main-grid {
+    display: grid;
+    gap: 3rem;
+  }
+
+  .site-footer__logo-link {
+    display: inline-flex;
+    border-radius: 0.25rem;
+  }
+
+  .site-footer__logo-link img {
+    width: 13.5rem;
+    height: auto;
+  }
+
+  .site-footer__brand p {
+    margin-top: 2.5rem;
+  }
+
+  .site-footer__navigation h2,
+  .site-footer__contact h2 {
+    margin-bottom: 1.5rem;
+    font-family: var(--font-family-body);
+    font-size: var(--text-body-size);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--text-body-line-height);
+  }
+
+  .site-footer ul {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-footer__navigation a,
+  .site-footer__contact a,
+  .site-footer__bottom a {
+    text-decoration: none;
+    transition: color 200ms ease-out;
+  }
+
+  .site-footer__navigation a:hover,
+  .site-footer__contact a:hover,
+  .site-footer__bottom a:hover {
+    color: var(--color-secondary);
+  }
+
+  .site-footer a:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: 4px;
+  }
+
+  .site-footer__contact address {
+    display: grid;
+    gap: 1rem;
+    font-style: normal;
+  }
+
+  .site-footer__bottom {
+    padding-block: 4rem;
+  }
+
+  .site-footer__bottom-inner {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .site-footer__bottom ul {
+    gap: 2rem;
+  }
+
+  .site-footer__bottom p,
+  .site-footer__bottom a {
+    font-size: var(--text-body-small-size);
+    line-height: var(--text-body-small-line-height);
+  }
+
+  @media (min-width: 64rem) {
+    .site-footer__cta {
+      padding-block: 6rem;
+    }
+
+    .site-footer__cta-inner {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 3rem;
+    }
+
+    .site-footer__cta h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    :global(.site-footer__cta-button.button) {
+      width: auto;
+      margin-top: 0;
+    }
+
+    .site-footer__main {
+      padding-block: 6rem;
+    }
+
+    .site-footer__main-grid {
+      grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr)) minmax(0, 1.4fr);
+      gap: 4rem;
+    }
+
+    .site-footer__contact {
+      justify-self: end;
+    }
+
+    .site-footer__bottom {
+      padding-block: 2rem;
+    }
+
+    .site-footer__bottom-inner {
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .site-footer__bottom ul {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-footer__navigation a,
+    .site-footer__contact a,
+    .site-footer__bottom a {
+      transition: none;
+    }
+  }
+</style>

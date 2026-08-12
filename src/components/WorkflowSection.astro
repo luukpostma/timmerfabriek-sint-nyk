@@ -1,0 +1,233 @@
+---
+import CircleCheck from '../assets/icons/circle-check.svg';
+import Button from './Button.astro';
+
+const steps = [
+  {
+    title: 'Bespreken & inmeten',
+    description: 'We beginnen met de situatie, wensen en technische uitgangspunten.',
+    items: [
+      'Wensen en situatie bespreken',
+      'Advies over de uitvoering',
+      'Professioneel laten inmeten',
+    ],
+  },
+  {
+    title: 'Offerte & voorbereiding',
+    description: 'We beginnen met de situatie, wensen en technische uitgangspunten.',
+    items: [
+      'Materialen en keuzes vastleggen',
+      'Duidelijke offerte ontvangen',
+      'Planning en levering afstemmen',
+    ],
+  },
+  {
+    title: 'Productie & levering',
+    description: 'We beginnen met de situatie, wensen en technische uitgangspunten.',
+    items: [
+      'Maatwerk zorgvuldig produceren',
+      'Product en afwerking controleren',
+      'Leveren of optioneel plaatsen',
+    ],
+  },
+];
+---
+
+<section class="workflow-section" aria-labelledby="workflow-heading">
+  <div class="container">
+    <div class="workflow-section__header">
+      <div class="workflow-section__intro">
+        <span class="workflow-section__eyebrow text-eyebrow">Werkwijze</span>
+        <h2 id="workflow-heading">Zo eenvoudig werkt het</h2>
+        <p>
+          In drie overzichtelijke stappen van aanvraag naar een product dat klaar is voor levering
+          of plaatsing.
+        </p>
+      </div>
+
+      <Button class="workflow-section__cta" href="/contact/" arrow>Offerte aanvragen</Button>
+    </div>
+
+    <ol class="workflow-section__steps">
+      {steps.map((step, index) => (
+        <li class:list={['workflow-card', { 'workflow-card--featured': index === 0 }]}>
+          <div class="workflow-card__number" aria-hidden="true">{index + 1}</div>
+
+          <div class="workflow-card__copy">
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </div>
+
+          <ul class="workflow-card__list">
+            {step.items.map((item) => (
+              <li>
+                <CircleCheck aria-hidden="true" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .workflow-section {
+    padding-block: 4rem;
+    background-color: var(--color-background);
+  }
+
+  .workflow-section__header {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .workflow-section__intro {
+    display: grid;
+    max-width: 43rem;
+  }
+
+  .workflow-section__eyebrow {
+    width: fit-content;
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-heading);
+    background-color: var(--color-white);
+  }
+
+  .workflow-section h2 {
+    margin-bottom: 1rem;
+  }
+
+  :global(.workflow-section__cta.button) {
+    width: 100%;
+  }
+
+  .workflow-section__steps {
+    display: grid;
+    gap: 2rem;
+    margin: 4rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .workflow-card {
+    display: flex;
+    min-height: 30rem;
+    flex-direction: column;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    color: var(--color-text);
+    background-color: var(--color-white);
+  }
+
+  .workflow-card--featured {
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    background-color: var(--color-primary);
+  }
+
+  .workflow-card__number {
+    display: grid;
+    width: 3rem;
+    height: 3rem;
+    place-items: center;
+    border-radius: 50%;
+    font-family: var(--font-family-ui);
+    font-size: var(--text-body-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1;
+    color: var(--color-white);
+    background-color: var(--color-primary);
+  }
+
+  .workflow-card--featured .workflow-card__number {
+    background-color: var(--color-secondary);
+  }
+
+  .workflow-card__copy {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .workflow-card h3 {
+    font-size: var(--text-h5-size);
+    line-height: var(--text-h5-line-height);
+  }
+
+  .workflow-card--featured h3,
+  .workflow-card--featured p {
+    color: var(--color-white);
+  }
+
+  .workflow-card__list {
+    margin: auto 0 0;
+    padding: 0;
+    border-top: 1px solid var(--color-border);
+    list-style: none;
+  }
+
+  .workflow-card--featured .workflow-card__list {
+    border-color: var(--color-hero-grid);
+  }
+
+  .workflow-card__list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-block: 0.625rem;
+    border-bottom: 1px solid var(--color-border);
+    font-family: var(--font-family-body);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-line-height);
+  }
+
+  .workflow-card--featured .workflow-card__list li {
+    border-color: var(--color-hero-grid);
+  }
+
+  .workflow-card__list li:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .workflow-card__list svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex: 0 0 auto;
+  }
+
+  @media (min-width: 64rem) {
+    .workflow-section {
+      padding-block: 6rem;
+    }
+
+    .workflow-section__header {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 3rem;
+    }
+
+    .workflow-section h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    :global(.workflow-section__cta.button) {
+      width: auto;
+    }
+
+    .workflow-section__steps {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .workflow-card {
+      min-height: 27rem;
+    }
+  }
+</style>

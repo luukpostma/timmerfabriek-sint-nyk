@@ -1,0 +1,50 @@
+---
+import doorDetail from '../assets/images/voordeur-detail.jpg';
+import type { NavigationItem } from '../data/navigation';
+import CategoryHero from './CategoryHero.astro';
+import ContractorSection from './ContractorSection.astro';
+import FaqSection from './FaqSection.astro';
+import WhyWindowsSection from './WhyWindowsSection.astro';
+import WindowTypesSection from './WindowTypesSection.astro';
+
+interface Props {
+  page: NavigationItem;
+}
+
+const { page } = Astro.props;
+
+const benefits = [
+  {
+    title: 'Isolatie',
+    description: 'Houten deuren helpen warmte binnen te houden en dragen bij aan een comfortabel en energiezuinig huis.',
+  },
+  {
+    title: 'Uitstraling',
+    description: 'Een houten deur geeft iedere gevel of binnenruimte een natuurlijke, warme en karaktervolle uitstraling.',
+  },
+  {
+    title: 'Volledig maatwerk',
+    description: 'Iedere deur wordt afgestemd op de opening, architectuur, gebruikswensen en technische situatie.',
+  },
+];
+---
+
+<CategoryHero title={page.label} />
+<WindowTypesSection
+  items={page.children ?? []}
+  eyebrow="Soorten deuren"
+  heading="Welke deur past bij uw project?"
+  introduction="Bekijk onze houten maatwerkdeuren voor renovatie, verbouwing en nieuwbouw. Gemaakt voor een passende entree, doorgang of afsluiting."
+  labels={['Maatwerk', 'Stijlvol & modern', 'Praktisch & sterk', 'Passend interieur']}
+  contactHeading="Zit uw deur er niet tussen?"
+  contactText="Neem vrijblijvend contact met ons op om de mogelijkheden voor uw maatwerkdeur te bespreken."
+/>
+<WhyWindowsSection
+  heading="Waarom houten deuren?"
+  introduction="Houten deuren op maat, gemaakt in onze eigen werkplaats in Sint Nicolaasga voor binnen- en buitentoepassingen."
+  benefits={benefits}
+  image={doorDetail}
+  imageAlt="Detail van een houten voordeur"
+/>
+<ContractorSection />
+<FaqSection />
