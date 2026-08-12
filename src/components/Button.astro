@@ -1,5 +1,5 @@
 ---
-import arrowRight from '../assets/icons/arrow-right.svg';
+import ArrowRight from '../assets/icons/arrow-right.svg';
 
 interface Props {
   href?: string;
@@ -34,7 +34,7 @@ const Tag = href ? 'a' : 'button';
   tabindex={href && disabled ? -1 : undefined}
 >
   <span><slot /></span>
-  {arrow && <img src={arrowRight.src} alt="" width="24" height="24" aria-hidden="true" />}
+  {arrow && <ArrowRight class="button__icon" aria-hidden="true" />}
 </Tag>
 
 <style>
@@ -95,22 +95,24 @@ const Tag = href ? 'a' : 'button';
     pointer-events: none;
   }
 
-  .button img {
+  .button__icon {
+    width: 1.5rem;
+    height: 1.5rem;
     flex: 0 0 auto;
     transition: transform 200ms ease-out;
   }
 
-  .button:hover:not(.button--disabled) img {
+  .button:hover:not(.button--disabled) .button__icon {
     transform: translateX(4px);
   }
 
   @media (prefers-reduced-motion: reduce) {
     .button,
-    .button img {
+    .button__icon {
       transition: none;
     }
 
-    .button:hover:not(.button--disabled) img {
+    .button:hover:not(.button--disabled) .button__icon {
       transform: none;
     }
   }

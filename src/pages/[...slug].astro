@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CategoryOverview from '../components/CategoryOverview.astro';
 import { placeholderPages, type NavigationItem } from '../data/navigation';
+import { getProductByHref } from '../data/products';
 
 export function getStaticPaths() {
   return placeholderPages.map((page) => ({
@@ -14,11 +16,18 @@ interface Props {
 }
 
 const { page } = Astro.props;
+const categoryProduct = page.children ? getProductByHref(page.href) : undefined;
 ---
 
 <BaseLayout title={`${page.label} | Timmerfabriek Sint Nyk`}>
-  <main class="placeholder-page container">
-    <h1>{page.label}</h1>
+  <main>
+    {categoryProduct ? (
+      <CategoryOverview page={page} product={categoryProduct} />
+    ) : (
+      <div class="placeholder-page container">
+        <h1>{page.label}</h1>
+      </div>
+    )}
   </main>
 </BaseLayout>
 

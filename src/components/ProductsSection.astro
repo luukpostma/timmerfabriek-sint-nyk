@@ -1,0 +1,231 @@
+---
+import ChevronLeft from '../assets/icons/chevron-left.svg';
+import ChevronRight from '../assets/icons/chevron-right.svg';
+import { products } from '../data/products';
+import ProductCard from './ProductCard.astro';
+---
+
+<section class="products-section" aria-labelledby="products-heading" data-products-carousel>
+  <div class="container">
+    <div class="products-section__header">
+      <div class="products-section__intro">
+        <span class="products-section__eyebrow text-eyebrow">Onze producten</span>
+        <h2 id="products-heading">Waar bent u naar op zoek?</h2>
+        <p>
+          Bekijk onze houten maatwerkproducten en glasmogelijkheden voor renovatie, verbouwing en
+          nieuwbouw.
+        </p>
+      </div>
+
+      <div class="products-section__controls" aria-label="Productcarousel navigatie">
+        <button type="button" aria-label="Vorige producten" data-carousel-previous disabled>
+          <ChevronLeft aria-hidden="true" />
+        </button>
+        <button type="button" aria-label="Volgende producten" data-carousel-next>
+          <ChevronRight aria-hidden="true" />
+        </button>
+      </div>
+    </div>
+
+    <div class="products-section__carousel" data-carousel-viewport>
+      <ul class="products-section__track" data-carousel-track>
+        {products.map((product) => (
+          <li>
+            <ProductCard item={product} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-products-carousel]').forEach((carousel) => {
+    const viewport = carousel.querySelector<HTMLElement>('[data-carousel-viewport]');
+    const track = carousel.querySelector<HTMLElement>('[data-carousel-track]');
+    const previous = carousel.querySelector<HTMLButtonElement>('[data-carousel-previous]');
+    const next = carousel.querySelector<HTMLButtonElement>('[data-carousel-next]');
+    const desktopMedia = window.matchMedia('(min-width: 64rem)');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    if (!viewport || !track || !previous || !next) return;
+
+    const updateControls = () => {
+      if (!desktopMedia.matches) {
+        previous.disabled = true;
+        next.disabled = true;
+        return;
+      }
+
+      const maximumScroll = viewport.scrollWidth - viewport.clientWidth;
+      previous.disabled = viewport.scrollLeft <= 1;
+      next.disabled = viewport.scrollLeft >= maximumScroll - 1;
+    };
+
+    const scrollCards = (direction: -1 | 1) => {
+      const firstCard = track.querySelector<HTMLElement>('li');
+      if (!firstCard) return;
+
+      const trackStyles = window.getComputedStyle(track);
+      const gap = Number.parseFloat(trackStyles.columnGap || trackStyles.gap) || 0;
+      viewport.scrollBy({
+        left: direction * (firstCard.offsetWidth + gap),
+        behavior: reducedMotion.matches ? 'auto' : 'smooth',
+      });
+    };
+
+    previous.addEventListener('click', () => scrollCards(-1));
+    next.addEventListener('click', () => scrollCards(1));
+    viewport.addEventListener('scroll', updateControls, { passive: true });
+    desktopMedia.addEventListener('change', () => {
+      viewport.scrollLeft = 0;
+      updateControls();
+    });
+
+    new ResizeObserver(updateControls).observe(viewport);
+    updateControls();
+  });
+</script>
+
+<style>
+  .products-section {
+    overflow: hidden;
+    padding-block: 4rem;
+    background-color: var(--color-white);
+  }
+
+  .products-section__header {
+    display: grid;
+  }
+
+  .products-section__intro {
+    display: grid;
+    max-width: 43rem;
+  }
+
+  .products-section__eyebrow {
+    width: fit-content;
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-heading);
+  }
+
+  .products-section h2 {
+    margin-bottom: 1rem;
+  }
+
+  .products-section__controls {
+    display: none;
+  }
+
+  .products-section__carousel {
+    margin-top: 4rem;
+  }
+
+  .products-section__track {
+    display: grid;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 64rem) {
+    .products-section {
+      padding-block: 6rem;
+    }
+
+    .products-section__header {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 3rem;
+    }
+
+    .products-section h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .products-section__controls {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .products-section__controls button {
+      display: grid;
+      width: 3rem;
+      height: 3rem;
+      place-items: center;
+      padding: 0;
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
+      color: var(--color-heading);
+      background-color: var(--color-white);
+      transition:
+        color 200ms ease-out,
+        border-color 200ms ease-out,
+        background-color 200ms ease-out;
+    }
+
+    .products-section__controls button:hover:not(:disabled) {
+      border-color: var(--color-secondary);
+      color: var(--color-secondary);
+      background-color: var(--color-background);
+    }
+
+    .products-section__controls button:focus-visible {
+      outline: 3px solid var(--color-secondary);
+      outline-offset: 3px;
+    }
+
+    .products-section__controls button:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .products-section__controls svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    .products-section__carousel {
+      width: min(
+        calc(100vw - max(2rem, calc((100vw - 80rem) / 2 + 2rem))),
+        83rem
+      );
+      overflow-x: hidden;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+
+    .products-section__carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .products-section__track {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .products-section__track li {
+      flex: 0 0 calc((min(100vw, 80rem) - 8rem) / 3);
+      scroll-snap-align: start;
+    }
+
+    .products-section__track :global(.product-card) {
+      height: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .products-section__carousel {
+      scroll-behavior: auto;
+    }
+
+    .products-section__controls button {
+      transition: none;
+    }
+  }
+</style>
