@@ -24,10 +24,10 @@ Voer na codewijzigingen minimaal `npm run build` uit. Controleer wijzigingen aan
 
 ## Projectstructuur
 
-- `src/pages/`: paginaroutes; `index.astro` bevat de homepage en `[...slug].astro` levert tijdelijke placeholderpagina's.
+- `src/pages/`: expliciete paginaroutes; gebruik alleen dynamische routes voor werkelijk datagedreven pagina's, zoals projectdetails.
 - `src/layouts/BaseLayout.astro`: globale documentstructuur, fonts, `global.css` en de header.
 - `src/components/`: kleine Astro-componenten met lokaal gescoped CSS.
-- `src/data/navigation.ts`: centrale bron voor navigatielinks, dropdowns, CTA en placeholderroutes.
+- `src/data/navigation.ts`: centrale bron voor navigatielinks, dropdowns en CTA's.
 - `src/styles/global.css`: design tokens, reset, globale elementstyles en algemene utilities.
 - `src/assets/`: lokale SVG-iconen en afbeeldingen; hergebruik deze voordat nieuwe assets worden gemaakt.
 

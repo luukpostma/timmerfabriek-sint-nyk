@@ -1,0 +1,171 @@
+---
+import Grid2x2 from '../assets/icons/grid-2x2.svg';
+import MirrorRectangular from '../assets/icons/mirror-rectangular.svg';
+import PaintbrushVertical from '../assets/icons/paintbrush-vertical.svg';
+import RulerDimensionLine from '../assets/icons/ruler-dimension-line.svg';
+import Button from './Button.astro';
+
+type ChoiceIcon = 'paintbrush' | 'mirror' | 'ruler' | 'grid';
+
+interface Choice {
+  title: string;
+  description: string;
+  icon: ChoiceIcon;
+}
+
+interface Props {
+  eyebrow?: string;
+  heading: string;
+  introduction: string;
+  choices: Choice[];
+  buttonLabel?: string;
+  buttonHref?: string;
+}
+
+const {
+  eyebrow = 'Keuzemogelijkheden',
+  heading,
+  introduction,
+  choices,
+  buttonLabel = 'Offerte aanvragen',
+  buttonHref = '/contact/',
+} = Astro.props;
+
+const icons = {
+  paintbrush: PaintbrushVertical,
+  mirror: MirrorRectangular,
+  ruler: RulerDimensionLine,
+  grid: Grid2x2,
+};
+---
+
+<section class="product-choices" aria-labelledby="product-choices-heading">
+  <div class="container">
+    <div class="product-choices__header">
+      <div>
+        <span class="product-choices__eyebrow text-eyebrow">{eyebrow}</span>
+        <h2 id="product-choices-heading">{heading}</h2>
+        <p>{introduction}</p>
+      </div>
+      <Button href={buttonHref} arrow>{buttonLabel}</Button>
+    </div>
+
+    <ul class="product-choices__grid">
+      {choices.map(({ title, description, icon }) => {
+        const Icon = icons[icon];
+
+        return (
+          <li>
+            <span class="product-choices__icon"><Icon aria-hidden="true" /></span>
+            <div>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .product-choices {
+    padding-block: 4rem;
+    background-color: var(--color-white);
+  }
+
+  .product-choices__header {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .product-choices__header > div {
+    display: grid;
+    max-width: 43rem;
+  }
+
+  .product-choices__eyebrow {
+    width: fit-content;
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-heading);
+  }
+
+  .product-choices h2 {
+    margin-bottom: 1rem;
+  }
+
+  .product-choices__header :global(.button) {
+    width: 100%;
+  }
+
+  .product-choices__grid {
+    display: grid;
+    gap: 1.5rem;
+    margin: 3rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .product-choices__grid li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background-color: var(--color-white);
+  }
+
+  .product-choices__icon {
+    display: grid;
+    width: 3rem;
+    height: 3rem;
+    place-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    color: var(--color-secondary);
+  }
+
+  .product-choices__icon :global(svg) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .product-choices__grid h3 {
+    margin-bottom: 0.5rem;
+    font-family: var(--font-family-body);
+    font-size: var(--text-body-size);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--text-body-line-height);
+  }
+
+  @media (min-width: 64rem) {
+    .product-choices {
+      padding-block: 6rem;
+    }
+
+    .product-choices__header {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 4rem;
+    }
+
+    .product-choices h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .product-choices__header :global(.button) {
+      width: auto;
+    }
+
+    .product-choices__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 4rem;
+      gap: 2rem;
+    }
+  }
+</style>

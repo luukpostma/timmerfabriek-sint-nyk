@@ -65,6 +65,3 @@ export const products: ProductCardItem[] = [
     type: 'product',
   },
 ];
-
-export const getProductByHref = (href: string) =>
-  products.find((product) => product.href === href);

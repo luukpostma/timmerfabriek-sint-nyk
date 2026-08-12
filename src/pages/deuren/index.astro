@@ -1,0 +1,53 @@
+---
+import doorDetail from '../../assets/images/voordeur-detail.jpg';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CategoryHero from '../../components/CategoryHero.astro';
+import ContractorSection from '../../components/ContractorSection.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import WhyWindowsSection from '../../components/WhyWindowsSection.astro';
+import WindowTypesSection from '../../components/WindowTypesSection.astro';
+import { mainNavigation } from '../../data/navigation';
+
+const page = mainNavigation.find((item) => item.href === '/deuren/');
+
+if (!page) throw new Error('Navigatiedata voor de deurenpagina ontbreekt.');
+
+const benefits = [
+  {
+    title: 'Isolatie',
+    description: 'Houten deuren helpen warmte binnen te houden en dragen bij aan een comfortabel en energiezuinig huis.',
+  },
+  {
+    title: 'Uitstraling',
+    description: 'Een houten deur geeft iedere gevel of binnenruimte een natuurlijke, warme en karaktervolle uitstraling.',
+  },
+  {
+    title: 'Volledig maatwerk',
+    description: 'Iedere deur wordt afgestemd op de opening, architectuur, gebruikswensen en technische situatie.',
+  },
+];
+---
+
+<BaseLayout title="Deuren | Timmerfabriek Sint Nyk">
+  <main>
+    <CategoryHero title={page.label} />
+    <WindowTypesSection
+      items={page.children ?? []}
+      eyebrow="Soorten deuren"
+      heading="Welke deur past bij uw project?"
+      introduction="Bekijk onze houten maatwerkdeuren voor renovatie, verbouwing en nieuwbouw. Gemaakt voor een passende entree, doorgang of afsluiting."
+      labels={['Maatwerk', 'Stijlvol & modern', 'Praktisch & sterk', 'Passend interieur']}
+      contactHeading="Zit uw deur er niet tussen?"
+      contactText="Neem vrijblijvend contact met ons op om de mogelijkheden voor uw maatwerkdeur te bespreken."
+    />
+    <WhyWindowsSection
+      heading="Waarom houten deuren?"
+      introduction="Houten deuren op maat, gemaakt in onze eigen werkplaats in Sint Nicolaasga voor binnen- en buitentoepassingen."
+      benefits={benefits}
+      image={doorDetail}
+      imageAlt="Detail van een houten voordeur"
+    />
+    <ContractorSection />
+    <FaqSection />
+  </main>
+</BaseLayout>
