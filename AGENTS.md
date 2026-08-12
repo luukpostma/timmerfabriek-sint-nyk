@@ -22,14 +22,27 @@ npm run preview
 
 Voer na codewijzigingen minimaal `npm run build` uit. Controleer wijzigingen aan responsive layout of interactie daarnaast visueel op relevante mobile- en desktopbreedtes.
 
+De statische Cloudflare-deployment gebruikt:
+
+```sh
+npm run build
+npx wrangler deploy
+```
+
+`wrangler.jsonc` serveert uitsluitend de output uit `dist/`. Deploy, commit of push nooit zonder expliciete toestemming van de gebruiker.
+
 ## Projectstructuur
 
 - `src/pages/`: expliciete paginaroutes; gebruik alleen dynamische routes voor werkelijk datagedreven pagina's, zoals projectdetails.
 - `src/layouts/BaseLayout.astro`: globale documentstructuur, fonts, `global.css` en de header.
 - `src/components/`: kleine Astro-componenten met lokaal gescoped CSS.
 - `src/data/navigation.ts`: centrale bron voor navigatielinks, dropdowns en CTA's.
+- `src/data/products.ts`: centrale data voor de productkaarten op de homepage.
+- `src/data/productDetails.ts`: centrale inhoud en afbeeldingen voor de herbruikbare productdetailpagina's.
+- `src/content.config.ts` en `src/content/`: Content Collections voor projecten en FAQ-items.
 - `src/styles/global.css`: design tokens, reset, globale elementstyles en algemene utilities.
 - `src/assets/`: lokale SVG-iconen en afbeeldingen; hergebruik deze voordat nieuwe assets worden gemaakt.
+- `wrangler.jsonc`: minimale Cloudflare-configuratie voor het statisch serveren van `dist/`.
 
 ## Codeprincipes
 
@@ -41,6 +54,9 @@ Voer na codewijzigingen minimaal `npm run build` uit. Controleer wijzigingen aan
 - Gebruik JavaScript alleen voor gedrag dat niet betrouwbaar met HTML/CSS kan worden opgelost.
 - Behoud bestaande routes, content en functionaliteit tenzij de opdracht expliciet om wijziging vraagt.
 - De CTA “Offerte aanvragen” en “Contact” verwijzen beide naar `/contact/`.
+- Houd routebestanden dun. Paginaspecifieke routes stellen data samen en gebruiken bestaande sectiecomponenten; zet geen volledige herbruikbare pagina-implementatie opnieuw in iedere route.
+- Gebruik voor productdetailpagina's `ProductDetailPage.astro` met data uit `src/data/productDetails.ts`. Voeg alleen een nieuw detailcomponent toe wanneer de gevraagde structuur werkelijk afwijkt.
+- Projectdetailpagina's blijven datagedreven via `src/pages/projecten/[id].astro` en de `projects` Content Collection.
 
 ## CSS en design system
 
@@ -67,6 +83,8 @@ Voer na codewijzigingen minimaal `npm run build` uit. Controleer wijzigingen aan
 - Desktopdropdowns openen op hover, maar blijven ook klik- en toetsenbordbedienbaar.
 - Gebruik voor lokale contentafbeeldingen waar passend `Image` uit `astro:assets`, met betekenisvolle alt-tekst en expliciete layoutafmetingen.
 - Importeer SVG's als Astro-component wanneer ze via `currentColor` met een design token moeten meekleuren.
+- `WindowTypesSection.astro` ondersteunt gerichte afbeeldingsoverschrijvingen per route. Gebruik die voor categoriekaarten in plaats van productnamen in het component hard te coderen.
+- Het contactformulier is voorbereid op een latere Web3Forms-koppeling, maar heeft nog geen externe endpoint of access key. Sluit dit niet aan zonder expliciet verzoek.
 
 ## Responsive en visuele implementatie
 
@@ -90,6 +108,7 @@ Voer na codewijzigingen minimaal `npm run build` uit. Controleer wijzigingen aan
 - Inspecteer relevante bestaande componenten, tokens, data en assets voordat je iets toevoegt of verwijdert.
 - Integreer met bestaande styles in plaats van bestanden blind te vervangen.
 - Behoud gebruikerswijzigingen en raak geen ongerelateerde code aan.
+- Let bij assetimports op de exacte hoofdletters in bestandsnamen; deployment draait op een case-sensitive bestandssysteem.
 - Maak geen voorbeeldcontent, nieuwe routes of componenten buiten de gevraagde scope.
 - Voeg geen animaties of micro-interactions toe zonder expliciet verzoek.
 - Rapporteer na afloop kort welke bestanden zijn aangepast en welke verificatie is uitgevoerd.

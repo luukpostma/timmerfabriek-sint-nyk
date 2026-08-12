@@ -1,6 +1,6 @@
 # Timmerfabriek Sint Nyk
 
-Responsive website voor Timmerfabriek Sint Nyk, stapsgewijs opgebouwd vanuit een bestaand Figma-ontwerp. De website gebruikt statische Astro-output en wordt component voor component uitgebreid.
+Responsive website voor Timmerfabriek Sint Nyk, stapsgewijs opgebouwd vanuit een bestaand Figma-ontwerp. De website gebruikt statische Astro-output en bestaat uit herbruikbare Astro-secties met expliciete routes voor categorieën en productdetails.
 
 ## Tech stack
 
@@ -37,6 +37,24 @@ Open daarna de URL die Astro in de terminal toont, standaard `http://localhost:4
 | `npm run build` | Maakt een productiebuild in `dist/` |
 | `npm run preview` | Toont de productiebuild lokaal |
 
+## Deployment
+
+De site wordt als statische website via Cloudflare Workers gedeployed. `wrangler.jsonc` wijst Cloudflare naar de gegenereerde map `dist/`.
+
+Build command:
+
+```sh
+npm run build
+```
+
+Deploy command:
+
+```sh
+npx wrangler deploy
+```
+
+Voer altijd eerst de productiebuild uit. Commit of deploy configuratiewijzigingen alleen bewust; `dist/` zelf hoort niet in Git.
+
 ## Projectstructuur
 
 ```text
@@ -53,15 +71,25 @@ src/
 └── content.config.ts Schema's voor de Content Collections
 ```
 
-## Huidige pagina's
+Belangrijke databestanden:
+
+- `src/data/navigation.ts`: hoofd-, utility- en juridische navigatie.
+- `src/data/products.ts`: kaarten in het productoverzicht op de homepage.
+- `src/data/productDetails.ts`: teksten, breadcrumbs, afbeeldingen en keuzes voor alle productdetailpagina's.
+
+## Huidige pagina's en routes
 
 - Homepage met hero, USP's, producten, werkwijze, over ons, projecten, aannemers en FAQ
-- Kozijnenoverzicht met onderliggende productroutes
-- Deurenoverzicht met onderliggende productroutes
-- Projectenoverzicht en statisch gegenereerde projectdetailpagina's
-- Expliciete routebestanden voor alle navigatie-items; nog niet ontworpen pagina's bevatten voorlopig minimale inhoud
+- Kozijnenoverzicht met productdetailpagina's voor alle kozijnvarianten
+- Deurenoverzicht met productdetailpagina's voor alle deurvarianten
+- Zelfstandige productpagina's voor schuifpuien, beglazing en vouwwanden
+- Projectenoverzicht met statisch gegenereerde projectdetailpagina's uit de Content Collection
+- Contactpagina met een semantisch formulier dat is voorbereid op een latere koppeling met Web3Forms, maar nog niets extern verstuurt
+- Pagina's voor over ons, voor aannemers en de juridische informatie
 
 De globale header en footer worden vanuit `src/layouts/BaseLayout.astro` geladen.
+
+Productdetailroutes zijn bewust dun: ze selecteren een item uit `src/data/productDetails.ts` en geven dit door aan `ProductDetailPage.astro`. Dit gedeelde component bouwt de hero, keuzemogelijkheden, voordelen en FAQ op. Pas productinhoud en productafbeeldingen daarom bij voorkeur in de centrale data aan.
 
 ## Styling en responsive basis
 
@@ -79,6 +107,8 @@ De website wordt mobile-first gebouwd. Globale kleuren, vaste typografietokens, 
 Projecten staan in `src/content/projects/`. De frontmatter wordt gevalideerd met het schema in `src/content.config.ts` en bevat onder andere een titel, categorie, datum, volgorde en afbeelding.
 
 FAQ-items staan in `src/content/faqs/` en gebruiken een vraag en sorteervolgorde in de frontmatter. De Markdown-inhoud vormt het antwoord.
+
+Lokale afbeeldingen en SVG-iconen staan in `src/assets/`. Afbeeldingen die door componenten worden gerenderd, worden waar passend via `astro:assets` geoptimaliseerd.
 
 ## Werkwijze
 
