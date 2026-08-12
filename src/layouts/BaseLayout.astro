@@ -14,9 +14,10 @@ import Header from '../components/Header.astro';
 interface Props {
   title: string;
   description?: string;
+  showFooterCta?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, showFooterCta = true } = Astro.props;
 ---
 
 <!doctype html>
@@ -31,6 +32,6 @@ const { title, description } = Astro.props;
   <body>
     <Header />
     <slot />
-    <Footer />
+    <Footer showCta={showFooterCta} />
   </body>
 </html>

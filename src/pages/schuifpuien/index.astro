@@ -1,10 +1,13 @@
 ---
-import PlaceholderPage from '../../components/PlaceholderPage.astro';
+import ProductDetailPage from '../../components/ProductDetailPage.astro';
+import { productDetails } from '../../data/productDetails';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const product = productDetails.schuifpui;
 ---
 
-<BaseLayout title="Schuifpuien | Timmerfabriek Sint Nyk">
+<BaseLayout title={`${product.title} | Timmerfabriek Sint Nyk`}>
   <main>
-    <PlaceholderPage title="Schuifpuien" />
+    <ProductDetailPage {...product} />
   </main>
 </BaseLayout>

@@ -1,10 +1,14 @@
 ---
-import PlaceholderPage from '../../components/PlaceholderPage.astro';
+import ContactSection from '../../components/ContactSection.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Contact | Timmerfabriek Sint Nyk">
+<BaseLayout
+  title="Contact | Timmerfabriek Sint Nyk"
+  description="Neem contact op met Timmerfabriek Sint Nyk voor houten kozijnen, deuren, schuifpuien, vouwwanden en beglazing op maat."
+  showFooterCta={false}
+>
   <main>
-    <PlaceholderPage title="Contact" />
+    <ContactSection />
   </main>
 </BaseLayout>

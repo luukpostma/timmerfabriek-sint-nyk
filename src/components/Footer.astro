@@ -3,24 +3,32 @@ import logo from '../assets/Logo.svg';
 import Button from './Button.astro';
 import { legalNavigation, mainNavigation, utilityNavigation } from '../data/navigation';
 
+interface Props {
+  showCta?: boolean;
+}
+
+const { showCta = true } = Astro.props;
+
 const productNavigation = [
   { label: 'Home', href: '/' },
   ...mainNavigation.filter((item) => item.label !== 'Vouwwanden'),
 ];
 ---
 
-<footer class="site-footer">
-  <section class="site-footer__cta" aria-labelledby="footer-cta-heading">
-    <div class="container site-footer__cta-inner">
-      <div class="site-footer__cta-copy">
-        <span class="site-footer__eyebrow text-eyebrow">Neem contact met ons op</span>
-        <h2 id="footer-cta-heading">Klaar om te starten?</h2>
-        <p>Liever eerst overleggen? Neem gerust contact met ons op.</p>
-      </div>
+<footer class:list={['site-footer', { 'site-footer--without-cta': !showCta }]}>
+  {showCta && (
+    <section class="site-footer__cta" aria-labelledby="footer-cta-heading">
+      <div class="container site-footer__cta-inner">
+        <div class="site-footer__cta-copy">
+          <span class="site-footer__eyebrow text-eyebrow">Neem contact met ons op</span>
+          <h2 id="footer-cta-heading">Klaar om te starten?</h2>
+          <p>Liever eerst overleggen? Neem gerust contact met ons op.</p>
+        </div>
 
-      <Button class="site-footer__cta-button" href="/contact/" arrow>Offerte aanvragen</Button>
-    </div>
-  </section>
+        <Button class="site-footer__cta-button" href="/contact/" arrow>Offerte aanvragen</Button>
+      </div>
+    </section>
+  )}
 
   <div class="site-footer__main">
     <div class="container site-footer__main-grid">
@@ -124,6 +132,10 @@ const productNavigation = [
 
   .site-footer__main {
     padding-block: 4rem;
+  }
+
+  .site-footer--without-cta .site-footer__main {
+    border-top: 0;
   }
 
   .site-footer__main-grid {

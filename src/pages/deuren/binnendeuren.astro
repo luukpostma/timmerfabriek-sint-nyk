@@ -1,10 +1,13 @@
 ---
-import PlaceholderPage from '../../components/PlaceholderPage.astro';
+import ProductDetailPage from '../../components/ProductDetailPage.astro';
+import { productDetails } from '../../data/productDetails';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const product = productDetails.binnendeur;
 ---
 
-<BaseLayout title="Binnendeuren | Timmerfabriek Sint Nyk">
+<BaseLayout title={`${product.title} | Timmerfabriek Sint Nyk`}>
   <main>
-    <PlaceholderPage title="Binnendeuren" />
+    <ProductDetailPage {...product} />
   </main>
 </BaseLayout>
