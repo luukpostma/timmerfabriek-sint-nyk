@@ -1,0 +1,68 @@
+---
+import placeholderImage from '../../assets/images/place-holder.jpg';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductDetailPage from '../../components/ProductDetailPage.astro';
+
+const choices = [
+  {
+    title: 'Kleur en afwerking',
+    description: 'Kies uit transparante lak, dekkende kleuren en een afwerking die past bij uw woning.',
+    icon: 'paintbrush' as const,
+  },
+  {
+    title: 'Beglazing',
+    description: 'Combineer het draaikiepraam met HR++ of triple glas voor de gewenste isolatiewaarde.',
+    icon: 'mirror' as const,
+  },
+  {
+    title: 'Maatvoering',
+    description: 'Het kozijn wordt exact op maat gemaakt voor renovatie, verbouwing of nieuwbouw.',
+    icon: 'ruler' as const,
+  },
+  {
+    title: 'Beslag',
+    description: 'Kies passend beslag, veilige sluitpunten en een bediening die prettig in gebruik is.',
+    icon: 'grid' as const,
+  },
+];
+
+const benefits = [
+  {
+    title: 'Twee manieren van ventileren',
+    description: 'Zet het raam op de kiepstand voor gecontroleerde ventilatie of draai het volledig open voor extra lucht.',
+  },
+  {
+    title: 'Comfortabel en veilig',
+    description: 'De kiepstand zorgt voor frisse lucht zonder dat het raam volledig open hoeft te staan.',
+  },
+  {
+    title: 'Eenvoudig schoon te maken',
+    description: 'Door het raam volledig naar binnen te draaien zijn glas en kozijn goed bereikbaar voor onderhoud.',
+  },
+];
+
+---
+
+<BaseLayout title="Draaikiepraam | Timmerfabriek Sint Nyk">
+  <main>
+    <ProductDetailPage
+      title="Draaikiepraam"
+      description="Ventileer eenvoudig met de kiepstand of open het raam volledig. Ieder draaikiepraam wordt op maat gemaakt voor uw woning."
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Kozijnen', href: '/kozijnen/' },
+        { label: 'Draaikiepramen' },
+      ]}
+      heroImage={placeholderImage}
+      heroImageAlt="Tijdelijke afbeelding voor een houten draaikiepraam"
+      choicesHeading="Afgestemd op uw woning"
+      choicesIntroduction="Stel uw draaikiepraam samen op basis van uitstraling, comfort, isolatie en gebruik."
+      {choices}
+      benefitsHeading="Waarom een draaikiepraam?"
+      benefitsIntroduction="Een draaikiepraam combineert dagelijkse ventilatie met een ruime opening en wordt volledig op maat gemaakt in onze eigen werkplaats."
+      {benefits}
+      benefitsImage={placeholderImage}
+      benefitsImageAlt="Tijdelijke afbeelding van een draaikiepraam in een woning"
+    />
+  </main>
+</BaseLayout>

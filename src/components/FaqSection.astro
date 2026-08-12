@@ -1,5 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
+import ChevronDown from '../assets/icons/chevron-down.svg';
+import ChevronUp from '../assets/icons/chevron-up.svg';
 
 const faqEntries = (await getCollection('faqs')).sort((a, b) => a.data.order - b.data.order);
 const faqs = await Promise.all(
@@ -38,7 +40,10 @@ const faqs = await Promise.all(
                 data-faq-trigger
               >
                 <span>{data.question}</span>
-                <span class="faq-item__icon" aria-hidden="true"></span>
+                <span class="faq-item__icon" aria-hidden="true">
+                  <ChevronDown class="faq-item__chevron faq-item__chevron--down" />
+                  <ChevronUp class="faq-item__chevron faq-item__chevron--up" />
+                </span>
               </button>
             </h3>
 
@@ -137,7 +142,6 @@ const faqs = await Promise.all(
   }
 
   .faq-item button:hover .faq-item__icon {
-    border-color: var(--color-secondary);
     color: var(--color-secondary);
   }
 
@@ -152,33 +156,28 @@ const faqs = await Promise.all(
     width: 1.5rem;
     height: 1.5rem;
     flex: 0 0 auto;
-    border: 2px solid #A2A2A2;
-    border-radius: 50%;
     color: #A2A2A2;
-    transition:
-      color 200ms ease-out,
-      border-color 200ms ease-out;
+    transition: color 200ms ease-out;
   }
 
-  .faq-item__icon::before,
-  .faq-item__icon::after {
+  .faq-item__chevron {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0.625rem;
-    height: 2px;
-    background-color: currentColor;
-    content: '';
-    transform: translate(-50%, -50%);
-    transition: transform 200ms ease-out;
+    inset: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: opacity 200ms ease-out;
   }
 
-  .faq-item__icon::after {
-    transform: translate(-50%, -50%) rotate(90deg);
+  .faq-item__chevron--up {
+    opacity: 0;
   }
 
-  .faq-item--open .faq-item__icon::after {
-    transform: translate(-50%, -50%) rotate(0deg);
+  .faq-item--open .faq-item__chevron--down {
+    opacity: 0;
+  }
+
+  .faq-item--open .faq-item__chevron--up {
+    opacity: 1;
   }
 
   .faq-item__answer {
@@ -224,8 +223,7 @@ const faqs = await Promise.all(
 
   @media (prefers-reduced-motion: reduce) {
     .faq-item__icon,
-    .faq-item__icon::before,
-    .faq-item__icon::after,
+    .faq-item__chevron,
     .faq-item__answer {
       transition: none;
     }

@@ -1,0 +1,77 @@
+---
+import type { ImageMetadata } from 'astro';
+import FaqSection from './FaqSection.astro';
+import ProductBenefitsSection from './ProductBenefitsSection.astro';
+import ProductChoicesSection from './ProductChoicesSection.astro';
+import ProductDetailHero from './ProductDetailHero.astro';
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface CardItem {
+  title: string;
+  description: string;
+}
+
+interface ChoiceItem extends CardItem {
+  icon: 'paintbrush' | 'mirror' | 'ruler' | 'grid';
+}
+
+interface Props {
+  title: string;
+  description: string;
+  breadcrumbs: BreadcrumbItem[];
+  heroImage: ImageMetadata;
+  heroImageAlt: string;
+  choicesEyebrow?: string;
+  choicesHeading: string;
+  choicesIntroduction: string;
+  choices: ChoiceItem[];
+  benefitsHeading: string;
+  benefitsIntroduction: string;
+  benefits: CardItem[];
+  benefitsImage: ImageMetadata;
+  benefitsImageAlt: string;
+}
+
+const {
+  title,
+  description,
+  breadcrumbs,
+  heroImage,
+  heroImageAlt,
+  choicesEyebrow = 'Keuzemogelijkheden',
+  choicesHeading,
+  choicesIntroduction,
+  choices,
+  benefitsHeading,
+  benefitsIntroduction,
+  benefits,
+  benefitsImage,
+  benefitsImageAlt,
+} = Astro.props;
+---
+
+<ProductDetailHero
+  {title}
+  {description}
+  {breadcrumbs}
+  image={heroImage}
+  imageAlt={heroImageAlt}
+/>
+<ProductChoicesSection
+  eyebrow={choicesEyebrow}
+  heading={choicesHeading}
+  introduction={choicesIntroduction}
+  {choices}
+/>
+<ProductBenefitsSection
+  heading={benefitsHeading}
+  introduction={benefitsIntroduction}
+  {benefits}
+  image={benefitsImage}
+  imageAlt={benefitsImageAlt}
+/>
+<FaqSection />

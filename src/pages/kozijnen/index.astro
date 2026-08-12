@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CategoryHero from '../../components/CategoryHero.astro';
+import ContractorSection from '../../components/ContractorSection.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import WhyWindowsSection from '../../components/WhyWindowsSection.astro';
+import WindowTypesSection from '../../components/WindowTypesSection.astro';
+import { mainNavigation } from '../../data/navigation';
+
+const page = mainNavigation.find((item) => item.href === '/kozijnen/');
+
+if (!page) throw new Error('Navigatiedata voor de kozijnenpagina ontbreekt.');
+---
+
+<BaseLayout title="Kozijnen | Timmerfabriek Sint Nyk">
+  <main>
+    <CategoryHero title={page.label} />
+    <WindowTypesSection items={page.children ?? []} />
+    <WhyWindowsSection />
+    <ContractorSection />
+    <FaqSection />
+  </main>
+</BaseLayout>

@@ -59,7 +59,7 @@ src/
 - Kozijnenoverzicht met onderliggende productroutes
 - Deurenoverzicht met onderliggende productroutes
 - Projectenoverzicht en statisch gegenereerde projectdetailpagina's
-- Tijdelijke routes voor de overige navigatie-items
+- Expliciete routebestanden voor alle navigatie-items; nog niet ontworpen pagina's bevatten voorlopig minimale inhoud
 
 De globale header en footer worden vanuit `src/layouts/BaseLayout.astro` geladen.
 
