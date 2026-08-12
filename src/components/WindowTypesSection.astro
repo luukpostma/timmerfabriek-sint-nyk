@@ -1,5 +1,6 @@
 ---
 import type { NavigationItem } from '../data/navigation';
+import type { ImageMetadata } from 'astro';
 import placeholderImage from '../assets/images/place-holder.jpg';
 import Button from './Button.astro';
 import ProductCard from './ProductCard.astro';
@@ -14,6 +15,7 @@ interface Props {
   labels?: string[];
   contactHeading?: string;
   contactText?: string;
+  imageOverrides?: Record<string, { image: ImageMetadata; alt: string }>;
 }
 
 const {
@@ -24,16 +26,21 @@ const {
   labels = ['Maatwerk', 'Stijlvol & modern', 'Populair', 'Maatwerk', 'Stijlvol & modern'],
   contactHeading = 'Zit uw kozijn er niet tussen?',
   contactText = 'Neem vrijblijvend contact met ons op om uw mogelijkheden te bespreken.',
+  imageOverrides = {},
 } = Astro.props;
-const products: ProductCardItem[] = items.map((item, index) => ({
-  title: item.label,
-  eyebrow: labels[index] ?? 'Maatwerk',
-  description: productDescription,
-  href: item.href,
-  image: placeholderImage,
-  alt: `Tijdelijke afbeelding voor ${item.label}`,
-  type: 'product',
-}));
+const products: ProductCardItem[] = items.map((item, index) => {
+  const imageOverride = imageOverrides[item.href];
+
+  return {
+    title: item.label,
+    eyebrow: labels[index] ?? 'Maatwerk',
+    description: productDescription,
+    href: item.href,
+    image: imageOverride?.image ?? placeholderImage,
+    alt: imageOverride?.alt ?? `Tijdelijke afbeelding voor ${item.label}`,
+    type: 'product',
+  };
+});
 ---
 
 <section class="window-types" aria-labelledby="window-types-heading">

@@ -1,5 +1,9 @@
 import type { ImageMetadata } from 'astro';
 import placeholderImage from '../assets/images/place-holder.jpg';
+import schuifpuiImage from '../assets/images/Schuifpui.webp';
+import binnendeurenImage from '../assets/images/Binnendeuren.webp';
+import garagedeurenImage from '../assets/images/Garagedeuren.webp';
+import voordeurenImage from '../assets/images/Voordeuren.webp';
 
 type ChoiceIcon = 'paintbrush' | 'mirror' | 'ruler' | 'grid';
 
@@ -216,7 +220,8 @@ export const productDetails = {
       { label: 'Voordeuren' },
     ],
     ...images,
-    heroImageAlt: 'Tijdelijke afbeelding voor een houten voordeur',
+    heroImage: voordeurenImage,
+    heroImageAlt: 'Moderne donkerblauwe houten voordeur met zijlichten',
     choicesHeading: 'Afgestemd op uw entree',
     choicesIntroduction: 'Stel uw voordeur samen op basis van stijl, daglicht, maatvoering en gewenste beveiliging.',
     choices: createChoices({
@@ -270,7 +275,8 @@ export const productDetails = {
       { label: 'Garagedeuren' },
     ],
     ...images,
-    heroImageAlt: 'Tijdelijke afbeelding voor houten garagedeuren',
+    heroImage: garagedeurenImage,
+    heroImageAlt: 'Donkere houten garagedeuren in een gemetselde gevel',
     choicesHeading: 'Afgestemd op uw garage',
     choicesIntroduction: 'Kies een uitvoering die past bij de gevel, beschikbare ruimte en manier waarop u de garage gebruikt.',
     choices: createChoices({
@@ -297,7 +303,8 @@ export const productDetails = {
       { label: 'Binnendeuren' },
     ],
     ...images,
-    heroImageAlt: 'Tijdelijke afbeelding voor een houten binnendeur',
+    heroImage: binnendeurenImage,
+    heroImageAlt: 'Witte houten binnendeuren in een licht interieur',
     choicesHeading: 'Afgestemd op uw interieur',
     choicesIntroduction: 'Stel uw binnendeur samen op basis van stijl, lichtinval, afmetingen en gebruiksgemak.',
     choices: createChoices({
@@ -323,7 +330,8 @@ export const productDetails = {
       { label: 'Schuifpuien' },
     ],
     ...images,
-    heroImageAlt: 'Tijdelijke afbeelding voor een houten schuifpui',
+    heroImage: schuifpuiImage,
+    heroImageAlt: 'Witte schuifpui tussen een lichte woonkamer en de tuin',
     choicesHeading: 'Afgestemd op uw woning',
     choicesIntroduction: 'Stel uw schuifpui samen op basis van uitstraling, isolatie, afmetingen en dagelijks gebruik.',
     choices: [

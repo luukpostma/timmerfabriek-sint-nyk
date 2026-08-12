@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import aboutImage from '../assets/images/over-ons.jpg';
+import aboutImage from '../assets/images/Overons.webp';
 import Button from './Button.astro';
 ---
 
@@ -49,6 +49,15 @@ import Button from './Button.astro';
     height: 100%;
     object-fit: cover;
     object-position: left center;
+  }
+
+  .about-section::after {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    content: '';
+    pointer-events: none;
+    background-color: rgb(0 0 0 / 60%);
   }
 
   .about-section__container {

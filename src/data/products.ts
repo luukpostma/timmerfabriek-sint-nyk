@@ -1,8 +1,8 @@
 import type { ImageMetadata } from 'astro';
-import beglazingImage from '../assets/images/beglazing.jpg';
-import deurenImage from '../assets/images/deuren.jpg';
-import kozijnenImage from '../assets/images/kozijnen.jpg';
-import schuifpuienImage from '../assets/images/schuifpuien.jpg';
+import beglazingImage from '../assets/images/Beglazing.webp';
+import deurenImage from '../assets/images/Voordeuren.webp';
+import kozijnenImage from '../assets/images/Kozijnen.webp';
+import schuifpuienImage from '../assets/images/Schuifpui.webp';
 import vouwwandImage from '../assets/images/vouwwand.jpg';
 
 export interface ProductCardItem {
@@ -25,7 +25,7 @@ export const products: ProductCardItem[] = [
     description: productDescription,
     href: '/kozijnen/',
     image: kozijnenImage,
-    alt: 'Witte houten kozijnen in een gemetselde gevel',
+    alt: 'Witte houten kozijnen in de gemetselde gevel van een woning',
     type: 'category',
   },
   {
@@ -34,7 +34,7 @@ export const products: ProductCardItem[] = [
     description: productDescription,
     href: '/deuren/',
     image: deurenImage,
-    alt: 'Moderne houten dubbele voordeur in een woning',
+    alt: 'Moderne donkerblauwe houten voordeur met zijlichten',
     type: 'category',
   },
   {
@@ -52,7 +52,7 @@ export const products: ProductCardItem[] = [
     description: productDescription,
     href: '/beglazing/',
     image: beglazingImage,
-    alt: 'Houten deur met isolerende beglazing in een witte gevel',
+    alt: 'Detail van isolerende beglazing in een wit houten kozijn',
     type: 'product',
   },
   {
