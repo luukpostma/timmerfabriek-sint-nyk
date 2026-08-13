@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectDetailPage from '../../components/ProjectDetailPage.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -18,47 +19,13 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const month = new Intl.DateTimeFormat('nl-NL', { month: 'long' }).format(project.data.date);
-const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1);
-const formattedDate =
-  `${project.data.date.getDate()} ${capitalizedMonth}, ${project.data.date.getFullYear()}`;
 ---
 
-<BaseLayout title={`${project.data.title} | Timmerfabriek Sint Nyk`}>
+<BaseLayout
+  title={`${project.data.title} | Timmerfabriek Sint Nyk`}
+  description={project.data.description}
+>
   <main>
-    <article class="project-page container">
-      <span class="project-page__category text-eyebrow">{project.data.category}</span>
-      <h1>{project.data.title}</h1>
-      <time datetime={project.data.date.toISOString().slice(0, 10)}>{formattedDate}</time>
-    </article>
+    <ProjectDetailPage project={project} />
   </main>
 </BaseLayout>
-
-<style>
-  .project-page {
-    display: grid;
-    gap: 1rem;
-    padding-block: 4rem;
-  }
-
-  .project-page__category {
-    width: fit-content;
-    padding: 0.25rem 0.75rem;
-    border: 1px solid var(--color-border);
-    border-radius: 9999px;
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-heading);
-    background-color: var(--color-white);
-  }
-
-  .project-page time {
-    font-family: var(--font-family-body);
-    color: var(--color-text);
-  }
-
-  @media (min-width: 64rem) {
-    .project-page {
-      padding-block: 6rem;
-    }
-  }
-</style>
