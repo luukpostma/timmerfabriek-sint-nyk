@@ -3,28 +3,54 @@ import { getCollection, render } from 'astro:content';
 import ChevronDown from '../assets/icons/chevron-down.svg';
 import ChevronUp from '../assets/icons/chevron-up.svg';
 
-const faqEntries = (await getCollection('faqs')).sort((a, b) => a.data.order - b.data.order);
-const faqs = await Promise.all(
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  heading?: string;
+  introduction?: string;
+  items?: FaqItem[];
+}
+
+const {
+  heading = 'Heeft u vragen?',
+  introduction = 'Bekijk de antwoorden op vragen die we regelmatig krijgen over maatwerk, levering en plaatsing.',
+  items,
+} = Astro.props;
+
+const faqEntries = items
+  ? []
+  : (await getCollection('faqs')).sort((a, b) => a.data.order - b.data.order);
+const collectionFaqs = await Promise.all(
   faqEntries.map(async (faq) => ({
-    ...faq,
+    id: faq.id,
+    question: faq.data.question,
+    answer: undefined,
     Content: (await render(faq)).Content,
   })),
 );
+const faqs = items
+  ? items.map((item, index) => ({
+      id: `custom-${index + 1}`,
+      question: item.question,
+      answer: item.answer,
+      Content: undefined,
+    }))
+  : collectionFaqs;
 ---
 
 <section class="faq-section" aria-labelledby="faq-heading">
   <div class="container faq-section__layout">
     <div class="faq-section__intro">
       <span class="faq-section__eyebrow text-eyebrow">FAQ</span>
-      <h2 id="faq-heading">Heeft u vragen?</h2>
-      <p>
-        Bekijk de antwoorden op vragen die we regelmatig krijgen over maatwerk, levering en
-        plaatsing.
-      </p>
+      <h2 id="faq-heading">{heading}</h2>
+      <p>{introduction}</p>
     </div>
 
     <div class="faq-section__list">
-      {faqs.map(({ id, data, Content }, index) => {
+      {faqs.map(({ id, question, answer, Content }, index) => {
         const triggerId = `faq-trigger-${id}`;
         const answerId = `faq-answer-${id}`;
         const isOpen = index === 0;
@@ -39,7 +65,7 @@ const faqs = await Promise.all(
                 aria-controls={answerId}
                 data-faq-trigger
               >
-                <span>{data.question}</span>
+                <span>{question}</span>
                 <span class="faq-item__icon" aria-hidden="true">
                   <ChevronDown class="faq-item__chevron faq-item__chevron--down" />
                   <ChevronUp class="faq-item__chevron faq-item__chevron--up" />
@@ -56,7 +82,7 @@ const faqs = await Promise.all(
               data-faq-answer
             >
               <div class="faq-item__answer-inner">
-                <Content />
+                {answer ? <p>{answer}</p> : Content && <Content />}
               </div>
             </div>
           </article>

@@ -1,10 +1,31 @@
 ---
-import PlaceholderPage from '../../components/PlaceholderPage.astro';
+import placeholderImage from '../../assets/images/place-holder.jpg';
+import AboutHighlightsSection from '../../components/AboutHighlightsSection.astro';
+import AboutStorySection from '../../components/AboutStorySection.astro';
+import ContractorSection from '../../components/ContractorSection.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ProductDetailHero from '../../components/ProductDetailHero.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Over ons | Timmerfabriek Sint Nyk">
+<BaseLayout
+  title="Over ons | Timmerfabriek Sint Nyk"
+  description="Maak kennis met Timmerfabriek Sint Nyk en onze eigen werkplaats in Sint Nicolaasga."
+>
   <main>
-    <PlaceholderPage title="Over ons" />
+    <ProductDetailHero
+      title="Timmerfabriek Sint Nyk"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis molestie est, vel mattis felis sodales vitae. Proin metus felis, lobortis sit amet lacus eu, lobortis luctus tortor."
+      breadcrumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Over ons' },
+      ]}
+      image={placeholderImage}
+      imageAlt="Tijdelijke afbeelding van Timmerfabriek Sint Nyk"
+    />
+    <AboutHighlightsSection />
+    <AboutStorySection />
+    <ContractorSection />
+    <FaqSection />
   </main>
 </BaseLayout>

@@ -1,22 +1,70 @@
 ---
+import draaikiepraamImage from '../../assets/images/Draaikiepraam.webp';
+import vastGlasKozijnImage from '../../assets/images/Vastglaskozijn.webp';
+import draairaamImage from '../../assets/images/Draairaam.webp';
+import deurkozijnenImage from '../../assets/images/Deurkozijnen.webp';
+import binnendeurkozijnenImage from '../../assets/images/Binnendeurkozijnen.webp';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CategoryHero from '../../components/CategoryHero.astro';
 import ContractorSection from '../../components/ContractorSection.astro';
 import FaqSection from '../../components/FaqSection.astro';
-import WhyWindowsSection from '../../components/WhyWindowsSection.astro';
+import ProductDetailBenefitsSection from '../../components/ProductDetailBenefitsSection.astro';
 import WindowTypesSection from '../../components/WindowTypesSection.astro';
 import { mainNavigation } from '../../data/navigation';
 
 const page = mainNavigation.find((item) => item.href === '/kozijnen/');
 
 if (!page) throw new Error('Navigatiedata voor de kozijnenpagina ontbreekt.');
+
+const benefits = [
+  {
+    title: 'Isolatie',
+    description: 'Houten kozijnen bieden goede isolatie en dragen bij aan comfortabel wonen.',
+  },
+  {
+    title: 'Uitstraling',
+    description: 'Hout geeft iedere woning een natuurlijke, warme en tijdloze uitstraling.',
+  },
+  {
+    title: 'Volledig maatwerk',
+    description: 'Ieder kozijn wordt afgestemd op uw woning, wensen en technische situatie.',
+  },
+];
 ---
 
 <BaseLayout title="Kozijnen | Timmerfabriek Sint Nyk">
   <main>
     <CategoryHero title={page.label} />
-    <WindowTypesSection items={page.children ?? []} />
-    <WhyWindowsSection />
+    <WindowTypesSection
+      items={page.children ?? []}
+      imageOverrides={{
+        '/kozijnen/vast-glas-kozijnen/': {
+          image: vastGlasKozijnImage,
+          alt: 'Houten vast glas kozijn van Timmerfabriek Sint Nyk',
+        },
+        '/kozijnen/draaikiepramen/': {
+          image: draaikiepraamImage,
+          alt: 'Houten draaikiepraam van Timmerfabriek Sint Nyk',
+        },
+        '/kozijnen/draairamen/': {
+          image: draairaamImage,
+          alt: 'Houten draairaam van Timmerfabriek Sint Nyk',
+        },
+        '/kozijnen/deurkozijnen/': {
+          image: deurkozijnenImage,
+          alt: 'Houten deurkozijn van Timmerfabriek Sint Nyk',
+        },
+        '/kozijnen/binnendeurkozijnen/': {
+          image: binnendeurkozijnenImage,
+          alt: 'Houten binnendeurkozijn van Timmerfabriek Sint Nyk',
+        },
+      }}
+    />
+    <ProductDetailBenefitsSection
+      heading="Waarom houten kozijnen?"
+      introduction="Houten kozijnen, deuren en schuifpuien op maat. Gemaakt in onze eigen werkplaats in Sint Nicolaasga."
+      benefits={benefits}
+    />
     <ContractorSection />
     <FaqSection />
   </main>

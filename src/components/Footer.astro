@@ -5,9 +5,21 @@ import { legalNavigation, mainNavigation, utilityNavigation } from '../data/navi
 
 interface Props {
   showCta?: boolean;
+  ctaEyebrow?: string;
+  ctaHeading?: string;
+  ctaText?: string;
+  ctaButtonLabel?: string;
+  ctaButtonHref?: string;
 }
 
-const { showCta = true } = Astro.props;
+const {
+  showCta = true,
+  ctaEyebrow = 'Neem contact met ons op',
+  ctaHeading = 'Klaar om te starten?',
+  ctaText = 'Liever eerst overleggen? Neem gerust contact met ons op.',
+  ctaButtonLabel = 'Offerte aanvragen',
+  ctaButtonHref = '/contact/',
+} = Astro.props;
 
 const productNavigation = [
   { label: 'Home', href: '/' },
@@ -20,12 +32,12 @@ const productNavigation = [
     <section class="site-footer__cta" aria-labelledby="footer-cta-heading">
       <div class="container site-footer__cta-inner">
         <div class="site-footer__cta-copy">
-          <span class="site-footer__eyebrow text-eyebrow">Neem contact met ons op</span>
-          <h2 id="footer-cta-heading">Klaar om te starten?</h2>
-          <p>Liever eerst overleggen? Neem gerust contact met ons op.</p>
+          <span class="site-footer__eyebrow text-eyebrow">{ctaEyebrow}</span>
+          <h2 id="footer-cta-heading">{ctaHeading}</h2>
+          <p>{ctaText}</p>
         </div>
 
-        <Button class="site-footer__cta-button" href="/contact/" arrow>Offerte aanvragen</Button>
+        <Button class="site-footer__cta-button" href={ctaButtonHref} arrow>{ctaButtonLabel}</Button>
       </div>
     </section>
   )}

@@ -14,9 +14,19 @@ interface Props {
   breadcrumbs: BreadcrumbItem[];
   image: ImageMetadata;
   imageAlt: string;
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
-const { title, description, breadcrumbs, image, imageAlt } = Astro.props;
+const {
+  title,
+  description,
+  breadcrumbs,
+  image,
+  imageAlt,
+  ctaLabel = 'Offerte aanvragen',
+  ctaHref = '/contact/',
+} = Astro.props;
 ---
 
 <section class="product-detail-hero" aria-labelledby="product-detail-hero-heading">
@@ -34,7 +44,7 @@ const { title, description, breadcrumbs, image, imageAlt } = Astro.props;
 
       <h1 id="product-detail-hero-heading">{title}</h1>
       <p>{description}</p>
-      <Button href="/contact/" arrow>Offerte aanvragen</Button>
+      <Button class="product-detail-hero__cta" href={ctaHref} arrow>{ctaLabel}</Button>
     </div>
 
     <Image
@@ -146,7 +156,8 @@ const { title, description, breadcrumbs, image, imageAlt } = Astro.props;
     color: var(--color-white);
   }
 
-  .product-detail-hero :global(.button) {
+  .product-detail-hero :global(.product-detail-hero__cta) {
+    width: 100%;
     margin-top: 2rem;
   }
 
@@ -170,6 +181,10 @@ const { title, description, breadcrumbs, image, imageAlt } = Astro.props;
 
     .product-detail-hero :global(.product-detail-hero__image) {
       height: 24rem;
+    }
+
+    .product-detail-hero :global(.product-detail-hero__cta) {
+      width: auto;
     }
   }
 </style>

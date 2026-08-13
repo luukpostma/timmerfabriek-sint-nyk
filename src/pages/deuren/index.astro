@@ -1,13 +1,13 @@
 ---
-import doorDetail from '../../assets/images/voordeur-detail.jpg';
+import achterdeurenImage from '../../assets/images/Achtedeuren.webp';
 import binnendeurenImage from '../../assets/images/Binnendeuren.webp';
 import garagedeurenImage from '../../assets/images/Garagedeuren.webp';
-import voordeurenImage from '../../assets/images/Voordeuren.webp';
+import voordeurenImage from '../../assets/images/Voordeur.webp';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CategoryHero from '../../components/CategoryHero.astro';
 import ContractorSection from '../../components/ContractorSection.astro';
 import FaqSection from '../../components/FaqSection.astro';
-import WhyWindowsSection from '../../components/WhyWindowsSection.astro';
+import ProductDetailBenefitsSection from '../../components/ProductDetailBenefitsSection.astro';
 import WindowTypesSection from '../../components/WindowTypesSection.astro';
 import { mainNavigation } from '../../data/navigation';
 
@@ -45,6 +45,10 @@ const benefits = [
           image: voordeurenImage,
           alt: 'Moderne donkerblauwe houten voordeur met zijlichten',
         },
+        '/deuren/achterdeuren/': {
+          image: achterdeurenImage,
+          alt: 'Houten achterdeur van Timmerfabriek Sint Nyk',
+        },
         '/deuren/garagedeuren/': {
           image: garagedeurenImage,
           alt: 'Donkere houten garagedeuren in een gemetselde gevel',
@@ -57,12 +61,10 @@ const benefits = [
       contactHeading="Zit uw deur er niet tussen?"
       contactText="Neem vrijblijvend contact met ons op om de mogelijkheden voor uw maatwerkdeur te bespreken."
     />
-    <WhyWindowsSection
+    <ProductDetailBenefitsSection
       heading="Waarom houten deuren?"
       introduction="Houten deuren op maat, gemaakt in onze eigen werkplaats in Sint Nicolaasga voor binnen- en buitentoepassingen."
       benefits={benefits}
-      image={doorDetail}
-      imageAlt="Detail van een houten voordeur"
     />
     <ContractorSection />
     <FaqSection />

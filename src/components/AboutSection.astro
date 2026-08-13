@@ -2,6 +2,12 @@
 import { Image } from 'astro:assets';
 import aboutImage from '../assets/images/Overons.webp';
 import Button from './Button.astro';
+
+interface Props {
+  buttonLabel?: string;
+}
+
+const { buttonLabel = 'Meer lezen' } = Astro.props;
 ---
 
 <section class="about-section" aria-labelledby="about-heading">
@@ -24,7 +30,7 @@ import Button from './Button.astro';
         maat. Met moderne machines, ervaren vakmensen en korte lijnen houden we het hele proces in
         eigen hand.
       </p>
-      <Button class="about-section__button" href="/over-ons/" arrow>Meer lezen</Button>
+      <Button class="about-section__button" href="/over-ons/" arrow>{buttonLabel}</Button>
     </div>
   </div>
 </section>

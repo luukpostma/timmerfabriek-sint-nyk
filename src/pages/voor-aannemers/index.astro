@@ -1,10 +1,115 @@
 ---
-import PlaceholderPage from '../../components/PlaceholderPage.astro';
+import contractorHeroImage from '../../assets/images/Aannemer-hero.webp';
+import AboutSection from '../../components/AboutSection.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ProductDetailHero from '../../components/ProductDetailHero.astro';
+import ProductsSection from '../../components/ProductsSection.astro';
+import UspSection from '../../components/UspSection.astro';
+import WorkflowSection from '../../components/WorkflowSection.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const workflowSteps = [
+  {
+    title: 'Aanvraag & tekeningen',
+    description:
+      'U levert de tekeningen, maatvoering en projectspecificaties aan. Wij bekijken wat er nodig is voor het project.',
+    items: [
+      'Tekeningen & maten beoordelen',
+      'Wensen en uitvoering bespreken',
+      'Technische uitgangspunten bepalen',
+    ],
+  },
+  {
+    title: 'Afstemming & offerte',
+    description:
+      'We stemmen de technische details en uitvoering af en vertalen deze naar een duidelijke offerte.',
+    items: [
+      'Materialen en detaillering afstemmen',
+      'Duidelijke offerte ontvangen',
+      'Planning en levering afspreken',
+    ],
+  },
+  {
+    title: 'Productie & levering',
+    description:
+      'Na akkoord gaan we aan de slag en produceren we het maatwerk volgens de gemaakte afspraken.',
+    items: [
+      'Maatwerk zorgvuldig produceren',
+      'Product en afwerking controleren',
+      'Volgens planning leveren op de bouw',
+    ],
+  },
+];
+
+const contractorFaqs = [
+  {
+    question: 'Leveren jullie door heel Nederland?',
+    answer:
+      'Ja. Vanuit onze werkplaats in Sint Nicolaasga leveren we maatwerkprojecten door heel Nederland. Planning, transport en het gewenste aflevermoment stemmen we vooraf met u af.',
+  },
+  {
+    question: 'Kunnen jullie vanaf bouwtekeningen produceren?',
+    answer:
+      'Ja. We kunnen bouwtekeningen, maatvoering en projectspecificaties vertalen naar productietekeningen en maakbaar maatwerk. Technische details stemmen we voor productie met u af.',
+  },
+  {
+    question: 'Kunnen jullie grotere aantallen leveren?',
+    answer:
+      'Ja. Naast enkelstuks produceren we ook grotere en seriematige aantallen. We bespreken vroegtijdig de fasering, capaciteit en levermomenten die bij de bouwplanning passen.',
+  },
+  {
+    question: 'Welke beglazing kunnen jullie leveren?',
+    answer:
+      'We leveren onder andere HR++ en Triple HR+++ glas. Per project adviseren we welke glasopbouw past bij de kozijnen, isolatie-eisen en gewenste prestaties.',
+  },
+  {
+    question: 'Kunnen kozijnen afgewerkt worden geleverd?',
+    answer:
+      'Ja. Kozijnen kunnen afhankelijk van de projectspecificatie behandeld, beglaasd en met passend beslag worden geleverd. De gewenste afwerking leggen we vast in de offerte.',
+  },
+  {
+    question: 'Wat is jullie gemiddelde levertijd?',
+    answer:
+      'De levertijd hangt af van omvang, detaillering, materiaalkeuzes en de actuele productieplanning. Na technische afstemming ontvangt u een heldere planning met afgesproken levermomenten.',
+  },
+  {
+    question: 'Werken jullie alleen voor aannemers of ook voor particulieren?',
+    answer:
+      'We werken voor zowel aannemers als particulieren. Voor aannemers bieden we extra afstemming rondom tekeningen, grotere aantallen, fasering en levering op de bouw.',
+  },
+];
 ---
 
-<BaseLayout title="Voor aannemers | Timmerfabriek Sint Nyk">
+<BaseLayout
+  title="Voor aannemers | Timmerfabriek Sint Nyk"
+  description="Houten maatwerk voor aannemers, van technische afstemming en productie tot levering door heel Nederland."
+  footerCtaHeading="Een project om te bespreken?"
+  footerCtaButtonLabel="Bespreek uw project"
+>
   <main>
-    <PlaceholderPage title="Voor aannemers" />
+    <ProductDetailHero
+      title="Maatwerk voor aannemers"
+      description="Voor nieuwbouw, renovatie en seriematige projecten produceren we houten kozijnen, deuren en puien op maat. Met korte lijnen, technische afstemming en levering volgens planning."
+      breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Voor aannemers' }]}
+      image={contractorHeroImage}
+      imageAlt="Houten maatwerkproductie voor aannemers"
+      ctaLabel="Bespreek uw project"
+    />
+    <UspSection />
+    <ProductsSection
+      heading="Wat kunnen we voor u produceren?"
+      introduction="Bekijk onze houten maatwerkproducten en glasmogelijkheden voor renovatie, verbouwing en nieuwbouw."
+    />
+    <WorkflowSection
+      heading="Van aanvraag tot levering"
+      introduction="Een helder proces, korte lijnen en duidelijke afspraken. Van tekeningen en technische afstemming tot productie en levering volgens planning."
+      steps={workflowSteps}
+    />
+    <AboutSection buttonLabel="Meer over onze timmerfabriek" />
+    <FaqSection
+      heading="Vragen voor aannemers"
+      introduction="Bekijk de antwoorden op vragen die we regelmatig krijgen over maatwerk, levering en planning."
+      items={contractorFaqs}
+    />
   </main>
 </BaseLayout>

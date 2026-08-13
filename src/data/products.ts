@@ -1,6 +1,6 @@
 import type { ImageMetadata } from 'astro';
 import beglazingImage from '../assets/images/Beglazing.webp';
-import deurenImage from '../assets/images/Voordeuren.webp';
+import deurenImage from '../assets/images/Voordeur.webp';
 import kozijnenImage from '../assets/images/Kozijnen.webp';
 import schuifpuienImage from '../assets/images/Schuifpui.webp';
 import vouwwandImage from '../assets/images/vouwwand.jpg';

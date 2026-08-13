@@ -2,7 +2,22 @@
 import CircleCheck from '../assets/icons/circle-check.svg';
 import Button from './Button.astro';
 
-const steps = [
+interface WorkflowStep {
+  title: string;
+  description: string;
+  items: string[];
+}
+
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  introduction?: string;
+  steps?: WorkflowStep[];
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const defaultSteps: WorkflowStep[] = [
   {
     title: 'Bespreken & inmeten',
     description: 'We beginnen met de situatie, wensen en technische uitgangspunten.',
@@ -31,21 +46,27 @@ const steps = [
     ],
   },
 ];
+
+const {
+  eyebrow = 'Werkwijze',
+  heading = 'Zo eenvoudig werkt het',
+  introduction = 'In drie overzichtelijke stappen van aanvraag naar een product dat klaar is voor levering of plaatsing.',
+  steps = defaultSteps,
+  ctaLabel = 'Offerte aanvragen',
+  ctaHref = '/contact/',
+} = Astro.props;
 ---
 
 <section class="workflow-section" aria-labelledby="workflow-heading">
   <div class="container">
     <div class="workflow-section__header">
       <div class="workflow-section__intro">
-        <span class="workflow-section__eyebrow text-eyebrow">Werkwijze</span>
-        <h2 id="workflow-heading">Zo eenvoudig werkt het</h2>
-        <p>
-          In drie overzichtelijke stappen van aanvraag naar een product dat klaar is voor levering
-          of plaatsing.
-        </p>
+        <span class="workflow-section__eyebrow text-eyebrow">{eyebrow}</span>
+        <h2 id="workflow-heading">{heading}</h2>
+        <p>{introduction}</p>
       </div>
 
-      <Button class="workflow-section__cta" href="/contact/" arrow>Offerte aanvragen</Button>
+      <Button class="workflow-section__cta" href={ctaHref} arrow>{ctaLabel}</Button>
     </div>
 
     <ol class="workflow-section__steps">
@@ -227,7 +248,7 @@ const steps = [
     }
 
     .workflow-card {
-      min-height: 27rem;
+      min-height: 29rem;
     }
   }
 </style>

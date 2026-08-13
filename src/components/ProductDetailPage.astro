@@ -1,7 +1,7 @@
 ---
 import type { ImageMetadata } from 'astro';
 import FaqSection from './FaqSection.astro';
-import ProductBenefitsSection from './ProductBenefitsSection.astro';
+import ProductDetailBenefitsSection from './ProductDetailBenefitsSection.astro';
 import ProductChoicesSection from './ProductChoicesSection.astro';
 import ProductDetailHero from './ProductDetailHero.astro';
 
@@ -49,8 +49,6 @@ const {
   benefitsHeading,
   benefitsIntroduction,
   benefits,
-  benefitsImage,
-  benefitsImageAlt,
 } = Astro.props;
 ---
 
@@ -67,11 +65,9 @@ const {
   introduction={choicesIntroduction}
   {choices}
 />
-<ProductBenefitsSection
+<ProductDetailBenefitsSection
   heading={benefitsHeading}
   introduction={benefitsIntroduction}
   {benefits}
-  image={benefitsImage}
-  imageAlt={benefitsImageAlt}
 />
 <FaqSection />

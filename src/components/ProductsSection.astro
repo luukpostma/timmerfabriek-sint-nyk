@@ -3,18 +3,27 @@ import ChevronLeft from '../assets/icons/chevron-left.svg';
 import ChevronRight from '../assets/icons/chevron-right.svg';
 import { products } from '../data/products';
 import ProductCard from './ProductCard.astro';
+
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  introduction?: string;
+}
+
+const {
+  eyebrow = 'Onze producten',
+  heading = 'Waar bent u naar op zoek?',
+  introduction = 'Bekijk onze houten maatwerkproducten en glasmogelijkheden voor renovatie, verbouwing en nieuwbouw.',
+} = Astro.props;
 ---
 
 <section class="products-section" aria-labelledby="products-heading" data-products-carousel>
   <div class="container">
     <div class="products-section__header">
       <div class="products-section__intro">
-        <span class="products-section__eyebrow text-eyebrow">Onze producten</span>
-        <h2 id="products-heading">Waar bent u naar op zoek?</h2>
-        <p>
-          Bekijk onze houten maatwerkproducten en glasmogelijkheden voor renovatie, verbouwing en
-          nieuwbouw.
-        </p>
+        <span class="products-section__eyebrow text-eyebrow">{eyebrow}</span>
+        <h2 id="products-heading">{heading}</h2>
+        <p>{introduction}</p>
       </div>
 
       <div class="products-section__controls" aria-label="Productcarousel navigatie">

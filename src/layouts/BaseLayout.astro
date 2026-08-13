@@ -15,9 +15,23 @@ interface Props {
   title: string;
   description?: string;
   showFooterCta?: boolean;
+  footerCtaEyebrow?: string;
+  footerCtaHeading?: string;
+  footerCtaText?: string;
+  footerCtaButtonLabel?: string;
+  footerCtaButtonHref?: string;
 }
 
-const { title, description, showFooterCta = true } = Astro.props;
+const {
+  title,
+  description,
+  showFooterCta = true,
+  footerCtaEyebrow,
+  footerCtaHeading,
+  footerCtaText,
+  footerCtaButtonLabel,
+  footerCtaButtonHref,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -32,6 +46,13 @@ const { title, description, showFooterCta = true } = Astro.props;
   <body>
     <Header />
     <slot />
-    <Footer showCta={showFooterCta} />
+    <Footer
+      showCta={showFooterCta}
+      ctaEyebrow={footerCtaEyebrow}
+      ctaHeading={footerCtaHeading}
+      ctaText={footerCtaText}
+      ctaButtonLabel={footerCtaButtonLabel}
+      ctaButtonHref={footerCtaButtonHref}
+    />
   </body>
 </html>

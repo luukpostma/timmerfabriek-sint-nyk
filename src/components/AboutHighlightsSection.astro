@@ -1,0 +1,92 @@
+---
+import AwardIcon from "../assets/icons/award-big.svg";
+import FactoryIcon from "../assets/icons/factory-big.svg";
+import RulerIcon from "../assets/icons/ruler-big.svg";
+
+const highlights = [
+  {
+    title: "20+ jaar ervaring",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis molestie est, vel mattis felis sodales vitae.",
+    Icon: AwardIcon,
+  },
+  {
+    title: "100% maatwerk",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis molestie est, vel mattis felis sodales vitae.",
+    Icon: RulerIcon,
+  },
+  {
+    title: "Eigen productie",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis molestie est, vel mattis felis sodales vitae.",
+    Icon: FactoryIcon,
+  },
+];
+---
+
+<section class="about-highlights" aria-label="Waarom Timmerfabriek Sint Nyk">
+  <div class="container">
+    <ul class="about-highlights__list">
+      {
+        highlights.map(({ title, description, Icon }) => (
+          <li class="about-highlights__item">
+            <div class="about-highlights__heading">
+              <Icon aria-hidden="true" />
+              <h2>{title}</h2>
+            </div>
+            <p>{description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .about-highlights {
+    padding-block: 3rem;
+    background: var(--color-background);
+  }
+
+  .about-highlights__list {
+    display: grid;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .about-highlights__item {
+    min-width: 0;
+  }
+
+  .about-highlights__heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .about-highlights__heading :global(svg) {
+    flex: 0 0 auto;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .about-highlights h2 {
+    font-size: var(--text-h5-size);
+    line-height: var(--text-h5-line-height);
+  }
+
+  .about-highlights p {
+    margin-top: 1.25rem;
+  }
+
+  @media (min-width: 64rem) {
+    .about-highlights__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

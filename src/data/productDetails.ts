@@ -1,9 +1,18 @@
 import type { ImageMetadata } from 'astro';
 import placeholderImage from '../assets/images/place-holder.jpg';
 import schuifpuiImage from '../assets/images/Schuifpui.webp';
+import schuifpuiWhyImage from '../assets/images/Schuifpui-waarom.webp';
 import binnendeurenImage from '../assets/images/Binnendeuren.webp';
+import achterdeurenImage from '../assets/images/Achtedeuren.webp';
 import garagedeurenImage from '../assets/images/Garagedeuren.webp';
-import voordeurenImage from '../assets/images/Voordeuren.webp';
+import voordeurenImage from '../assets/images/Voordeur.webp';
+import beglazingImage from '../assets/images/Beglazing.webp';
+import draaikiepraamImage from '../assets/images/Draaikiepraam.webp';
+import vastGlasKozijnImage from '../assets/images/Vastglaskozijn.webp';
+import draairaamImage from '../assets/images/Draairaam.webp';
+import deurkozijnenImage from '../assets/images/Deurkozijnen.webp';
+import binnendeurkozijnenImage from '../assets/images/Binnendeurkozijnen.webp';
+import binnendeurkozijnenWhyImage from '../assets/images/Binnenkozijnen-waarom.webp';
 
 type ChoiceIcon = 'paintbrush' | 'mirror' | 'ruler' | 'grid';
 
@@ -85,7 +94,8 @@ export const productDetails = {
       { label: 'Vast glas kozijnen' },
     ],
     ...images,
-    heroImageAlt: 'Tijdelijke afbeelding voor een vast glas kozijn',
+    heroImage: vastGlasKozijnImage,
+    heroImageAlt: 'Houten vast glas kozijn van Timmerfabriek Sint Nyk',
     choicesHeading: 'Afgestemd op uw woning',
     choicesIntroduction: 'Stel uw vaste kozijn samen op basis van uitstraling, isolatie en de beschikbare gevelopening.',
     choices: createChoices({
@@ -112,7 +122,8 @@ export const productDetails = {
       { label: 'Draaikiepramen' },
     ],
     ...images,
-    heroImageAlt: 'Tijdelijke afbeelding voor een houten draaikiepraam',
+    heroImage: draaikiepraamImage,
+    heroImageAlt: 'Houten draaikiepraam van Timmerfabriek Sint Nyk',
     choicesHeading: 'Afgestemd op uw woning',
     choicesIntroduction: 'Stel uw draaikiepraam samen op basis van uitstraling, comfort, isolatie en gebruik.',
     choices: createChoices({
@@ -139,7 +150,8 @@ export const productDetails = {
       { label: 'Draairamen' },
     ],
     ...images,
-    heroImageAlt: 'Tijdelijke afbeelding voor een houten draairaam',
+    heroImage: draairaamImage,
+    heroImageAlt: 'Houten draairaam van Timmerfabriek Sint Nyk',
     choicesHeading: 'Afgestemd op uw woning',
     choicesIntroduction: 'Bepaal de uitstraling, draairichting en technische uitvoering van uw houten draairaam.',
     choices: createChoices({
@@ -166,7 +178,8 @@ export const productDetails = {
       { label: 'Deurkozijnen' },
     ],
     ...images,
-    heroImageAlt: 'Tijdelijke afbeelding voor een houten deurkozijn',
+    heroImage: deurkozijnenImage,
+    heroImageAlt: 'Houten deurkozijn van Timmerfabriek Sint Nyk',
     choicesHeading: 'Afgestemd op uw entree',
     choicesIntroduction: 'Stem uw deurkozijn af op de deur, gevelopening, isolatie-eisen en uitstraling van het pand.',
     choices: createChoices({
@@ -193,7 +206,8 @@ export const productDetails = {
       { label: 'Binnendeurkozijnen' },
     ],
     ...images,
-    heroImageAlt: 'Tijdelijke afbeelding voor een houten binnendeurkozijn',
+    heroImage: binnendeurkozijnenImage,
+    heroImageAlt: 'Houten binnendeurkozijn van Timmerfabriek Sint Nyk',
     choicesHeading: 'Afgestemd op uw interieur',
     choicesIntroduction: 'Kies de profilering, maatvoering en afwerking die passen bij uw binnendeur en woonstijl.',
     choices: createChoices({
@@ -209,7 +223,8 @@ export const productDetails = {
       { title: 'Veel ontwerpvrijheid', description: 'Kies uit verschillende profielen en kleuren, passend bij een modern of klassiek interieur.' },
       { title: 'Nauwkeurig passend', description: 'Maatwerk voorkomt ongewenste kieren en zorgt dat de binnendeur soepel opent en sluit.' },
     ],
-    benefitsImageAlt: 'Tijdelijke afbeelding van een houten binnendeurkozijn',
+    benefitsImage: binnendeurkozijnenWhyImage,
+    benefitsImageAlt: 'Houten binnendeurkozijnen in een interieur',
   },
   voordeur: {
     title: 'Voordeur',
@@ -248,7 +263,8 @@ export const productDetails = {
       { label: 'Achterdeuren' },
     ],
     ...images,
-    heroImageAlt: 'Tijdelijke afbeelding voor een houten achterdeur',
+    heroImage: achterdeurenImage,
+    heroImageAlt: 'Houten achterdeur van Timmerfabriek Sint Nyk',
     choicesHeading: 'Afgestemd op dagelijks gebruik',
     choicesIntroduction: 'Bepaal de indeling, lichtinval en uitvoering die passen bij uw keuken, bijkeuken of tuinentree.',
     choices: createChoices({
@@ -372,7 +388,8 @@ export const productDetails = {
         description: 'Degelijke rails en passend beslag maken de schuifpui gemakkelijk te openen en betrouwbaar af te sluiten.',
       },
     ],
-    benefitsImageAlt: 'Tijdelijke afbeelding van een houten schuifpui aan een woning',
+    benefitsImage: schuifpuiWhyImage,
+    benefitsImageAlt: 'Houten schuifpui aan een woning',
   },
   beglazing: {
     title: 'Beglazing',
@@ -382,7 +399,8 @@ export const productDetails = {
       { label: 'Beglazing' },
     ],
     ...images,
-    heroImageAlt: 'Tijdelijke afbeelding voor isolerende beglazing',
+    heroImage: beglazingImage,
+    heroImageAlt: 'Detail van isolerende beglazing in een wit houten kozijn',
     choicesHeading: 'Afgestemd op uw kozijnen',
     choicesIntroduction: 'Kies de glassoort en uitvoering die passen bij uw kozijnen, comfortwensen en gewenste isolatiewaarde.',
     choices: [
