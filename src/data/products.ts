@@ -3,7 +3,7 @@ import beglazingImage from '../assets/images/Beglazing.webp';
 import deurenImage from '../assets/images/Voordeur.webp';
 import kozijnenImage from '../assets/images/Kozijnen.webp';
 import schuifpuienImage from '../assets/images/Schuifpui.webp';
-import vouwwandImage from '../assets/images/vouwwand.jpg';
+import vouwwandImage from '../assets/images/Vouwwand.webp';
 
 export interface ProductCardItem {
   title: string;

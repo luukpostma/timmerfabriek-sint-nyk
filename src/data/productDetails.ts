@@ -13,6 +13,7 @@ import draairaamImage from '../assets/images/Draairaam.webp';
 import deurkozijnenImage from '../assets/images/Deurkozijnen.webp';
 import binnendeurkozijnenImage from '../assets/images/Binnendeurkozijnen.webp';
 import binnendeurkozijnenWhyImage from '../assets/images/Binnenkozijnen-waarom.webp';
+import vouwwandImage from '../assets/images/Vouwwand.webp';
 
 type ChoiceIcon = 'paintbrush' | 'mirror' | 'ruler' | 'grid';
 
@@ -451,7 +452,8 @@ export const productDetails = {
       { label: 'Vouwwanden' },
     ],
     ...images,
-    heroImageAlt: 'Tijdelijke afbeelding voor een houten vouwwand',
+    heroImage: vouwwandImage,
+    heroImageAlt: 'Houten vouwwand die de woonruimte met de tuin verbindt',
     choicesHeading: 'Afgestemd op uw woning',
     choicesIntroduction: 'Stel uw vouwwand samen op basis van paneelindeling, uitstraling, isolatie en gewenste openingsrichting.',
     choices: [
