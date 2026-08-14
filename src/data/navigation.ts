@@ -45,6 +45,4 @@ export const callToAction = {
 
 export const legalNavigation: NavigationItem[] = [
   { label: 'Privacyverklaring', href: '/privacyverklaring/' },
-  { label: 'Algemene voorwaarden', href: '/algemene-voorwaarden/' },
-  { label: 'Cookiebeleid', href: '/cookiebeleid/' },
 ];
