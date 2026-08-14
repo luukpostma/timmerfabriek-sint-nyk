@@ -1,10 +1,10 @@
 ---
-title: Kozijnen op maat voor een verbouwing in Lemmer
+title: Dubbele binnendeuren in Heerenveen
 category: Beglazing
 description: Houten maatwerkkozijnen en passende beglazing voor een zorgvuldige verbouwing in Lemmer.
 date: 2024-06-12
 order: 2
-image: ../../assets/images/project-lemmer.jpg
+image: ../../assets/images/project-1.webp
 imageAlt: Interieur in Lemmer met zwarte maatwerkkozijnen
 ---
 

@@ -37,13 +37,21 @@ import Phone from '../assets/icons/phone.svg';
       </address>
     </div>
 
-    <form class="contact-form" method="post" data-contact-form data-web3forms-ready>
+    <form
+      class="contact-form"
+      action="https://api.web3forms.com/submit"
+      method="post"
+      data-contact-form
+    >
+      <input type="hidden" name="access_key" value="f21b887f-8c85-4ae4-b2b8-1f6cbf966b75" />
+      <input type="hidden" name="subject" value="Nieuwe contactaanvraag via timmerfabrieksintnyk.nl" />
+      <input class="contact-form__botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" />
       <h2>Neem contact met ons op</h2>
 
       <div class="contact-form__fields">
         <div class="contact-form__field">
           <label for="first-name">Voornaam <span aria-hidden="true">*</span></label>
-          <input id="first-name" name="first_name" type="text" autocomplete="given-name" placeholder="Voornaam" required />
+          <input id="first-name" name="name" type="text" autocomplete="given-name" placeholder="Voornaam" required />
         </div>
 
         <div class="contact-form__field">
@@ -71,14 +79,51 @@ import Phone from '../assets/icons/phone.svg';
         <span>Versturen</span>
         <ArrowRight aria-hidden="true" />
       </button>
+      <p class="contact-form__status" aria-live="polite" data-contact-status></p>
     </form>
   </div>
 </section>
 
 <script>
   document.querySelectorAll<HTMLFormElement>('[data-contact-form]').forEach((form) => {
-    form.addEventListener('submit', (event) => {
+    const submitButton = form.querySelector<HTMLButtonElement>('[type="submit"]');
+    const status = form.querySelector<HTMLElement>('[data-contact-status]');
+
+    if (!submitButton || !status) return;
+
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
+
+      if (!form.reportValidity()) return;
+
+      submitButton.disabled = true;
+      form.setAttribute('aria-busy', 'true');
+      status.dataset.state = 'pending';
+      status.textContent = 'Uw bericht wordt verstuurd…';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || 'Web3Forms kon het bericht niet verwerken.');
+        }
+
+        form.reset();
+        status.dataset.state = 'success';
+        status.textContent = 'Bedankt! Uw bericht is succesvol verstuurd.';
+      } catch (error) {
+        console.error(error);
+        status.dataset.state = 'error';
+        status.textContent = 'Het versturen is niet gelukt. Probeer het later opnieuw of neem telefonisch contact op.';
+      } finally {
+        submitButton.disabled = false;
+        form.removeAttribute('aria-busy');
+      }
     });
   });
 </script>
@@ -223,6 +268,10 @@ import Phone from '../assets/icons/phone.svg';
     background-color: var(--color-white);
   }
 
+  .contact-form__botcheck {
+    display: none;
+  }
+
   .contact-form h2 {
     margin-bottom: 2rem;
     font-family: var(--font-family-body);
@@ -308,6 +357,11 @@ import Phone from '../assets/icons/phone.svg';
     background-color: var(--color-secondary-hover);
   }
 
+  .contact-form__submit:disabled {
+    cursor: wait;
+    opacity: 0.65;
+  }
+
   .contact-form__submit:focus-visible {
     outline: 3px solid var(--color-primary);
     outline-offset: 3px;
@@ -321,6 +375,21 @@ import Phone from '../assets/icons/phone.svg';
 
   .contact-form__submit:hover :global(svg) {
     transform: translateX(4px);
+  }
+
+  .contact-form__status {
+    min-height: var(--text-body-line-height);
+    margin-top: 1rem;
+    font-size: var(--text-body-small-size);
+    line-height: var(--text-body-small-line-height);
+  }
+
+  .contact-form__status[data-state='success'] {
+    color: var(--color-secondary);
+  }
+
+  .contact-form__status[data-state='error'] {
+    color: #B42318;
   }
 
   @media (min-width: 64rem) {
