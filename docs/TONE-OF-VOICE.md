@@ -51,6 +51,20 @@ Use **we/wij** for the company. Prefer `we` in normal sentences; use `wij` only 
 - Paragraphs should usually be short enough to scan comfortably on mobile.
 - Technical terminology is welcome when it helps the customer, but explain unfamiliar terms.
 
+## Punctuation
+Never use an em dash (`—`) or en dash (`–`) in Dutch website copy. It reads as English or AI-generated and does not fit this site's voice.
+
+This applies to every piece of human-facing Dutch text, not only visible body copy: titles, meta descriptions, CTAs, navigation labels, `aria-label`s, `alt` text, and other accessibility/UI copy all follow the same rule. It does not apply to code-technical uses of a similar character that aren't human copy.
+
+Depending on the sentence, replace it with:
+- a comma;
+- a period, splitting the sentence in two;
+- a colon;
+- parentheses;
+- or a natural rewrite.
+
+A regular hyphen (`-`) stays allowed where it belongs grammatically, for example in compound words or fixed notations.
+
 ## Specific beats generic
 Prefer concrete statements.
 

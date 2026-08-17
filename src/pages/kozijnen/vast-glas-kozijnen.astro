@@ -6,7 +6,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const product = productDetails.vastGlasKozijn;
 ---
 
-<BaseLayout title={`${product.title} | Timmerfabriek Sint Nyk`}>
+<BaseLayout
+  title="Vast glas kozijn op maat | Timmerfabriek Sint Nyk"
+  description="Een vast glas kozijn zonder te openen delen: veel lichtinval en een rustig gevelbeeld, volledig op maat gemaakt."
+>
   <main id="main-content" tabindex="-1">
     <ProductDetailPage {...product} />
   </main>

@@ -139,3 +139,9 @@ The entire website is Dutch.
 - Titles, headings, metadata, CTAs, FAQs, alt text and form copy must be Dutch.
 - SEO keywords may only influence the copy naturally; never translate Dutch target keywords into English.
 - Internal analysis and planning may be in English, but all proposed and implemented website copy must be Dutch.
+
+## Punctuation
+- Never use an em dash (`—`) or en dash (`–`) as sentence punctuation in Dutch website copy. It reads as English/AI-generated and does not fit this site's tone of voice.
+- This applies to all human-facing Dutch text, not just visible body copy: titles, meta descriptions, CTAs, navigation labels, `aria-label`s, `alt` text, and any other accessibility/UI copy. It does not apply to code-technical uses of a similar character (e.g. in ranges, config, or markup) that aren't human copy.
+- Replace it depending on the sentence with a comma, a period (splitting into two sentences), a colon, parentheses, or a natural rewrite.
+- A regular hyphen (`-`) remains allowed where grammatically correct, e.g. in compound words or fixed notations.

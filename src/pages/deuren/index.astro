@@ -18,28 +18,44 @@ if (!page) throw new Error('Navigatiedata voor de deurenpagina ontbreekt.');
 const benefits = [
   {
     title: 'Isolatie',
-    description: 'Houten deuren helpen warmte binnen te houden en dragen bij aan een comfortabel en energiezuinig huis.',
+    description:
+      'Een nauwkeurig passende deur beperkt tocht bij de opening, en glazen delen zijn te combineren met HR++ of triple glas.',
   },
   {
     title: 'Uitstraling',
-    description: 'Een houten deur geeft iedere gevel of binnenruimte een natuurlijke, warme en karaktervolle uitstraling.',
+    description:
+      'U kiest zelf vlakverdeling, kleur en glas, zodat de deur past bij de architectuur van uw woning of pand.',
   },
   {
     title: 'Volledig maatwerk',
-    description: 'Iedere deur wordt afgestemd op de opening, architectuur, gebruikswensen en technische situatie.',
+    description:
+      'Iedere deur wordt in onze werkplaats op maat gemaakt, afgestemd op de opening en de gewenste uitvoering.',
   },
 ];
+
+const doorTypeDescriptions = [
+  'Een houten voordeur op maat, met veel keuze in vlakverdeling, kleur en glas voor een uitnodigende entree.',
+  'Een houten achterdeur op maat voor de dagelijkse doorgang tussen woning, tuin, schuur of bijkeuken.',
+  'Houten garagedeuren op maat, afgestemd op de breedte, hoogte en uitstraling van uw garage.',
+  'Een houten binnendeur op maat, met veel keuze in profiel, kleur en glas voor uw interieur.',
+];
+
+const doorTypeLabels = ['Entree', 'Dagelijks gebruik', 'Grote opening', 'Voor binnen'];
 ---
 
-<BaseLayout title="Deuren | Timmerfabriek Sint Nyk">
+<BaseLayout
+  title="Houten deuren op maat | Timmerfabriek Sint Nyk"
+  description="Bekijk onze houten deuren op maat: van voordeuren tot achterdeuren, garagedeuren en binnendeuren. Gemaakt in onze werkplaats in Sint Nicolaasga."
+>
   <main id="main-content" tabindex="-1">
     <CategoryHero title={page.label} />
     <WindowTypesSection
       items={page.children ?? []}
       eyebrow="Soorten deuren"
       heading="Welke deur past bij uw project?"
-      introduction="Bekijk onze houten maatwerkdeuren voor renovatie, verbouwing en nieuwbouw. Gemaakt voor een passende entree, doorgang of afsluiting."
-      labels={['Maatwerk', 'Stijlvol & modern', 'Praktisch & sterk', 'Passend interieur']}
+      introduction="Van voordeuren tot garagedeuren: bekijk de mogelijkheden en kies het type dat past bij uw project."
+      labels={doorTypeLabels}
+      descriptions={doorTypeDescriptions}
       imageOverrides={{
         '/deuren/voordeuren/': {
           image: voordeurenImage,

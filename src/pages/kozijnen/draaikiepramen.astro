@@ -6,7 +6,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const product = productDetails.draaikiepraam;
 ---
 
-<BaseLayout title={`${product.title} | Timmerfabriek Sint Nyk`}>
+<BaseLayout
+  title="Draaikiepraam op maat | Timmerfabriek Sint Nyk"
+  description="Een draaikiepraam kiept voor ventilatie of opent volledig voor frisse lucht. Op maat gemaakt in onze werkplaats in Sint Nicolaasga."
+>
   <main id="main-content" tabindex="-1">
     <ProductDetailPage {...product} />
   </main>

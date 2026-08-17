@@ -404,13 +404,15 @@ Bouw lokale relevantie vooral op met:
   `/kozijnen/`                    houten kozijnen op maat houten kozijnen,
                                                           maatwerk kozijnen
 
-  `/kozijnen/vast-glas/`          vast glas kozijn        houten kozijn vast glas
+  `/kozijnen/vast-glas-kozijnen/` vast glas kozijn        houten kozijn vast glas
 
   `/kozijnen/draaikiepramen/`     houten draaikiepraam    draaikiepraam op maat
 
   `/kozijnen/draairamen/`         houten draairaam        houten raam op maat
 
   `/kozijnen/deurkozijnen/`       houten deurkozijn       deurkozijn op maat
+
+  `/kozijnen/binnendeurkozijnen/` houten binnendeurkozijn* —
 
   `/deuren/`                      houten deuren op maat   maatwerk deuren
 
@@ -420,6 +422,9 @@ Bouw lokale relevantie vooral op met:
                                   maat                    
 
   `/deuren/garagedeuren/`         houten garagedeuren     garagedeur op maat
+
+  `/deuren/binnendeuren/`         houten binnendeur op    —
+                                  maat**                  
 
   `/schuifpuien/`                 houten schuifpui op     hardhouten schuifpui
                                   maat                    
@@ -435,6 +440,22 @@ Bouw lokale relevantie vooral op met:
   `/houten-kozijnen-friesland/`   houten kozijnen         kozijnen op maat
                                   Friesland               Friesland
   -------------------------------------------------------------------------------
+
+*`/kozijnen/binnendeurkozijnen/`: "houten binnendeurkozijn" is een logisch
+afgeleide paginaintentie (analoog aan "houten deurkozijn"), maar is niet
+onderzocht of bevestigd als keyword. Dit ontbreekt in de keywordclusters
+hierboven. Beschouw dit niet als een door keywordonderzoek bevestigde term
+totdat dit alsnog is uitgezocht.
+
+**`/deuren/binnendeuren/`: "houten binnendeur op maat" is eveneens een
+logisch afgeleide paginaintentie (analoog aan "houten voordeur op maat" /
+"houten achterdeur op maat"), maar ontbreekt volledig in de keywordclusters
+en de mappingtabel hierboven. Ook dit is niet onderzocht of bevestigd als keyword
+totdat dit alsnog is uitgezocht.
+
+*Correctie 2026-08-17: de URL voor de vast-glas-kozijnpagina was hierboven
+eerder foutief genoteerd als `/kozijnen/vast-glas/`. De daadwerkelijke route
+in de code is `/kozijnen/vast-glas-kozijnen/`; de tabel is hierop aangepast.
 
 ------------------------------------------------------------------------
 

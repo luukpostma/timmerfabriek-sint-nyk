@@ -6,7 +6,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const product = productDetails.garagedeur;
 ---
 
-<BaseLayout title={`${product.title} | Timmerfabriek Sint Nyk`}>
+<BaseLayout
+  title="Houten garagedeuren op maat | Timmerfabriek Sint Nyk"
+  description="Houten garagedeuren op maat, afgestemd op de breedte, hoogte en uitstraling van uw garage en gevel."
+>
   <main id="main-content" tabindex="-1">
     <ProductDetailPage {...product} />
   </main>

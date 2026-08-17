@@ -6,7 +6,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const product = productDetails.achterdeur;
 ---
 
-<BaseLayout title={`${product.title} | Timmerfabriek Sint Nyk`}>
+<BaseLayout
+  title="Houten achterdeur op maat | Timmerfabriek Sint Nyk"
+  description="Een houten achterdeur op maat voor de dagelijkse doorgang tussen woning, tuin, schuur of bijkeuken."
+>
   <main id="main-content" tabindex="-1">
     <ProductDetailPage {...product} />
   </main>
