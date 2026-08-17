@@ -5,7 +5,7 @@
 ## Identity
 - Business name: **Timmerfabriek Sint Nyk** — CONFIRMED for this project.
 - Character: **kleinschalig lokaal bedrijf** — CONFIRMED by owner.
-- Location/workshop: **Sint Nicolaasga, Friesland** — CONFIRMED: production genuinely happens in the company's own workshop in Sint Nicolaasga. Exact public address still to confirm before launch.
+- Location/workshop: **Sint Nicolaasga, Friesland** — CONFIRMED: production genuinely happens in the company's own workshop in Sint Nicolaasga.
 - Core proposition: **houten maatwerk, geproduceerd in eigen werkplaats** — CONFIRMED by owner (2026-08-17).
 - Positioning direction (owner-approved, 2026-08-17):
   > Een kleinschalige timmerfabriek in Sint Nicolaasga voor houten maatwerk, met eigen productie, persoonlijk contact en levering voornamelijk in Noord-Nederland. We werken voor zowel particulieren als aannemers.
@@ -168,25 +168,31 @@ Status: **TO CONFIRM individually**, except:
 - complete finishing of kozijnen (afwerken/beglazen/beslag) — **CONFIRMED**, see "Complete afwerking van kozijnen"
 - any Google review score/count — still unverified, see "Google reviews"
 
-## Placeholder/suspect development data
-The development site contains details that look like placeholders. Treat them as invalid until explicitly verified:
-- phone number;
-- email address;
-- Chamber of Commerce number;
-- possibly street address;
-- review score/count (see "Google reviews" for the temporary UI exception);
-- Lorem ipsum copy.
+## NAP / company data (definitive, 2026-08-17)
+CONFIRMED and definitive — this is now the source of truth for visible NAP information and technical SEO:
+- Business name: **Timmerfabriek Sint Nyk**
+- Address: **Bovenkuier 38, 8521 MG Sint Nicolaasga**
+- Phone (visible/Dutch format): **06 10 47 88 36** — machine-readable `tel:` value: `+31610478836`
+- Email: **info@timmerfabrieksintnyk.nl**
+- KvK: **81150148**
+- Production site URL: **https://timmerfabrieksintnyk.nl/**
 
-Never publish these merely because they exist in the current codebase.
+This data has been rolled out sitewide (Footer, ContactSection, privacyverklaring, `astro.config.mjs` `site`, canonical URLs, structured data). The previous development-placeholder phone number and KvK number are fully replaced.
+
+## Placeholder/suspect development data
+- Google review score/count — still the only remaining known placeholder, see "Google reviews" for the temporary UI exception. Do not reuse or repeat it elsewhere, and do not add review/rating structured data until the real integration is built.
+- Lorem ipsum copy — resolved everywhere except the two project story bodies in `src/content/projects/*.md`, which are intentionally left untouched pending real project facts (see `CONTENT-STATUS.md`).
+
+Never publish placeholder data merely because it exists in the current codebase.
 
 # Information to collect from the owner
 
 ## Company
 - [ ] Exact trading/company name
-- [ ] Correct public address
-- [ ] Correct phone number
-- [ ] Correct email address
-- [ ] Correct KvK number if it should be public
+- [x] Correct public address — Bovenkuier 38, 8521 MG Sint Nicolaasga, see "NAP / company data (definitive, 2026-08-17)"
+- [x] Correct phone number — 06 10 47 88 36 / +31610478836
+- [x] Correct email address — info@timmerfabrieksintnyk.nl
+- [x] Correct KvK number if it should be public — 81150148, published sitewide
 - [x] Year founded / history, if useful — trading name Timmerfabriek Sint Nyk started February 2026 (see "Start of Timmerfabriek Sint Nyk"); team craft experience (20+ years combined) predates this and is confirmed separately, see "Experience"
 - [x] Approximate team size — two owners, plus collaboration with self-employed craftspeople/ZZP'ers where needed; no personal names to be used, see "Team"
 - [x] What makes the company genuinely different from nearby competitors? — own production, personal contact, Fries vakmanschap, Noord-Nederland focus

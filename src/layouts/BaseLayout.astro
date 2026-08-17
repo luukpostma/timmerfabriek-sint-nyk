@@ -30,6 +30,24 @@ const {
   footerCtaButtonLabel,
   footerCtaButtonHref,
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Carpenter',
+  name: 'Timmerfabriek Sint Nyk',
+  url: Astro.site?.toString(),
+  telephone: '+31610478836',
+  email: 'info@timmerfabrieksintnyk.nl',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Bovenkuier 38',
+    postalCode: '8521 MG',
+    addressLocality: 'Sint Nicolaasga',
+    addressCountry: 'NL',
+  },
+};
 ---
 
 <!doctype html>
@@ -41,6 +59,8 @@ const {
     <script is:inline>document.documentElement.classList.add('js');</script>
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonicalURL} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Ga direct naar de hoofdinhoud</a>
