@@ -14,7 +14,13 @@ const Heading = headingLevel;
 
 <a class="product-card" href={item.href}>
   <div class="product-card__media">
-    <Image class="product-card__image" src={item.image} alt={item.alt} />
+    <Image
+      class="product-card__image"
+      src={item.image}
+      alt={item.alt}
+      widths={[384, 768, 960, 1440]}
+      sizes="(min-width: 80rem) 384px, (min-width: 64rem) calc((100vw - 128px) / 3), (min-width: 48rem) calc(100vw - 64px), calc(100vw - 32px)"
+    />
   </div>
 
   <div class="product-card__content">
