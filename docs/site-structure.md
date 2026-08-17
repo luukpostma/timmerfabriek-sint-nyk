@@ -227,8 +227,8 @@ Projectdetails worden datagedreven opgebouwd via `/projecten/[id]/`:
 
 **Huidige projectpagina's:**
 
-- **Houten gevelpui met dubbele deuren in Joure** — `/projecten/houten-gevelpui-joure/`; categorie Kozijnen.
-- **Dubbele binnendeuren met glas in Lemmer** — `/projecten/dubbele-binnendeuren-met-glas-lemmer/`; categorie Deuren.
+- **Houten kozijn met dubbele deur in Noordwolde** — `/projecten/houten-kozijn-met-dubbele-deur-noordwolde/`; categorie Kozijnen.
+- **Dubbele binnendeuren met glas in Heerenveen** — `/projecten/dubbele-binnendeuren-met-glas-heerenveen/`; categorie Deuren.
 
 Deze twee projecten en hun afzonderlijke identiteit blijven behouden. Bestandsnaam, URL, titel, categorie en omschrijving sluiten aan op het zichtbare maatwerk in de projectfoto's.
 
