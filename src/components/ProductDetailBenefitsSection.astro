@@ -1,7 +1,5 @@
 ---
-import House from '../assets/icons/house.svg';
-import RulerDimensionLine from '../assets/icons/ruler-dimension-line.svg';
-import ThermometerSun from '../assets/icons/thermometer-sun.svg';
+import CircleCheck from '../assets/icons/circle-check.svg';
 
 interface Benefit {
   title: string;
@@ -15,7 +13,6 @@ interface Props {
 }
 
 const { heading, introduction, benefits } = Astro.props;
-const icons = [ThermometerSun, House, RulerDimensionLine];
 ---
 
 <section class="detail-benefits" aria-labelledby="detail-benefits-heading">
@@ -28,19 +25,15 @@ const icons = [ThermometerSun, House, RulerDimensionLine];
 
     <ul class="detail-benefits__list">
       {
-        benefits.map(({ title, description }, index) => {
-          const Icon = icons[index] ?? RulerDimensionLine;
-
-          return (
-            <li>
-              <span class="detail-benefits__icon">
-                <Icon aria-hidden="true" />
-              </span>
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </li>
-          );
-        })
+        benefits.map(({ title, description }) => (
+          <li>
+            <span class="detail-benefits__icon">
+              <CircleCheck aria-hidden="true" />
+            </span>
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </li>
+        ))
       }
     </ul>
   </div>
