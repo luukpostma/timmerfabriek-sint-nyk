@@ -162,10 +162,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <p>
             Voor de technische afhandeling van het contactformulier maken wij
             gebruik van Web3Forms, een dienst van Web3Creative. Wanneer u het
-            contactformulier verzendt, worden de door u ingevulde gegevens via
-            Web3Forms verwerkt en doorgestuurd naar ons e-mailadres. Dit betreft
-            uw voor- en achternaam, e-mailadres, eventueel telefoonnummer en de
-            inhoud van uw bericht.
+            contactformulier verzendt, maakt uw browser rechtstreeks via een
+            beveiligde HTTPS-verbinding contact met Web3Forms. Web3Forms verwerkt
+            de inzending en stuurt deze door naar het e-mailadres van
+            Timmerfabriek Sint Nyk dat aan het formulier is gekoppeld. Daarbij
+            worden uw voornaam, achternaam, e-mailadres, eventueel telefoonnummer
+            en de inhoud van uw bericht verzonden.
           </p>
           <p>
             Web3Forms geeft aan ingezonden formuliergegevens niet blijvend op te
@@ -181,6 +183,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             de via het formulier gevraagde gegevens tot wat nodig is om uw
             aanvraag te behandelen en beoordelen periodiek of de gebruikte
             dienst en waarborgen nog passend zijn.
+          </p>
+          <p>
+            De publiek zichtbare Web3Forms-access key in het formulier is alleen
+            een identificatie waarmee een inzending naar het gekoppelde
+            e-mailadres wordt doorgestuurd. Deze sleutel geeft geen toegang tot
+            uw ingezonden gegevens. Ter beperking van geautomatiseerd misbruik
+            gebruikt het formulier daarnaast het verborgen botcheck-veld van
+            Web3Forms. Er wordt voor het formulier geen CAPTCHA geplaatst en er
+            worden geen analytics- of trackingcookies toegevoegd.
           </p>
         </section>
 
