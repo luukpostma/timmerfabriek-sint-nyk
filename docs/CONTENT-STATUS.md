@@ -13,7 +13,7 @@ Use this file as the production ledger. Update it after every completed page.
 | URL / page | Primary keyword | Intent | Status | Missing info / notes | Last reviewed |
 |---|---|---|---|---|---|
 | Home | timmerfabriek Friesland | Brand/local commercial | DONE | Homepage afgerond 2026-08-17. Google-beoordelingsblok blijft bewust ongewijzigd staan als placeholder (zie BUSINESS-CONTEXT.md), t/m latere Reviews-integratie. Gedeelde FAQ "regio" is bijgewerkt naar Noord-Nederland-positionering (werkt door op andere pagina's die dezelfde FAQ tonen). | 2026-08-17 |
-| Kozijnen | TBD | TBD | AUDIT | Check against supplied site structure | |
+| Kozijnen | houten kozijnen op maat | Categorie/overzicht | DONE | Afgerond 2026-08-17. Compacte categoriepagina, geen SEO-landingspagina gemaakt. Lorem ipsum in de 5 typecards vervangen; gedeelde `WindowTypesSection` kreeg optionele `descriptions`-prop (backwards compatible, `/deuren/` ongewijzigd/nog Lorem ipsum). Gedeelde FAQ en aannemerssectie bewust niet aangepast. | 2026-08-17 |
 | Vast glas kozijnen | TBD | TBD | AUDIT | | |
 | Draaikiepramen | TBD | TBD | AUDIT | | |
 | Draairamen | TBD | TBD | AUDIT | | |

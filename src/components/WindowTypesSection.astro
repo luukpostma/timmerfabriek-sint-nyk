@@ -5,7 +5,6 @@ import placeholderImage from '../assets/images/place-holder.jpg';
 import Button from './Button.astro';
 import ProductCard from './ProductCard.astro';
 import type { ProductCardItem } from '../data/products';
-import { productDescription } from '../data/products';
 
 interface Props {
   items: NavigationItem[];
@@ -13,6 +12,7 @@ interface Props {
   heading?: string;
   introduction?: string;
   labels?: string[];
+  descriptions?: string[];
   contactHeading?: string;
   contactText?: string;
   imageOverrides?: Record<string, { image: ImageMetadata; alt: string }>;
@@ -24,6 +24,7 @@ const {
   heading = 'Welk kozijn past bij uw project?',
   introduction = 'Bekijk onze houten maatwerkproducten en glasmogelijkheden voor renovatie, verbouwing en nieuwbouw.',
   labels = ['Maatwerk', 'Stijlvol & modern', 'Populair', 'Maatwerk', 'Stijlvol & modern'],
+  descriptions,
   contactHeading = 'Zit uw kozijn er niet tussen?',
   contactText = 'Neem vrijblijvend contact met ons op om uw mogelijkheden te bespreken.',
   imageOverrides = {},
@@ -34,7 +35,7 @@ const products: ProductCardItem[] = items.map((item, index) => {
   return {
     title: item.label,
     eyebrow: labels[index] ?? 'Maatwerk',
-    description: productDescription,
+    description: descriptions?.[index],
     href: item.href,
     image: imageOverride?.image ?? placeholderImage,
     alt: imageOverride?.alt ?? `Tijdelijke afbeelding voor ${item.label}`,

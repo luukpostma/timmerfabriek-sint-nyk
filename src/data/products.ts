@@ -8,15 +8,12 @@ import vouwwandImage from '../assets/images/Vouwwand.webp';
 export interface ProductCardItem {
   title: string;
   eyebrow: string;
-  description: string;
+  description?: string;
   href: string;
   image: ImageMetadata;
   alt: string;
   type: 'category' | 'product';
 }
-
-export const productDescription =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 
 export const products: ProductCardItem[] = [
   {

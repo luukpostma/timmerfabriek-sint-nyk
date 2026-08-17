@@ -19,24 +19,49 @@ if (!page) throw new Error('Navigatiedata voor de kozijnenpagina ontbreekt.');
 const benefits = [
   {
     title: 'Isolatie',
-    description: 'Houten kozijnen bieden goede isolatie en dragen bij aan comfortabel wonen.',
+    description:
+      'Houten kozijnen isoleren van nature goed en zijn eenvoudig te combineren met HR++ of triple glas.',
   },
   {
     title: 'Uitstraling',
-    description: 'Hout geeft iedere woning een natuurlijke, warme en tijdloze uitstraling.',
+    description:
+      'U kiest zelf profiel, kleur en indeling, zodat het kozijn aansluit bij zowel klassieke als moderne gevels.',
   },
   {
     title: 'Volledig maatwerk',
-    description: 'Ieder kozijn wordt afgestemd op uw woning, wensen en technische situatie.',
+    description:
+      'Ieder kozijn wordt in onze werkplaats op maat gemaakt, afgestemd op de afmetingen en situatie van uw project.',
   },
+];
+
+const windowTypeDescriptions = [
+  'Een kozijn zonder te openen delen, voor veel lichtinval en een rustig gevelbeeld.',
+  'Kiepen voor ventilatie op een kier, of volledig openen voor frisse lucht en makkelijk schoonmaken.',
+  'Een raam dat volledig openzwaait, voor veel frisse lucht en vrij zicht naar buiten.',
+  'Een kozijn op maat voor uw buitendeur, afgestemd op de deur, gevelopening en situatie.',
+  'Een nauwkeurig kozijn tussen binnendeur en wand, afgestemd op wanddikte en deuropening.',
+];
+
+const windowTypeLabels = [
+  'Vast glas',
+  'Kiepen & draaien',
+  'Volledig openen',
+  'Voor buitendeuren',
+  'Voor binnendeuren',
 ];
 ---
 
-<BaseLayout title="Kozijnen | Timmerfabriek Sint Nyk">
+<BaseLayout
+  title="Houten kozijnen op maat | Timmerfabriek Sint Nyk"
+  description="Bekijk onze houten kozijnen op maat: van vast glas tot draaikiepramen, draairamen en deurkozijnen. Gemaakt in onze eigen werkplaats in Sint Nicolaasga, Friesland."
+>
   <main id="main-content" tabindex="-1">
     <CategoryHero title={page.label} />
     <WindowTypesSection
       items={page.children ?? []}
+      introduction="Van vast glas tot draaikiepramen en deurkozijnen: bekijk de mogelijkheden en kies het type dat past bij uw project."
+      labels={windowTypeLabels}
+      descriptions={windowTypeDescriptions}
       imageOverrides={{
         '/kozijnen/vast-glas-kozijnen/': {
           image: vastGlasKozijnImage,
@@ -62,7 +87,7 @@ const benefits = [
     />
     <ProductDetailBenefitsSection
       heading="Waarom houten kozijnen?"
-      introduction="Houten kozijnen, deuren en schuifpuien op maat. Gemaakt in onze eigen werkplaats in Sint Nicolaasga."
+      introduction="Houten kozijnen op maat, gemaakt in onze eigen werkplaats in Sint Nicolaasga."
       benefits={benefits}
     />
     <ContractorSection />
