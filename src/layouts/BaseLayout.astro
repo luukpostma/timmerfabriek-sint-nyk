@@ -40,10 +40,12 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <script is:inline>document.documentElement.classList.add('js');</script>
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Ga direct naar de hoofdinhoud</a>
     <Header />
     <slot />
     <Footer

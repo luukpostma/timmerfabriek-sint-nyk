@@ -168,6 +168,14 @@ const panelId = `${id}-panel`;
     margin-top: 1rem;
   }
 
+  :global(html:not(.js)) .nav-dropdown--mobile .nav-dropdown__toggle {
+    display: none;
+  }
+
+  :global(html:not(.js)) .nav-dropdown--mobile .nav-dropdown__panel[hidden] {
+    display: block;
+  }
+
   .nav-dropdown--desktop .nav-dropdown__trigger-row {
     width: fit-content;
   }
@@ -195,5 +203,12 @@ const panelId = `${id}-panel`;
     width: 22rem;
     transform: translateX(-50%);
     box-shadow: 0 0.75rem 2rem rgb(3 7 18 / 12%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-dropdown__category-link,
+    .nav-dropdown__toggle {
+      transition: none;
+    }
   }
 </style>

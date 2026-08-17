@@ -13,7 +13,12 @@ const currentPath = Astro.url.pathname.endsWith('/')
 
 <header class="site-header" data-site-header>
   <div class="site-header__mobile container">
-    <a class="site-header__logo-link" href="/" aria-label="Timmerfabriek Sint Nyk — home">
+    <a
+      class="site-header__logo-link"
+      href="/"
+      aria-label="Timmerfabriek Sint Nyk — home"
+      data-mobile-logo-link
+    >
       <img class="site-header__logo" src={logo.src} alt="Timmerfabriek Sint Nyk" width="216" height="40" />
     </a>
 
@@ -35,7 +40,6 @@ const currentPath = Astro.url.pathname.endsWith('/')
     id="mobile-navigation"
     aria-label="Mobiele hoofdnavigatie"
     data-mobile-menu
-    hidden
   >
     <div class="mobile-menu__inner container">
       <ul class="mobile-menu__list mobile-menu__list--main">
@@ -135,8 +139,19 @@ const currentPath = Astro.url.pathname.endsWith('/')
     const mobileMenu = header.querySelector<HTMLElement>('[data-mobile-menu]');
     const openIcon = header.querySelector<HTMLImageElement>('[data-menu-open-icon]');
     const closeIcon = header.querySelector<HTMLImageElement>('[data-menu-close-icon]');
+    const mobileLogo = header.querySelector<HTMLElement>('[data-mobile-logo-link]');
     const desktopMedia = window.matchMedia('(min-width: 64rem)');
     const hoverCloseTimers = new WeakMap<HTMLElement, number>();
+    const inertedBackgroundElements = new Set<HTMLElement>();
+
+    const focusableSelector = [
+      'a[href]',
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(',');
 
     const dropdownToggles = () =>
       Array.from(header.querySelectorAll<HTMLButtonElement>('[data-dropdown-toggle]'));
@@ -155,18 +170,58 @@ const currentPath = Astro.url.pathname.endsWith('/')
       });
     };
 
-    const setMobileMenu = (open: boolean) => {
+    const setBackgroundInert = (inert: boolean) => {
+      if (inert) {
+        Array.from(document.body.children).forEach((element) => {
+          if (!(element instanceof HTMLElement) || element === header || element.inert) return;
+          element.inert = true;
+          inertedBackgroundElements.add(element);
+        });
+        return;
+      }
+
+      inertedBackgroundElements.forEach((element) => {
+        element.inert = false;
+      });
+      inertedBackgroundElements.clear();
+    };
+
+    const mobileMenuFocusableElements = () => {
+      if (!mobileMenu || !mobileToggle) return [];
+
+      return [
+        mobileToggle,
+        ...Array.from(mobileMenu.querySelectorAll<HTMLElement>(focusableSelector)),
+      ].filter((element) => !element.hidden && !element.inert && element.getClientRects().length > 0);
+    };
+
+    const setMobileMenu = (open: boolean, restoreFocus = false) => {
       if (!mobileToggle || !mobileMenu || !openIcon || !closeIcon) return;
 
       mobileToggle.setAttribute('aria-expanded', String(open));
       mobileToggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+      mobileMenu.inert = !open;
       mobileMenu.hidden = !open;
       openIcon.hidden = open;
       closeIcon.hidden = !open;
+      if (mobileLogo) mobileLogo.inert = open;
+      setBackgroundInert(open);
       document.body.classList.toggle('nav-open', open);
 
-      if (!open) closeDropdowns('mobile');
+      if (open) {
+        window.requestAnimationFrame(() => {
+          const firstMenuItem = mobileMenu.querySelector<HTMLElement>(focusableSelector);
+          firstMenuItem?.focus();
+        });
+        return;
+      }
+
+      closeDropdowns('mobile');
+      if (restoreFocus && !desktopMedia.matches) mobileToggle.focus();
     };
+
+    setMobileMenu(false);
+    header.dataset.navigationReady = '';
 
     dropdownToggles().forEach((toggle) => {
       toggle.addEventListener('click', () => {
@@ -237,11 +292,31 @@ const currentPath = Astro.url.pathname.endsWith('/')
     });
 
     document.addEventListener('keydown', (event) => {
+      const mobileMenuOpen = mobileToggle?.getAttribute('aria-expanded') === 'true';
+
+      if (event.key === 'Tab' && mobileMenuOpen) {
+        const focusableElements = mobileMenuFocusableElements();
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements.at(-1);
+        if (!firstElement || !lastElement) return;
+
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        } else if (!header.contains(document.activeElement)) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+        return;
+      }
+
       if (event.key !== 'Escape') return;
 
-      if (mobileToggle?.getAttribute('aria-expanded') === 'true') {
-        setMobileMenu(false);
-        mobileToggle.focus();
+      if (mobileMenuOpen) {
+        setMobileMenu(false, true);
         return;
       }
 
@@ -301,7 +376,7 @@ const currentPath = Astro.url.pathname.endsWith('/')
   }
 
   .site-header__menu-toggle {
-    display: grid;
+    display: none;
     width: 3rem;
     height: 3rem;
     flex: 0 0 auto;
@@ -318,24 +393,40 @@ const currentPath = Astro.url.pathname.endsWith('/')
   }
 
   .mobile-menu {
-    position: fixed;
-    z-index: 101;
-    inset: 0;
-    overflow-y: auto;
     color: var(--color-white);
     background-color: var(--color-primary);
   }
 
-  .mobile-menu[hidden] {
+  :global(.js) .site-header[data-navigation-ready] .site-header__menu-toggle {
+    display: grid;
+  }
+
+  :global(.js) .mobile-menu {
+    position: fixed;
+    z-index: 101;
+    inset: 0;
+    overflow-y: auto;
+  }
+
+  :global(.js) .site-header:not([data-navigation-ready]) .mobile-menu {
+    display: none;
+  }
+
+  :global(.js) .mobile-menu[hidden] {
     display: none;
   }
 
   .mobile-menu__inner {
     display: flex;
-    min-height: 100%;
+    min-height: auto;
     flex-direction: column;
-    padding-top: 7.5rem;
+    padding-top: 2rem;
     padding-bottom: 2rem;
+  }
+
+  :global(.js) .mobile-menu__inner {
+    min-height: 100%;
+    padding-top: 7.5rem;
   }
 
   .mobile-menu__list {
@@ -491,6 +582,14 @@ const currentPath = Astro.url.pathname.endsWith('/')
       flex: 0 0 auto;
       padding-block: 0.75rem;
       white-space: nowrap;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu__link,
+    .desktop-header__utility-list a,
+    .desktop-header__main-link {
+      transition: none;
     }
   }
 </style>

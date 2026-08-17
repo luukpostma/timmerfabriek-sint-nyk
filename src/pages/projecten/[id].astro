@@ -25,7 +25,7 @@ const { project } = Astro.props;
   title={`${project.data.title} | Timmerfabriek Sint Nyk`}
   description={project.data.description}
 >
-  <main>
+  <main id="main-content" tabindex="-1">
     <ProjectDetailPage project={project} />
   </main>
 </BaseLayout>
