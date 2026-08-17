@@ -21,9 +21,9 @@ const {
   ctaButtonHref = '/contact/',
 } = Astro.props;
 
-const productNavigation = [
+const footerUtilityNavigation = [
   { label: 'Home', href: '/' },
-  ...mainNavigation.filter((item) => item.label !== 'Vouwwanden'),
+  ...utilityNavigation,
 ];
 ---
 
@@ -54,7 +54,7 @@ const productNavigation = [
       <nav class="site-footer__navigation" aria-label="Producten">
         <h2>Producten</h2>
         <ul>
-          {productNavigation.map((item) => (
+          {mainNavigation.map((item) => (
             <li><a href={item.href}>{item.label}</a></li>
           ))}
         </ul>
@@ -63,7 +63,7 @@ const productNavigation = [
       <nav class="site-footer__navigation" aria-label="Overige pagina's">
         <h2>Overig</h2>
         <ul>
-          {utilityNavigation.map((item) => (
+          {footerUtilityNavigation.map((item) => (
             <li><a href={item.href}>{item.label}</a></li>
           ))}
         </ul>
