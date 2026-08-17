@@ -1,15 +1,9 @@
 ---
-title: Dubbele binnendeuren in Heerenveen
+title: Dubbele binnendeuren in Lemmer
 category: Beglazing
-description: Houten maatwerkkozijnen en passende beglazing voor een zorgvuldige verbouwing in Lemmer.
+description: Voor deze woning in Lemmer maakten we witte houten binnendeuren met royale glasvlakken. Het maatwerk zorgt voor een lichte verbinding tussen de ruimtes en sluit rustig aan bij het bestaande interieur.
 date: 2024-06-12
 order: 2
 image: ../../assets/images/project-1.webp
-imageAlt: Interieur in Lemmer met zwarte maatwerkkozijnen
+imageAlt: Witte houten dubbele binnendeuren met glas in een woning in Lemmer
 ---
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae justo at nibh pretium tincidunt. Sed euismod, urna in posuere malesuada, sapien erat feugiat purus, vitae facilisis erat lorem sed nulla.
-
-Praesent commodo lacus non turpis luctus, nec interdum neque malesuada. Duis vitae libero vel lorem consequat dignissim. Curabitur euismod, mauris et tincidunt posuere, justo augue feugiat velit, sed tristique massa lectus vitae neque.
-
-Aliquam erat volutpat. Donec malesuada, augue a pellentesque tincidunt, lorem neque sollicitudin libero, sit amet faucibus magna sapien vel erat.

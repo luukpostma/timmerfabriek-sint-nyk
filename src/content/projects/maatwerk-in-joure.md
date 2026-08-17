@@ -1,9 +1,9 @@
 ---
-title: Een mooi stukje maatwerk in Noordwolde
+title: Houten kozijnen en deuren in Joure
 category: Kozijnen
-description: Maatwerk kozijnen en deuren die aansluiten bij de uitstraling en technische eisen van deze woning in Noordwolde.
+description: Voor deze woning in Joure maakten we een brede pui met houten kozijnen, een dubbele deur en grote glasvlakken. Het donkere maatwerk brengt veel daglicht binnen en geeft vrij zicht op de tuin.
 date: 2024-06-12
 order: 1
 image: ../../assets/images/project-2.webp
-imageAlt: Woning in Joure met houten kozijnen en deuren
+imageAlt: Donkere houten kozijnen en dubbele deuren met uitzicht op de tuin in Joure
 ---
