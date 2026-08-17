@@ -268,26 +268,8 @@ button {
 }
 
 /* 9. Typography utility classes */
-.text-navigation {
-  font-family: var(--font-family-ui);
-  font-size: var(--text-navigation-size);
-  line-height: normal;
-}
-
-.text-sub-navigation {
-  font-family: var(--font-family-ui);
-  font-size: var(--text-sub-navigation-size);
-  line-height: var(--text-sub-navigation-line-height);
-}
-
 .text-eyebrow {
   font-family: var(--font-family-body);
   font-size: var(--text-eyebrow-size);
   line-height: var(--text-eyebrow-line-height);
-}
-
-.text-body-small {
-  font-family: var(--font-family-body);
-  font-size: var(--text-body-small-size);
-  line-height: var(--text-body-small-line-height);
 }

@@ -1,7 +1,6 @@
 import type { ImageMetadata } from 'astro';
 import placeholderImage from '../assets/images/place-holder.jpg';
 import schuifpuiImage from '../assets/images/Schuifpui.webp';
-import schuifpuiWhyImage from '../assets/images/Schuifpui-waarom.webp';
 import binnendeurenImage from '../assets/images/Binnendeuren.webp';
 import achterdeurenImage from '../assets/images/Achtedeuren.webp';
 import garagedeurenImage from '../assets/images/Garagedeuren.webp';
@@ -12,7 +11,6 @@ import vastGlasKozijnImage from '../assets/images/Vastglaskozijn.webp';
 import draairaamImage from '../assets/images/Draairaam.webp';
 import deurkozijnenImage from '../assets/images/Deurkozijnen.webp';
 import binnendeurkozijnenImage from '../assets/images/Binnendeurkozijnen.webp';
-import binnendeurkozijnenWhyImage from '../assets/images/Binnenkozijnen-waarom.webp';
 import vouwwandImage from '../assets/images/Vouwwand.webp';
 
 type ChoiceIcon = 'paintbrush' | 'mirror' | 'ruler' | 'grid';
@@ -43,8 +41,6 @@ export interface ProductDetailConfig {
   benefitsHeading: string;
   benefitsIntroduction: string;
   benefits: DetailItem[];
-  benefitsImage: ImageMetadata;
-  benefitsImageAlt: string;
 }
 
 const createChoices = ({
@@ -82,7 +78,6 @@ const createChoices = ({
 
 const images = {
   heroImage: placeholderImage,
-  benefitsImage: placeholderImage,
 };
 
 export const productDetails = {
@@ -112,7 +107,6 @@ export const productDetails = {
       { title: 'Sterke isolatie', description: 'Doordat het kozijn niet hoeft te openen, ontstaat een bijzonder lucht- en kierdichte oplossing.' },
       { title: 'Onderhoudsarm', description: 'Het ontbreken van scharnieren en sluitwerk houdt het gebruik eenvoudig en beperkt het onderhoud.' },
     ],
-    benefitsImageAlt: 'Tijdelijke afbeelding van een vast glas kozijn in een woning',
   },
   draaikiepraam: {
     title: 'Draaikiepraam',
@@ -140,7 +134,6 @@ export const productDetails = {
       { title: 'Comfortabel en veilig', description: 'De kiepstand zorgt voor frisse lucht zonder dat het raam volledig open hoeft te staan.' },
       { title: 'Eenvoudig schoon te maken', description: 'Door het raam volledig naar binnen te draaien zijn glas en kozijn goed bereikbaar voor onderhoud.' },
     ],
-    benefitsImageAlt: 'Tijdelijke afbeelding van een draaikiepraam in een woning',
   },
   draairaam: {
     title: 'Draairaam',
@@ -168,7 +161,6 @@ export const productDetails = {
       { title: 'Praktisch in gebruik', description: 'De eenvoudige bediening maakt dagelijks openen, sluiten en ventileren gemakkelijk.' },
       { title: 'Passend bij iedere stijl', description: 'Profilering, kleur en vlakverdeling worden afgestemd op moderne én klassieke gevels.' },
     ],
-    benefitsImageAlt: 'Tijdelijke afbeelding van een houten draairaam',
   },
   deurkozijn: {
     title: 'Deurkozijn',
@@ -196,7 +188,6 @@ export const productDetails = {
       { title: 'Goede kierdichting', description: 'Nauwkeurige maatvoering helpt tocht, vocht en warmteverlies rondom de deur te beperken.' },
       { title: 'Volledig op maat', description: 'Afmetingen, profilering en details worden afgestemd op de deur en bestaande bouwsituatie.' },
     ],
-    benefitsImageAlt: 'Tijdelijke afbeelding van een houten deurkozijn',
   },
   binnendeurkozijn: {
     title: 'Binnendeurkozijn',
@@ -224,8 +215,6 @@ export const productDetails = {
       { title: 'Veel ontwerpvrijheid', description: 'Kies uit verschillende profielen en kleuren, passend bij een modern of klassiek interieur.' },
       { title: 'Nauwkeurig passend', description: 'Maatwerk voorkomt ongewenste kieren en zorgt dat de binnendeur soepel opent en sluit.' },
     ],
-    benefitsImage: binnendeurkozijnenWhyImage,
-    benefitsImageAlt: 'Houten binnendeurkozijnen in een interieur',
   },
   voordeur: {
     title: 'Voordeur',
@@ -253,7 +242,6 @@ export const productDetails = {
       { title: 'Comfortabel geïsoleerd', description: 'Een passende opbouw en kierdichting helpen warmte binnen en tocht buiten te houden.' },
       { title: 'Veilig uitgevoerd', description: 'Degelijk hang- en sluitwerk beschermt de entree en geeft vertrouwen bij dagelijks gebruik.' },
     ],
-    benefitsImageAlt: 'Tijdelijke afbeelding van een houten voordeur',
   },
   achterdeur: {
     title: 'Achterdeur',
@@ -281,7 +269,6 @@ export const productDetails = {
       { title: 'Licht waar gewenst', description: 'Met een passende glasopening brengt u extra daglicht in donkere achterliggende ruimtes.' },
       { title: 'Duurzaam maatwerk', description: 'Een nauwkeurige passing en degelijke afwerking zorgen voor langdurig prettig gebruik.' },
     ],
-    benefitsImageAlt: 'Tijdelijke afbeelding van een houten achterdeur',
   },
   garagedeur: {
     title: 'Garagedeur',
@@ -309,7 +296,6 @@ export const productDetails = {
       { title: 'Robuuste uitvoering', description: 'De constructie en het beslag zijn berekend op het formaat en regelmatig gebruik van de deuren.' },
       { title: 'Volledig maatwerk', description: 'Ook afwijkende openingen en renovatiesituaties kunnen nauwkeurig worden ingevuld.' },
     ],
-    benefitsImageAlt: 'Tijdelijke afbeelding van houten garagedeuren',
   },
   binnendeur: {
     title: 'Binnendeur',
@@ -337,7 +323,6 @@ export const productDetails = {
       { title: 'Ontworpen voor de ruimte', description: 'Indeling, glas en afwerking kunnen per kamer en functie worden aangepast.' },
       { title: 'Duurzaam te onderhouden', description: 'Een hoogwaardige houten deur kan worden bijgewerkt en blijft daardoor lang mooi.' },
     ],
-    benefitsImageAlt: 'Tijdelijke afbeelding van een houten binnendeur',
   },
   schuifpui: {
     title: 'Schuifpui',
@@ -389,8 +374,6 @@ export const productDetails = {
         description: 'Degelijke rails en passend beslag maken de schuifpui gemakkelijk te openen en betrouwbaar af te sluiten.',
       },
     ],
-    benefitsImage: schuifpuiWhyImage,
-    benefitsImageAlt: 'Houten schuifpui aan een woning',
   },
   beglazing: {
     title: 'Beglazing',
@@ -442,7 +425,6 @@ export const productDetails = {
         description: 'Een passende glasopbouw en zorgvuldige montage beperken energieverlies via ramen en deuren.',
       },
     ],
-    benefitsImageAlt: 'Tijdelijke afbeelding van isolerende beglazing in een houten kozijn',
   },
   vouwwand: {
     title: 'Vouwwand',
@@ -494,6 +476,5 @@ export const productDetails = {
         description: 'Grote glasvlakken brengen veel daglicht binnen, terwijl isolerende beglazing het wooncomfort ondersteunt.',
       },
     ],
-    benefitsImageAlt: 'Tijdelijke afbeelding van een houten vouwwand tussen woning en tuin',
   },
 } satisfies Record<string, ProductDetailConfig>;
