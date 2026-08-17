@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import CategoryHero from '../components/CategoryHero.astro';
+---
+
+<BaseLayout
+  title="Pagina niet gevonden | Timmerfabriek Sint Nyk"
+  description="Deze pagina bestaat niet of is verplaatst. Ga terug naar de homepage of neem contact op met Timmerfabriek Sint Nyk."
+  showFooterCta={false}
+>
+  <main id="main-content" tabindex="-1">
+    <CategoryHero title="Pagina niet gevonden" />
+
+    <section class="not-found" aria-labelledby="not-found-heading">
+      <div class="container not-found__content">
+        <p class="not-found__code" aria-hidden="true">404</p>
+        <h2 id="not-found-heading">Deze pagina kunnen we niet vinden</h2>
+        <p>
+          Mogelijk is het adres niet juist of is de pagina verplaatst. Ga terug
+          naar de homepage of neem contact met ons op als u hulp nodig heeft.
+        </p>
+        <div class="not-found__actions">
+          <Button href="/" arrow>Terug naar home</Button>
+          <a class="not-found__contact-link" href="/contact/">Neem contact op</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding-block: 4rem;
+    background-color: var(--color-white);
+  }
+
+  .not-found__content {
+    display: grid;
+    justify-items: start;
+    max-width: 52rem;
+    gap: 1.5rem;
+  }
+
+  .not-found__code {
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-28);
+    color: var(--color-secondary);
+  }
+
+  .not-found__content > p:not(.not-found__code) {
+    max-width: 42rem;
+  }
+
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .not-found__contact-link {
+    font-family: var(--font-family-ui);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    text-underline-offset: 0.25rem;
+  }
+
+  .not-found__contact-link:hover {
+    color: var(--color-secondary-hover);
+  }
+
+  .not-found__contact-link:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+
+  @media (min-width: 64rem) {
+    .not-found {
+      padding-block: 6rem;
+    }
+  }
+</style>

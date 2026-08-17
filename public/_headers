@@ -5,3 +5,6 @@
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
+
+/_astro/*
+  Cache-Control: public, max-age=31556952, immutable

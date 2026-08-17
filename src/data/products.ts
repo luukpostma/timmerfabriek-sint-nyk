@@ -22,7 +22,8 @@ export const products: ProductCardItem[] = [
   {
     title: 'Kozijnen',
     eyebrow: 'Maatwerk',
-    description: productDescription,
+    description:
+      'Houten kozijnen op maat, van vast glas tot draaikiepramen, gemaakt in onze eigen werkplaats in Sint Nicolaasga.',
     href: '/kozijnen/',
     image: kozijnenImage,
     alt: 'Witte houten kozijnen in de gemetselde gevel van een woning',
@@ -30,8 +31,9 @@ export const products: ProductCardItem[] = [
   },
   {
     title: 'Deuren',
-    eyebrow: 'Stijlvol & modern',
-    description: productDescription,
+    eyebrow: 'Op maat',
+    description:
+      'Houten voor-, achter- en garagedeuren op maat, passend bij de stijl en maatvoering van uw woning.',
     href: '/deuren/',
     image: deurenImage,
     alt: 'Moderne donkerblauwe houten voordeur met zijlichten',
@@ -39,8 +41,9 @@ export const products: ProductCardItem[] = [
   },
   {
     title: 'Schuifpuien',
-    eyebrow: 'Populair',
-    description: productDescription,
+    eyebrow: 'Licht & ruimte',
+    description:
+      'Houten schuifpuien op maat voor een lichte, open verbinding tussen woning en tuin.',
     href: '/schuifpuien/',
     image: schuifpuienImage,
     alt: 'Houten schuifpui tussen een woonkamer en tuin',
@@ -48,8 +51,9 @@ export const products: ProductCardItem[] = [
   },
   {
     title: 'Beglazing',
-    eyebrow: 'HR+++',
-    description: productDescription,
+    eyebrow: 'HR++ & triple glas',
+    description:
+      'Isolerende beglazing met HR++ of triple glas voor bestaande of nieuwe houten kozijnen.',
     href: '/beglazing/',
     image: beglazingImage,
     alt: 'Detail van isolerende beglazing in een wit houten kozijn',
@@ -57,8 +61,8 @@ export const products: ProductCardItem[] = [
   },
   {
     title: 'Vouwwand',
-    eyebrow: 'Flexibel',
-    description: productDescription,
+    eyebrow: 'Breed openen',
+    description: 'Houten vouwwanden op maat om uw gevel in één keer breed te openen.',
     href: '/vouwwanden/',
     image: vouwwandImage,
     alt: 'Glazen vouwwand die een woonruimte met buiten verbindt',

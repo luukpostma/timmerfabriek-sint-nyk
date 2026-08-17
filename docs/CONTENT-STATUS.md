@@ -12,7 +12,7 @@ Use this file as the production ledger. Update it after every completed page.
 
 | URL / page | Primary keyword | Intent | Status | Missing info / notes | Last reviewed |
 |---|---|---|---|---|---|
-| Home | TBD from keyword research | Commercial/local | AUDIT | Lorem ipsum remains; verify visible company claims and contact data | 2026-08-17 |
+| Home | timmerfabriek Friesland | Brand/local commercial | DONE | Homepage afgerond 2026-08-17. Google-beoordelingsblok blijft bewust ongewijzigd staan als placeholder (zie BUSINESS-CONTEXT.md), t/m latere Reviews-integratie. Gedeelde FAQ "regio" is bijgewerkt naar Noord-Nederland-positionering (werkt door op andere pagina's die dezelfde FAQ tonen). | 2026-08-17 |
 | Kozijnen | TBD | TBD | AUDIT | Check against supplied site structure | |
 | Vast glas kozijnen | TBD | TBD | AUDIT | | |
 | Draaikiepramen | TBD | TBD | AUDIT | | |
@@ -38,8 +38,8 @@ Use this file as the production ledger. Update it after every completed page.
 - [ ] Complete `BUSINESS-CONTEXT.md` with owner-verified facts.
 - [ ] Verify all development-site contact details before launch.
 - [ ] Verify product/service list.
-- [ ] Verify service/delivery/installation area.
+- [x] Verify service/delivery/installation area. — confirmed 2026-08-17: primarily Noord-Nederland (Friesland, Groningen, Drenthe, Flevoland), not nationwide; installation possible but not the core focus. See `BUSINESS-CONTEXT.md`.
 - [ ] Decide whether `u` is the final form of address (currently recommended in TOV).
-- [ ] Replace all Lorem ipsum.
-- [ ] Review repeated process copy on homepage.
+- [ ] Replace all Lorem ipsum. — homepage done (2026-08-17); still remaining on `/kozijnen/`, `/deuren/` and other product/category pages.
+- [x] Review repeated process copy on homepage. — resolved 2026-08-17, three unique step descriptions written.
 - [ ] Review every existing claim before treating it as factual.
