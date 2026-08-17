@@ -75,6 +75,16 @@ import Phone from '../assets/icons/phone.svg';
         </div>
       </div>
 
+      <div class="contact-form__captcha">
+        <p>Bevestig dat u geen robot bent <span aria-hidden="true">*</span></p>
+        <div
+          class="h-captcha"
+          data-captcha="true"
+          data-lang="nl"
+          data-size="compact"
+        ></div>
+      </div>
+
       <button class="contact-form__submit" type="submit">
         <span data-submit-label>Versturen</span>
         <ArrowRight aria-hidden="true" />
@@ -89,14 +99,15 @@ import Phone from '../assets/icons/phone.svg';
       ></p>
       <noscript>
         <p class="contact-form__noscript">
-          JavaScript is uitgeschakeld. Het formulier blijft bruikbaar, maar na verzending verlaat
-          u tijdelijk deze website voor de bevestigingspagina van Web3Forms. Uw ingevulde gegevens
-          worden via Web3Forms naar Timmerfabriek Sint Nyk doorgestuurd.
+          JavaScript is nodig om de spamcontrole van dit formulier te laden. Neem telefonisch of
+          per e-mail contact met ons op als u JavaScript niet kunt inschakelen.
         </p>
       </noscript>
     </form>
   </div>
 </section>
+
+<script is:inline src="https://web3forms.com/client/script.js" async defer></script>
 
 <script>
   document.querySelectorAll<HTMLFormElement>('[data-contact-form]').forEach((form) => {
@@ -137,6 +148,16 @@ import Phone from '../assets/icons/phone.svg';
       if (!form.checkValidity()) {
         setStatus('validation', 'Controleer de gemarkeerde velden en vul de verplichte gegevens correct in.');
         form.reportValidity();
+        return;
+      }
+
+      const hCaptchaResponse = form.querySelector<HTMLTextAreaElement>(
+        'textarea[name="h-captcha-response"]',
+      );
+
+      if (!hCaptchaResponse?.value) {
+        setStatus('validation', 'Bevestig dat u geen robot bent voordat u het formulier verstuurt.');
+        form.querySelector<HTMLIFrameElement>('.h-captcha iframe')?.focus();
         return;
       }
 
@@ -199,6 +220,11 @@ import Phone from '../assets/icons/phone.svg';
         form.reset();
         setStatus('success', 'Bedankt! Uw bericht is succesvol verstuurd.');
       } finally {
+        const hCaptchaWindow = window as Window & {
+          hcaptcha?: { reset: () => void };
+        };
+
+        hCaptchaWindow.hcaptcha?.reset();
         isSubmitting = false;
         submitButton.disabled = false;
         submitLabel.textContent = 'Versturen';
@@ -375,6 +401,23 @@ import Phone from '../assets/icons/phone.svg';
   }
 
   .contact-form label span {
+    color: var(--color-secondary);
+  }
+
+  .contact-form__captcha {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .contact-form__captcha p {
+    font-size: var(--text-body-small-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--text-body-small-line-height);
+    color: var(--color-heading);
+  }
+
+  .contact-form__captcha p span {
     color: var(--color-secondary);
   }
 

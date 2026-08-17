@@ -107,11 +107,13 @@ De Web3Forms-access key is volgens Web3Forms een publieke formulieridentificatie
 API-sleutel. De sleutel mag daarom in de client-side formuliercode staan. Andere API-sleutels,
 wachtwoorden of secrets mogen nooit aan browsercode of de repository worden toegevoegd.
 
-Het formulier gebruikt Web3Forms' verborgen `botcheck`-veld. Voeg geen CAPTCHA, analytics of cookies
-toe zonder een afzonderlijke product- en privacybeslissing. Stel daarnaast in het Web3Forms-dashboard
-voor productie de betaalde domeinrestrictie in op `timmerfabrieksintnyk.nl` en, wanneer die host wordt
-gebruikt, `www.timmerfabrieksintnyk.nl`. Deze instelling kan niet in de repository worden afgedwongen.
-Activeer haar pas nadat lokaal testen is afgerond, omdat Web3Forms lokale inzendingen daarna blokkeert.
+Het formulier gebruikt Web3Forms' verborgen `botcheck`-veld en de hCaptcha-integratie. hCaptcha moet
+ook in het Web3Forms-dashboard als verplichte CAPTCHA-provider zijn geactiveerd; alleen de widget in de
+website plaatsen voorkomt niet dat directe requests zonder CAPTCHA-token worden verstuurd. Stel voor
+productie daarnaast, wanneer het gebruikte plan dit ondersteunt, de domeinrestrictie in op
+`timmerfabrieksintnyk.nl` en eventueel `www.timmerfabrieksintnyk.nl`. Deze instellingen kunnen niet in
+de repository worden afgedwongen. Activeer domeinrestrictie pas nadat lokaal testen is afgerond, omdat
+Web3Forms lokale inzendingen daarna blokkeert.
 
 Productdetailroutes zijn bewust dun: ze selecteren een item uit `src/data/productDetails.ts` en geven dit door aan `ProductDetailPage.astro`. Dit gedeelde component bouwt de hero, keuzemogelijkheden, voordelen en FAQ op. Pas productinhoud en productafbeeldingen daarom bij voorkeur in de centrale data aan.
 
