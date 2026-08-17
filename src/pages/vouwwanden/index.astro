@@ -6,7 +6,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const product = productDetails.vouwwand;
 ---
 
-<BaseLayout title={`${product.title} | Timmerfabriek Sint Nyk`}>
+<BaseLayout
+  title="Houten vouwwand op maat | Timmerfabriek Sint Nyk"
+  description="Een houten vouwwand op maat, zelf gemaakt in onze werkplaats in Sint Nicolaasga. De panelen vouwen opzij voor een brede opening naar tuin of terras."
+>
   <main id="main-content" tabindex="-1">
     <ProductDetailPage {...product} />
   </main>

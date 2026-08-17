@@ -6,7 +6,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const product = productDetails.schuifpui;
 ---
 
-<BaseLayout title={`${product.title} | Timmerfabriek Sint Nyk`}>
+<BaseLayout
+  title="Houten schuifpui op maat | Timmerfabriek Sint Nyk"
+  description="Een houten schuifpui op maat, verkrijgbaar in 2-, 3- of 4-delige uitvoering. Gemaakt in onze eigen werkplaats in Sint Nicolaasga."
+>
   <main id="main-content" tabindex="-1">
     <ProductDetailPage {...product} />
   </main>

@@ -12,7 +12,7 @@ const workflowSteps = [
   {
     title: 'Aanvraag & tekeningen',
     description:
-      'U levert de tekeningen, maatvoering en projectspecificaties aan. Wij bekijken wat er nodig is voor het project.',
+      'U levert de bouwtekeningen en projectspecificaties aan. Op basis daarvan beoordelen we het project, stemmen we de uitvoering af en werken we het maatwerk technisch uit voor productie.',
     items: [
       'Tekeningen & maten beoordelen',
       'Wensen en uitvoering bespreken',
@@ -32,45 +32,45 @@ const workflowSteps = [
   {
     title: 'Productie & levering',
     description:
-      'Na akkoord gaan we aan de slag en produceren we het maatwerk volgens de gemaakte afspraken.',
+      'Na akkoord produceren we het maatwerk zelf in onze werkplaats in Sint Nicolaasga, volgens de gemaakte afspraken.',
     items: [
       'Maatwerk zorgvuldig produceren',
       'Product en afwerking controleren',
-      'Volgens planning leveren op de bouw',
+      'Levering volgens de afgesproken planning',
     ],
   },
 ];
 
 const contractorFaqs = [
   {
-    question: 'Leveren jullie door heel Nederland?',
+    question: 'In welke regio leveren jullie voor aannemersprojecten?',
     answer:
-      'Ja. Vanuit onze werkplaats in Sint Nicolaasga leveren we maatwerkprojecten door heel Nederland. Planning, transport en het gewenste aflevermoment stemmen we vooraf met u af.',
+      'We richten ons vooral op Noord-Nederland: Friesland, Groningen, Drenthe en Flevoland. Projecten daarbuiten bespreken we graag, maar dit is niet onze actieve regio.',
   },
   {
     question: 'Kunnen jullie vanaf bouwtekeningen produceren?',
     answer:
-      'Ja. We kunnen bouwtekeningen, maatvoering en projectspecificaties vertalen naar productietekeningen en maakbaar maatwerk. Technische details stemmen we voor productie met u af.',
+      'Ja. Vaak ontvangen we eerst een voorlopige tekening om het project te beoordelen en de uitvoering af te stemmen. Met de definitieve bouwtekening werken we het houten maatwerk vervolgens technisch uit en maken we het productiegereed.',
   },
   {
     question: 'Kunnen jullie grotere aantallen leveren?',
     answer:
-      'Ja. Naast enkelstuks produceren we ook grotere en seriematige aantallen. We bespreken vroegtijdig de fasering, capaciteit en levermomenten die bij de bouwplanning passen.',
+      'Ja. Naast enkelstuks produceren we ook grotere en seriematige aantallen. We bespreken vroegtijdig de fasering en levermomenten die bij de bouwplanning passen.',
   },
   {
     question: 'Welke beglazing kunnen jullie leveren?',
     answer:
-      'We leveren onder andere HR++ en Triple HR+++ glas. Per project adviseren we welke glasopbouw past bij de kozijnen, isolatie-eisen en gewenste prestaties.',
+      'We leveren HR++ en triple glas, op maat besteld bij onze glasleverancier en verwerkt in uw kozijnen, deuren of schuifpuien. Per project adviseren we welke glassoort past bij uw situatie.',
   },
   {
     question: 'Kunnen kozijnen afgewerkt worden geleverd?',
     answer:
-      'Ja. Kozijnen kunnen afhankelijk van de projectspecificatie behandeld, beglaasd en met passend beslag worden geleverd. De gewenste afwerking leggen we vast in de offerte.',
+      'Ja. Afhankelijk van de projectspecificatie leveren we kozijnen behandeld, beglaasd en voorzien van passend beslag. De gewenste uitvoering leggen we vast in de offerte.',
   },
   {
-    question: 'Wat is jullie gemiddelde levertijd?',
+    question: 'Wat is de levertijd voor een aannemersproject?',
     answer:
-      'De levertijd hangt af van omvang, detaillering, materiaalkeuzes en de actuele productieplanning. Na technische afstemming ontvangt u een heldere planning met afgesproken levermomenten.',
+      'De levertijd hangt af van de omvang, uitvoering, materiaalkeuzes en de actuele productieplanning. Na technische afstemming ontvangt u een planning met afgesproken levermomenten.',
   },
   {
     question: 'Werken jullie alleen voor aannemers of ook voor particulieren?',
@@ -81,15 +81,15 @@ const contractorFaqs = [
 ---
 
 <BaseLayout
-  title="Voor aannemers | Timmerfabriek Sint Nyk"
-  description="Houten maatwerk voor aannemers, van technische afstemming en productie tot levering door heel Nederland."
+  title="Houten maatwerk voor aannemers | Timmerfabriek Sint Nyk"
+  description="Timmerfabriek Sint Nyk maakt houten kozijnen, deuren en schuifpuien voor aannemers, van enkelstuks tot seriematig maatwerk. Eigen productie in Sint Nicolaasga."
   footerCtaHeading="Een project om te bespreken?"
   footerCtaButtonLabel="Bespreek uw project"
 >
   <main id="main-content" tabindex="-1">
     <ProductDetailHero
       title="Maatwerk voor aannemers"
-      description="Voor nieuwbouw, renovatie en seriematige projecten produceren we houten kozijnen, deuren en puien op maat. Met korte lijnen, technische afstemming en levering volgens planning."
+      description="Voor nieuwbouw, renovatie en seriematige projecten maken we houten kozijnen, deuren en puien op maat in onze eigen werkplaats in Sint Nicolaasga. Van enkelstuks tot grotere aantallen, met technische afstemming en levering volgens een vooraf afgesproken planning."
       breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Voor aannemers' }]}
       image={contractorHeroImage}
       imageAlt="Houten maatwerkproductie voor aannemers"
@@ -105,7 +105,7 @@ const contractorFaqs = [
       introduction="Een helder proces, korte lijnen en duidelijke afspraken. Van tekeningen en technische afstemming tot productie en levering volgens planning."
       steps={workflowSteps}
     />
-    <AboutSection buttonLabel="Meer over onze timmerfabriek" />
+    <AboutSection />
     <FaqSection
       heading="Vragen voor aannemers"
       introduction="Bekijk de antwoorden op vragen die we regelmatig krijgen over maatwerk, levering en planning."

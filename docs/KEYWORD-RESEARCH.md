@@ -432,7 +432,7 @@ Bouw lokale relevantie vooral op met:
   `/beglazing/`                   beglazing houten        HR++ glas houten
                                   kozijnen                kozijnen
 
-  `/vouwwanden/`                  houten vouwwand         glazen vouwwand
+  `/vouwwanden/`                  houten vouwwand         ***
 
   `/voor-aannemers/`              houten kozijnen voor    timmerfabriek aannemers
                                   aannemers               
@@ -456,6 +456,14 @@ totdat dit alsnog is uitgezocht.
 *Correctie 2026-08-17: de URL voor de vast-glas-kozijnpagina was hierboven
 eerder foutief genoteerd als `/kozijnen/vast-glas/`. De daadwerkelijke route
 in de code is `/kozijnen/vast-glas-kozijnen/`; de tabel is hierop aangepast.
+
+***`/vouwwanden/`: "glazen vouwwand" is uit dit oorspronkelijke onderzoek
+verwijderd als actief secundair target-keyword (2026-08-17). Ons product is
+een houten vouwwand met beglazing; "glazen vouwwand" kan een andere
+productcategorie en zoekintentie vertegenwoordigen (een overwegend glazen
+systeem met minimale profielen) en wordt daarom bewust niet getarget. Dit is
+geen nieuw keywordonderzoek, alleen een bewuste keuze om deze term niet te
+gebruiken.
 
 ------------------------------------------------------------------------
 

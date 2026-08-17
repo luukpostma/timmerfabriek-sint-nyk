@@ -6,7 +6,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const product = productDetails.beglazing;
 ---
 
-<BaseLayout title={`${product.title} | Timmerfabriek Sint Nyk`}>
+<BaseLayout
+  title="Beglazing met HR++ of triple glas | Timmerfabriek Sint Nyk"
+  description="Nieuwe beglazing met HR++ of triple glas, voor nieuwe kozijnen, deuren en schuifpuien of voor uw bestaande houten kozijn."
+>
   <main id="main-content" tabindex="-1">
     <ProductDetailPage {...product} />
   </main>

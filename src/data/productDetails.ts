@@ -406,7 +406,7 @@ export const productDetails = {
   },
   schuifpui: {
     title: 'Schuifpui',
-    description: 'Verbind binnen en buiten met een houten schuifpui die veel daglicht binnenlaat en soepel opent naar uw terras of tuin.',
+    description: 'Een houten schuifpui op maat verbindt uw woning met de tuin of het terras, met grote glasvlakken voor veel daglicht.',
     breadcrumbs: [
       { label: 'Home', href: '/' },
       { label: 'Schuifpuien' },
@@ -415,7 +415,7 @@ export const productDetails = {
     heroImage: schuifpuiImage,
     heroImageAlt: 'Witte schuifpui tussen een lichte woonkamer en de tuin',
     choicesHeading: 'Afgestemd op uw woning',
-    choicesIntroduction: 'Stel uw schuifpui samen op basis van uitstraling, isolatie, afmetingen en dagelijks gebruik.',
+    choicesIntroduction: 'Stel uw schuifpui samen op basis van afwerking, beglazing, uitvoering en bediening.',
     choices: [
       {
         title: 'Kleur en afwerking',
@@ -424,40 +424,40 @@ export const productDetails = {
       },
       {
         title: 'Beglazing',
-        description: 'Combineer de schuifpui met HR++ of triple glas voor veel daglicht en een goede isolatiewaarde.',
+        description: 'Combineer de schuifpui met HR++ of triple glas voor veel daglicht.',
         icon: 'mirror',
       },
       {
-        title: 'Maatvoering',
-        description: 'Kies een 2-delige, 3-delige of 4-delige schuifpui, exact op maat gemaakt voor de beschikbare gevelopening.',
+        title: 'Uitvoering',
+        description: 'Kies een 2-, 3- of 4-delige schuifpui, afgestemd op de beschikbare gevelopening, de gewenste vlakverdeling en de gewenste doorgang.',
         icon: 'ruler',
       },
       {
         title: 'Beslag',
-        description: 'Stem rails, handgrepen en veilig sluitwerk af op het formaat en de gewenste bediening van de schuifpui.',
+        description: 'Stem rails, handgrepen en sluitwerk af op het formaat en de gewenste bediening van de schuifpui.',
         icon: 'grid',
       },
     ],
     benefitsHeading: 'Waarom een houten schuifpui?',
-    benefitsIntroduction: 'Een houten schuifpui brengt licht en ruimte in huis en vormt een comfortabele overgang tussen uw woning en buitenruimte.',
+    benefitsIntroduction: 'Een houten schuifpui brengt licht en ruimte in huis en vormt een overgang tussen uw woning en buitenruimte.',
     benefits: [
       {
         title: '2-, 3- of 4-delige uitvoering',
-        description: 'De vlakverdeling en het aantal delen worden afgestemd op de breedte van de gevel en de gewenste doorgang.',
+        description: 'Afhankelijk van de gevelopening en gewenste doorgang maken we de schuifpui in een 2-, 3- of 4-delige uitvoering.',
       },
       {
         title: 'Veel licht en ruimte',
         description: 'Grote glasvlakken zorgen voor een open uitstraling en halen de tuin zichtbaar naar binnen.',
       },
       {
-        title: 'Soepel in gebruik',
-        description: 'Degelijke rails en passend beslag maken de schuifpui gemakkelijk te openen en betrouwbaar af te sluiten.',
+        title: 'Praktisch in gebruik',
+        description: 'Rails en beslag zijn afgestemd op het formaat en de manier waarop u de schuifpui wilt bedienen.',
       },
     ],
   },
   beglazing: {
     title: 'Beglazing',
-    description: 'Verbeter het comfort en de energieprestatie van uw woning met isolerende beglazing die passend wordt geleverd en geplaatst.',
+    description: 'Wij leveren beglazing met HR++ of triple glas, zowel voor nieuwe kozijnen, deuren en schuifpuien als voor uw bestaande houten kozijn.',
     breadcrumbs: [
       { label: 'Home', href: '/' },
       { label: 'Beglazing' },
@@ -466,49 +466,49 @@ export const productDetails = {
     heroImage: beglazingImage,
     heroImageAlt: 'Detail van isolerende beglazing in een wit houten kozijn',
     choicesHeading: 'Afgestemd op uw kozijnen',
-    choicesIntroduction: 'Kies de glassoort en uitvoering die passen bij uw kozijnen, comfortwensen en gewenste isolatiewaarde.',
+    choicesIntroduction: 'Kies de glassoort die past bij uw kozijn en situatie, voor nieuwe kozijnen of ter vervanging in een bestaand kozijn.',
     choices: [
       {
-        title: 'Kleur en afwerking',
-        description: 'Stem glas, afstandhouders en afwerking zorgvuldig af op de uitstraling van uw kozijnen en gevel.',
-        icon: 'paintbrush',
-      },
-      {
-        title: 'Beglazing',
-        description: 'Kies HR++ glas of Triple HR+++ glas op basis van de gewenste isolatie, het kozijn en uw woning.',
+        title: 'HR++ of triple glas',
+        description: 'We leveren beglazing met HR++ of triple glas, passend bij uw kozijn en de situatie van het project.',
         icon: 'mirror',
       },
       {
+        title: 'Nieuw of bestaand kozijn',
+        description: 'Nieuwe beglazing is ook los te bestellen voor uw bestaande houten kozijn, of mee te nemen bij nieuwe kozijnen, deuren of een schuifpui.',
+        icon: 'grid',
+      },
+      {
         title: 'Maatvoering',
-        description: 'Ieder glaspaneel wordt nauwkeurig ingemeten en passend gemaakt voor bestaande of nieuwe kozijnen.',
+        description: 'We meten nauwkeurig in en bestellen de beglazing op maat bij onze glasleverancier, passend voor uw bestaande of nieuwe kozijn.',
         icon: 'ruler',
       },
       {
-        title: 'Beslag',
-        description: 'Glaslatten, afdichtingen en aansluitdetails worden afgestemd op het kozijn en de gekozen glassoort.',
-        icon: 'grid',
+        title: 'Afwerking en aansluiting',
+        description: 'Glaslatten en aansluitdetails maken we passend bij het kozijn, voor een nette afwerking.',
+        icon: 'paintbrush',
       },
     ],
-    benefitsHeading: 'Waarom isolerende beglazing?',
-    benefitsIntroduction: 'Moderne beglazing verhoogt het wooncomfort, beperkt warmteverlies en maakt bestaande of nieuwe kozijnen energiezuiniger.',
+    benefitsHeading: 'Waarom nieuwe beglazing?',
+    benefitsIntroduction: 'Nieuwe beglazing is te kiezen bij nieuw houten maatwerk, of los voor uw bestaande kozijn.',
     benefits: [
       {
-        title: 'HR++ of Triple HR+++',
-        description: 'Kies de isolatiewaarde die past bij uw kozijnen, renovatieplannen en gewenste energieprestatie.',
+        title: 'Advies bij de keuze',
+        description: 'We denken met u mee welke glassoort past bij uw kozijn en project.',
       },
       {
-        title: 'Meer wooncomfort',
-        description: 'Isolerend glas vermindert koudeval bij ramen en helpt de binnentemperatuur gelijkmatiger te houden.',
+        title: 'Zonder nieuw kozijn',
+        description: 'U hoeft niet meteen een nieuw kozijn te bestellen om van nieuwe beglazing te profiteren.',
       },
       {
-        title: 'Minder warmteverlies',
-        description: 'Een passende glasopbouw en zorgvuldige montage beperken energieverlies via ramen en deuren.',
+        title: 'Eén aanspreekpunt',
+        description: 'U regelt de beglazing via ons: wij bestellen op maat bij onze glasleverancier en zorgen voor een goede aansluiting op uw kozijn.',
       },
     ],
   },
   vouwwand: {
     title: 'Vouwwand',
-    description: 'Open uw gevel vrijwel volledig met een houten vouwwand die woonruimte, terras en tuin flexibel met elkaar verbindt.',
+    description: 'Een houten vouwwand maken we zelf op maat in onze werkplaats, voor een brede opening tussen uw woonruimte en het terras of de tuin.',
     breadcrumbs: [
       { label: 'Home', href: '/' },
       { label: 'Vouwwanden' },
@@ -517,43 +517,43 @@ export const productDetails = {
     heroImage: vouwwandImage,
     heroImageAlt: 'Houten vouwwand die de woonruimte met de tuin verbindt',
     choicesHeading: 'Afgestemd op uw woning',
-    choicesIntroduction: 'Stel uw vouwwand samen op basis van paneelindeling, uitstraling, isolatie en gewenste openingsrichting.',
+    choicesIntroduction: 'Stel uw vouwwand samen op basis van afwerking, beglazing, paneelindeling en bediening.',
     choices: [
       {
         title: 'Kleur en afwerking',
-        description: 'Kies een transparante of dekkende afwerking die aansluit op uw gevel, interieur en overige kozijnen.',
+        description: 'Kies een transparante of dekkende afwerking die wij zelf spuiten, passend bij uw gevel en interieur.',
         icon: 'paintbrush',
       },
       {
         title: 'Beglazing',
-        description: 'Combineer de vouwwand met HR++ of triple glas voor veel daglicht en een comfortabele isolatiewaarde.',
+        description: 'Combineer de vouwwand met HR++ of triple glas, op maat besteld bij onze glasleverancier.',
         icon: 'mirror',
       },
       {
         title: 'Maatvoering',
-        description: 'Aantal panelen, paneelbreedtes en openingsrichting worden exact afgestemd op uw gevelopening en gebruik.',
+        description: 'Het aantal panelen en de indeling stemmen we af op de gevelopening en het gewenste gebruik. Een van de delen kan worden uitgevoerd als loopdeur, zodat u niet steeds de volledige vouwwand hoeft te openen.',
         icon: 'ruler',
       },
       {
         title: 'Beslag',
-        description: 'Kies hoogwaardige rails, scharnieren, handgrepen en sluitwerk voor een soepele en veilige bediening.',
+        description: 'Rails, scharnieren, handgrepen en sluitwerk monteren we zelf, passend bij het formaat en de bediening van uw vouwwand.',
         icon: 'grid',
       },
     ],
     benefitsHeading: 'Waarom een houten vouwwand?',
-    benefitsIntroduction: 'Een houten vouwwand biedt maximale flexibiliteit: gesloten profiteert u van licht en uitzicht, geopend ontstaat een brede verbinding met buiten.',
+    benefitsIntroduction: 'Een houten vouwwand combineert veel glas met een brede, flexibele opening naar buiten.',
     benefits: [
       {
-        title: 'Brede vrije opening',
-        description: 'De panelen vouwen compact opzij, waardoor een groot deel van de gevel volledig kan worden geopend.',
+        title: 'Brede, vrije opening',
+        description: 'De panelen vouwen compact opzij, waardoor een groot deel van de gevelopening vrij komt.',
       },
       {
         title: 'Flexibele paneelindeling',
-        description: 'Het aantal panelen en een eventuele loopdeur worden afgestemd op de ruimte en uw dagelijkse gebruik.',
+        description: 'Het aantal panelen wordt afgestemd op de ruimte en het gewenste gebruik.',
       },
       {
-        title: 'Licht en comfortabel',
-        description: 'Grote glasvlakken brengen veel daglicht binnen, terwijl isolerende beglazing het wooncomfort ondersteunt.',
+        title: 'Veel glas, brede verbinding',
+        description: 'Gesloten zorgt de vouwwand voor veel daglicht, geopend ontstaat een brede verbinding met terras of tuin.',
       },
     ],
   },

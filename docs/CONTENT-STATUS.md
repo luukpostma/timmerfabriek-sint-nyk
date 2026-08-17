@@ -24,12 +24,12 @@ Use this file as the production ledger. Update it after every completed page.
 | Achterdeuren | houten achterdeur op maat | Product/commercial | DONE | Afgerond 2026-08-17. Onbevestigde isolatie/veiligheidsclaims verwijderd; focus op praktisch dagelijks gebruik. | 2026-08-17 |
 | Garagedeuren | houten garagedeuren | Product/commercial | DONE | Afgerond 2026-08-17. Onbevestigde "robuust/veilig"-claims afgezwakt naar neutrale mechanische omschrijving. | 2026-08-17 |
 | Binnendeuren | houten binnendeur op maat (afgeleid, niet expliciet in KEYWORD-RESEARCH.md, zie eindrapport) | Product/commercial | DONE | Afgerond 2026-08-17. Duidelijk onderscheiden van buitendeuren (interieurfocus); "hoogwaardige"-claim verwijderd. | 2026-08-17 |
-| Schuifpuien | TBD | TBD | AUDIT | | |
-| Beglazing | TBD | TBD | AUDIT | | |
-| Vouwwanden | TBD | TBD | AUDIT | | |
+| Schuifpuien | houten schuifpui op maat | Product/commercial | DONE | Afgerond 2026-08-17. 2-, 3- en 4-delige uitvoering behandeld bij "Uitvoering" (keuzes) en in de voordelensectie, met verschillende formulering. Onbevestigde isolatie-/veiligheidsclaims verwijderd ("goede isolatiewaarde", "veilig sluitwerk", "betrouwbaar af te sluiten"). Geen aparte pagina's per uitvoering gemaakt. | 2026-08-17 |
+| Beglazing | beglazing houten kozijnen | Product/commercial (zelfstandig) | DONE | Afgerond 2026-08-17. Nieuw bevestigd: beglazing ook los te bestellen voor bestaande kozijnen (zie BUSINESS-CONTEXT.md), nu duidelijk verwerkt in hero/choice/benefit. "Triple HR+++" vervangen door consistent "triple glas". Alle comfort-/energie-/isolatiewaarde-claims verwijderd wegens onvoldoende onderbouwing. | 2026-08-17 |
+| Vouwwanden | houten vouwwand | Product/commercial | DONE | Afgerond 2026-08-17. Eigen productie (incl. afwerken/spuiten en beslag monteren) nu correct en bevestigd verwerkt; glas-niet-zelf-geproduceerd-onderscheid consistent met `/beglazing/`. "Eventuele loopdeur" verwijderd (niet bevestigd, zie BUSINESS-CONTEXT.md). Diverse onbevestigde kwaliteitsclaims (hoogwaardig/soepel/veilig/maximale flexibiliteit) verwijderd. | 2026-08-17 |
 | Projecten | TBD | TBD | AUDIT | Real project facts needed | |
-| Over ons | TBD | Brand/trust | AUDIT | Company history/team facts needed | |
-| Voor aannemers | TBD | B2B commercial | AUDIT | Contractor workflow/capabilities need verification | |
+| Over ons | Timmerfabriek Sint Nyk (brand/trust, geen productkeyword getarget) | Brand/trust | DONE | Afgerond 2026-08-17. Lorem ipsum in hero, highlights en verhaal-sectie vervangen. VDW Kozijnen-relatie één keer feitelijk uitgelegd (handelsnaam binnen dezelfde onderneming); geen link toegevoegd, geen bevestigde URL beschikbaar. Ruim 20 jaar vakervaring correct losgekoppeld van bedrijfsleeftijd (handelsnaam sinds februari 2026). Geen persoonlijke namen gebruikt. Gedeelde aannemerssectie en FAQ bewust ongewijzigd. | 2026-08-17 |
+| Voor aannemers | houten kozijnen voor aannemers | B2B commercial | DONE | Afgerond 2026-08-17. Regio-FAQ herschreven (heel Nederland → Noord-Nederland). Bouwtekeningen-FAQ afgezwakt (geen engineering-/productietekeningclaim meer, "can we work from construction drawings" staat nog als TO CONFIRM in BUSINESS-CONTEXT.md). "Triple HR+++" vervangen door "triple glas". Eigen productie expliciet in hero en werkwijze-stap 3. Over ons-sectie nu volledig identiek aan homepage (buttonLabel-override verwijderd). Hero-CTA "Bespreek uw project" bewust behouden (TOV-goedgekeurde variant, zie eindrapport). | 2026-08-17 |
 | Contact | TBD | Local/navigational | AUDIT | Verify all NAP/contact information | |
 
 ## Global open issues
@@ -40,6 +40,6 @@ Use this file as the production ledger. Update it after every completed page.
 - [ ] Verify product/service list.
 - [x] Verify service/delivery/installation area. — confirmed 2026-08-17: primarily Noord-Nederland (Friesland, Groningen, Drenthe, Flevoland), not nationwide; installation possible but not the core focus. See `BUSINESS-CONTEXT.md`.
 - [ ] Decide whether `u` is the final form of address (currently recommended in TOV).
-- [ ] Replace all Lorem ipsum. — done on homepage, `/kozijnen/`, alle vijf kozijn-detailpagina's, `/deuren/` en alle vier deuren-detailpagina's (2026-08-17); still remaining on `/schuifpuien/`, `/beglazing/`, `/vouwwanden/` and other product/category pages.
+- [x] Replace all Lorem ipsum. — done on homepage, `/kozijnen/`, alle vijf kozijn-detailpagina's, `/deuren/`, alle vier deuren-detailpagina's, `/schuifpuien/`, `/beglazing/` en `/vouwwanden/` (2026-08-17). Remaining product/category pages: `/voor-aannemers/`, projecten, over ons, contact — nog niet in deze contentronde behandeld.
 - [x] Review repeated process copy on homepage. — resolved 2026-08-17, three unique step descriptions written.
 - [ ] Review every existing claim before treating it as factual.
