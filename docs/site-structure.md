@@ -227,10 +227,10 @@ Projectdetails worden datagedreven opgebouwd via `/projecten/[id]/`:
 
 **Huidige projectpagina's:**
 
-- **Een mooi stukje maatwerk in Noordwolde** — `/projecten/maatwerk-in-joure/`; categorie Kozijnen. De omschrijving noemt kozijnen en deuren voor een woning in Joure. De plaatsnamen in titel, URL en omschrijving zijn dus momenteel niet consistent. Het projectverhaal is lorem ipsum.
-- **Dubbele binnendeuren in Heerenveen** — `/projecten/kozijnen-verbouwing-lemmer/`; categorie Beglazing. De omschrijving noemt houten maatwerkkozijnen en beglazing voor een verbouwing in Lemmer. Titel, URL, categorie en omschrijving zijn momenteel niet consistent. Het projectverhaal is lorem ipsum.
+- **Houten gevelpui met dubbele deuren in Joure** — `/projecten/houten-gevelpui-joure/`; categorie Kozijnen.
+- **Dubbele binnendeuren met glas in Lemmer** — `/projecten/dubbele-binnendeuren-met-glas-lemmer/`; categorie Deuren.
 
-Deze twee projecten en hun afzonderlijke identiteit moeten blijven bestaan; inhoudelijke inconsistenties moeten bij de latere tekstfase eerst worden opgehelderd, niet stilzwijgend worden ingevuld.
+Deze twee projecten en hun afzonderlijke identiteit blijven behouden. Bestandsnaam, URL, titel, categorie en omschrijving sluiten aan op het zichtbare maatwerk in de projectfoto's.
 
 ## Informatieve pagina's
 
