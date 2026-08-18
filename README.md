@@ -1,145 +1,149 @@
 # Timmerfabriek Sint Nyk
 
-Responsive website voor Timmerfabriek Sint Nyk, stapsgewijs opgebouwd vanuit een bestaand Figma-ontwerp. De website gebruikt statische Astro-output en bestaat uit herbruikbare Astro-secties met expliciete routes voor categorieën en productdetails.
+Productiewebsite voor Timmerfabriek Sint Nyk. De site is gebouwd met Astro en wordt volledig statisch gegenereerd voor deployment via Cloudflare Workers Static Assets. De interface bestaat uit herbruikbare Astro-componenten, plain CSS en alleen vanilla JavaScript voor interactief gedrag.
 
-## Tech stack
+## Vereisten
 
-- [Astro](https://astro.build/)
-- Semantische HTML
-- Plain CSS
-- Vanilla JavaScript
-- DM Sans en Space Grotesk via Fontsource
-- Astro Content Collections voor projecten en veelgestelde vragen
+- Node.js 24.x
+- npm 11.x
 
-Het project gebruikt geen CSS-framework, JavaScript-framework of UI-library.
+De ondersteunde versies staan ook in `package.json` onder `engines`.
 
 ## Lokaal starten
 
-Installeer eerst de dependencies:
-
 ```sh
-npm install
-```
-
-Start vervolgens de lokale ontwikkelserver:
-
-```sh
+npm ci
 npm run dev
 ```
 
-Open daarna de URL die Astro in de terminal toont, standaard `http://localhost:4321`.
+Open vervolgens de URL die Astro toont, standaard `http://localhost:4321`.
 
 ## Beschikbare scripts
 
 | Commando | Omschrijving |
 | --- | --- |
-| `npm run dev` | Start de lokale ontwikkelserver |
-| `npm run build` | Leegt `dist/` en maakt een productiebuild |
-| `npm run validate:csp` | Controleert de CSP-hashes van de productiebuild |
-| `npm run validate` | Controleert Astro, bouwt en valideert de CSP |
-| `npm run deploy` | Valideert, bouwt en deployt via Wrangler |
-| `npm run preview` | Toont de productiebuild lokaal |
+| `npm run dev` | Start de lokale Astro-ontwikkelserver |
+| `npm run check` | Voert Astro- en TypeScript-controles uit |
+| `npm run clean` | Verwijdert de gegenereerde map `dist/` |
+| `npm run build` | Leegt `dist/` en maakt de statische productiebuild |
+| `npm run validate:csp` | Controleert de productiebuild tegen de CSP in `public/_headers` |
+| `npm run validate` | Voert `check`, `build` en `validate:csp` achter elkaar uit |
+| `npm run preview` | Serveert de productiebuild lokaal |
+| `npm run deploy` | Deployt met Wrangler; de Wrangler-configuratie voert eerst `npm run validate` uit |
 
-## Deployment
-
-De site wordt als statische website via Cloudflare Workers gedeployed. `wrangler.jsonc` wijst Cloudflare naar de gegenereerde map `dist/`.
-
-Deploy command:
+Voer voor het opleveren van codewijzigingen bij voorkeur de volledige validatie uit:
 
 ```sh
-npm run deploy
+npm run validate
 ```
 
-Wrangler voert door de buildconfiguratie in `wrangler.jsonc` vóór iedere deploy automatisch
-`npm run validate` uit. Daardoor stopt een deploy wanneer de Astro-controle of productiebuild faalt,
-ook wanneer `wrangler deploy` rechtstreeks wordt uitgevoerd. Commit of deploy configuratiewijzigingen
-alleen bewust; `dist/` zelf hoort niet in Git.
+## Tech stack
 
-De beveiligingsheaders voor Cloudflare Workers Static Assets staan in `public/_headers` en worden
-tijdens de Astro-build naar `dist/_headers` gekopieerd. De CSP staat alleen lokale fonts en assets toe
-en beperkt formulierverkeer tot de Web3Forms-API. Astro neemt enkele scripts en stijlelementen inline
-in de statische HTML op; die zijn uitsluitend met expliciete SHA-256-hashes toegestaan. Inline
-`script`- en `style`-attributen blijven geblokkeerd. `npm run validate:csp` controleert na iedere
-productiebuild automatisch of alle benodigde hashes in `_headers` staan.
+- Astro 7 met statische output en strikte TypeScript-configuratie
+- semantische HTML en plain CSS
+- vanilla JavaScript voor navigatie, FAQ en formuliergedrag
+- DM Sans en Space Grotesk via Fontsource
+- Astro Content Collections voor projecten en FAQ-items
+- `@astrojs/sitemap` voor de sitemap
+- Cloudflare Workers Static Assets via Wrangler
+
+Er wordt geen CSS-framework, client-side JavaScript-framework of UI-library gebruikt.
 
 ## Projectstructuur
 
 ```text
-src/
-├── assets/           Afbeeldingen, logo en SVG-iconen
-├── components/       Astro-componenten en paginasecties
-├── content/
-│   ├── faqs/         Veelgestelde vragen in Markdown
-│   └── projects/     Projecten in Markdown
-├── data/             Navigatie- en productdata
-├── layouts/          Globale documentstructuur
-├── pages/            Astro-routes
-├── styles/           Design tokens en globale styles
-└── content.config.ts Schema's voor de Content Collections
+.
+├── docs/                   Bedrijfs-, content-, SEO- en ontwerpdocumentatie
+├── public/                 Robotsbestand en Cloudflare-headers
+├── scripts/                Buildvalidatie, waaronder de CSP-controle
+├── src/
+│   ├── assets/             Lokale afbeeldingen, het logo en SVG-iconen
+│   ├── components/         Herbruikbare Astro-componenten en paginasecties
+│   ├── content/
+│   │   ├── faqs/           Gedeelde FAQ-items in Markdown
+│   │   └── projects/       Projecten in Markdown
+│   ├── data/               Navigatie- en productdata
+│   ├── layouts/            Globale documentstructuur
+│   ├── pages/              Bestandsgebaseerde routes
+│   ├── styles/             Design tokens en globale styles
+│   └── content.config.ts   Schema's voor de Content Collections
+├── astro.config.mjs        Site-URL, trailing slashes en sitemap
+└── wrangler.jsonc          Statische Cloudflare-deployment
 ```
 
-Belangrijke databestanden:
+Belangrijke centrale bestanden:
 
-- `src/data/navigation.ts`: hoofd-, utility- en juridische navigatie.
-- `src/data/products.ts`: kaarten in het productoverzicht op de homepage.
-- `src/data/productDetails.ts`: teksten, breadcrumbs, afbeeldingen en keuzes voor alle productdetailpagina's.
+- `src/layouts/BaseLayout.astro`: documentstructuur, lokale fonts, globale styles, metadata, canonical URL, bedrijfsdata en de globale header/footer.
+- `src/data/navigation.ts`: hoofd-, utility- en juridische navigatie plus de globale offerte-CTA.
+- `src/data/products.ts`: productkaarten op de homepage.
+- `src/data/productDetails.ts`: centrale inhoud en afbeeldingen voor alle productdetailpagina's.
+- `src/components/ProductDetailPage.astro`: gedeelde opbouw van productdetailpagina's.
+- `src/pages/projecten/[id].astro`: statisch gegenereerde projectdetailroutes uit de `projects`-collectie.
+- `src/styles/global.css`: design tokens, reset, elementstyles en de globale `.container`.
 
-## Huidige pagina's en routes
+## Routes en content
 
-- Homepage met hero, USP's, producten, werkwijze, over ons, projecten, aannemers en FAQ
-- Kozijnenoverzicht met productdetailpagina's voor alle kozijnvarianten
-- Deurenoverzicht met productdetailpagina's voor alle deurvarianten
-- Zelfstandige productpagina's voor schuifpuien, beglazing en vouwwanden
-- Projectenoverzicht met statisch gegenereerde projectdetailpagina's uit de Content Collection
-- Contactpagina met een semantisch formulier dat inzendingen via Web3Forms verwerkt
-- Pagina's voor over ons, voor aannemers en de juridische informatie
+De site bevat:
 
-De globale header en footer worden vanuit `src/layouts/BaseLayout.astro` geladen.
+- de homepage;
+- categoriepagina's voor kozijnen en deuren;
+- productdetailpagina's voor kozijnen en deuren;
+- zelfstandige productpagina's voor schuifpuien, beglazing en vouwwanden;
+- een projectenoverzicht en datagedreven projectdetailpagina's;
+- pagina's voor over ons, aannemers, contact en de privacyverklaring;
+- een eigen statische 404-pagina.
 
-## Contactformulier en externe verwerking
+Alle publieke routes gebruiken trailing slashes. Astro genereert canonical URL's en een sitemap voor `https://timmerfabrieksintnyk.nl/`; de 404-pagina wordt niet in de sitemap opgenomen.
 
-Het contactformulier verstuurt de ingevulde voornaam, achternaam, het e-mailadres, het optionele
-telefoonnummer en het bericht rechtstreeks vanuit de browser via HTTPS naar Web3Forms
-(`https://api.web3forms.com/submit`). Web3Forms verwerkt de inzending en stuurt deze door naar het
-e-mailadres dat aan de gebruikte access key is gekoppeld. Zie ook de privacyverklaring op de website.
+### Producten
 
-De Web3Forms-access key is volgens Web3Forms een publieke formulieridentificatie en geen geheime
-API-sleutel. De sleutel mag daarom in de client-side formuliercode staan. Andere API-sleutels,
-wachtwoorden of secrets mogen nooit aan browsercode of de repository worden toegevoegd.
+Productdetailroutes horen dun te blijven. Een route selecteert de juiste configuratie uit `src/data/productDetails.ts` en geeft die door aan `ProductDetailPage.astro`. Pas gedeelde productinhoud en productafbeeldingen daarom in de centrale data aan.
 
-Het formulier gebruikt Web3Forms' verborgen `botcheck`-veld en de hCaptcha-integratie. hCaptcha moet
-ook in het Web3Forms-dashboard als verplichte CAPTCHA-provider zijn geactiveerd; alleen de widget in de
-website plaatsen voorkomt niet dat directe requests zonder CAPTCHA-token worden verstuurd. Stel voor
-productie daarnaast, wanneer het gebruikte plan dit ondersteunt, de domeinrestrictie in op
-`timmerfabrieksintnyk.nl` en eventueel `www.timmerfabrieksintnyk.nl`. Deze instellingen kunnen niet in
-de repository worden afgedwongen. Activeer domeinrestrictie pas nadat lokaal testen is afgerond, omdat
-Web3Forms lokale inzendingen daarna blokkeert.
+### Projecten en FAQ
 
-Productdetailroutes zijn bewust dun: ze selecteren een item uit `src/data/productDetails.ts` en geven dit door aan `ProductDetailPage.astro`. Dit gedeelde component bouwt de hero, keuzemogelijkheden, voordelen en FAQ op. Pas productinhoud en productafbeeldingen daarom bij voorkeur in de centrale data aan.
+Projecten staan in `src/content/projects/`. Hun frontmatter bevat een titel, categorie, omschrijving, datum, volgorde, afbeelding en alt-tekst.
+
+FAQ-items staan in `src/content/faqs/`. De frontmatter bevat de vraag en sorteervolgorde; de Markdown-inhoud vormt het antwoord. `FaqSection.astro` kan daarnaast paginaspecifieke FAQ-items via props ontvangen.
+
+De schema's voor beide collecties staan in `src/content.config.ts`.
+
+## Contentbronnen
+
+Gebruik bij het schrijven of wijzigen van websitecontent de bestanden in `docs/`:
+
+- `BUSINESS-CONTEXT.md`: bron van waarheid voor bedrijfsgegevens en toegestane claims;
+- `TONE-OF-VOICE.md`: schrijfstijl voor alle klantgerichte tekst;
+- `SEO-CONTENT-RULES.md`: regels voor zoekintentie, metadata, interne links en technische bewaking;
+- `SITE-STRUCTURE.md` en `KEYWORD-RESEARCH.md`: pagina-eigenaarschap en zoekwoordrichting;
+- `CONTENT-STATUS.md`: actuele productiestatus per pagina.
+
+Lees vóór wijzigingen ook `AGENTS.md`; daarin staan de bindende implementatie-, content- en verificatieafspraken voor dit project.
+
+## Contactformulier en beveiliging
+
+Het contactformulier in `ContactSection.astro` verstuurt via HTTPS naar Web3Forms. Het gebruikt een publieke Web3Forms-formulieridentificatie, een botcheck en hCaptcha. Andere API-sleutels, wachtwoorden of secrets mogen nooit in clientcode of de repository worden geplaatst.
+
+De beveiligingsheaders staan in `public/_headers` en worden tijdens de build naar `dist/_headers` gekopieerd. De Content Security Policy staat alleen expliciet toegestane bronnen en SHA-256-hashes toe. `scripts/validate-csp.mjs` controleert dat de gegenereerde inline scripts en styles door die CSP worden gedekt en dat er geen inline `style`-attributen zijn.
 
 ## Styling en responsive basis
 
-De website wordt mobile-first gebouwd. Globale kleuren, vaste typografietokens, resetregels en de algemene `.container` staan in `src/styles/global.css`.
+De site is mobile-first opgebouwd.
 
 - Maximale containerbreedte: `1280px`
-- Mobile containerpadding: `16px`
+- Containerpadding op mobiel: `16px`
 - Containerpadding vanaf `48rem`: `32px`
 - Primair desktopbreakpoint: `64rem`
 - Space Grotesk voor headings
 - DM Sans voor bodytekst, navigatie en UI
 
-## Content toevoegen
+Gebruik bestaande custom properties uit `src/styles/global.css` en de globale `.container` voordat nieuwe layoutregels of tokens worden toegevoegd.
 
-Projecten staan in `src/content/projects/`. De frontmatter wordt gevalideerd met het schema in `src/content.config.ts` en bevat onder andere een titel, categorie, datum, volgorde en afbeelding.
+## Deployment
 
-FAQ-items staan in `src/content/faqs/` en gebruiken een vraag en sorteervolgorde in de frontmatter. De Markdown-inhoud vormt het antwoord.
-
-Lokale afbeeldingen en SVG-iconen staan in `src/assets/`. Afbeeldingen die door componenten worden gerenderd, worden waar passend via `astro:assets` geoptimaliseerd.
-
-## Werkwijze
-
-Lees voor wijzigingen eerst `AGENTS.md`. Daar staan de projectafspraken voor componenten, CSS, responsive gedrag, toegankelijkheid en verificatie. Voer na codewijzigingen minimaal uit:
+`wrangler.jsonc` serveert uitsluitend de gegenereerde map `dist/`, dwingt trailing slashes af en gebruikt de eigen 404-pagina. Deploy met:
 
 ```sh
-npm run build
+npm run deploy
 ```
+
+Wrangler voert vooraf automatisch `npm run validate` uit. `dist/` is gegenereerde output en hoort niet in Git.
