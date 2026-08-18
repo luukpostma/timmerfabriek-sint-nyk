@@ -10,8 +10,11 @@
   "scripts": {
     "dev": "astro dev",
     "check": "astro check",
-    "build": "astro build",
-    "validate": "npm run check && npm run build",
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "npm run clean && astro build",
+    "validate:csp": "node scripts/validate-csp.mjs",
+    "validate": "npm run check && npm run build && npm run validate:csp",
+    "deploy": "wrangler deploy",
     "preview": "astro preview",
     "astro": "astro"
   },

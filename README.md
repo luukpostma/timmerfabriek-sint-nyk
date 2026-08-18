@@ -34,33 +34,33 @@ Open daarna de URL die Astro in de terminal toont, standaard `http://localhost:4
 | Commando | Omschrijving |
 | --- | --- |
 | `npm run dev` | Start de lokale ontwikkelserver |
-| `npm run build` | Maakt een productiebuild in `dist/` |
+| `npm run build` | Leegt `dist/` en maakt een productiebuild |
+| `npm run validate:csp` | Controleert de CSP-hashes van de productiebuild |
+| `npm run validate` | Controleert Astro, bouwt en valideert de CSP |
+| `npm run deploy` | Valideert, bouwt en deployt via Wrangler |
 | `npm run preview` | Toont de productiebuild lokaal |
 
 ## Deployment
 
 De site wordt als statische website via Cloudflare Workers gedeployed. `wrangler.jsonc` wijst Cloudflare naar de gegenereerde map `dist/`.
 
-Build command:
-
-```sh
-npm run build
-```
-
 Deploy command:
 
 ```sh
-npx wrangler deploy
+npm run deploy
 ```
 
-Voer altijd eerst de productiebuild uit. Commit of deploy configuratiewijzigingen alleen bewust; `dist/` zelf hoort niet in Git.
+Wrangler voert door de buildconfiguratie in `wrangler.jsonc` vóór iedere deploy automatisch
+`npm run validate` uit. Daardoor stopt een deploy wanneer de Astro-controle of productiebuild faalt,
+ook wanneer `wrangler deploy` rechtstreeks wordt uitgevoerd. Commit of deploy configuratiewijzigingen
+alleen bewust; `dist/` zelf hoort niet in Git.
 
 De beveiligingsheaders voor Cloudflare Workers Static Assets staan in `public/_headers` en worden
-tijdens de Astro-build naar `dist/_headers` gekopieerd. De Content Security Policy staat alleen
-lokale fonts en assets toe en beperkt formulierverkeer tot de Web3Forms-API. Astro neemt enkele
-scripts en stijlelementen inline in de statische HTML op. Scripts zijn daarom met expliciete
-SHA-256-hashes toegestaan; inline `script`- en `style`-attributen blijven geblokkeerd. Controleer en
-actualiseer de scripthashes in `_headers` na iedere wijziging aan client-side scripts.
+tijdens de Astro-build naar `dist/_headers` gekopieerd. De CSP staat alleen lokale fonts en assets toe
+en beperkt formulierverkeer tot de Web3Forms-API. Astro neemt enkele scripts en stijlelementen inline
+in de statische HTML op; die zijn uitsluitend met expliciete SHA-256-hashes toegestaan. Inline
+`script`- en `style`-attributen blijven geblokkeerd. `npm run validate:csp` controleert na iedere
+productiebuild automatisch of alle benodigde hashes in `_headers` staan.
 
 ## Projectstructuur
 

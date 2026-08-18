@@ -2,6 +2,9 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "timmerfabriek-sint-nyk",
   "compatibility_date": "2026-08-11",
+  "build": {
+    "command": "npm run validate"
+  },
   "assets": {
     "directory": "./dist",
     "html_handling": "force-trailing-slash",
