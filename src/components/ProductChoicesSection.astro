@@ -70,7 +70,7 @@ const icons = {
 
 <style>
   .product-choices {
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
     background-color: var(--color-white);
   }
 
@@ -151,14 +151,10 @@ const icons = {
   }
 
   @media (min-width: 64rem) {
-    .product-choices {
-      padding-block: 6rem;
-    }
-
     .product-choices__header {
       grid-template-columns: minmax(0, 1fr) auto;
       align-items: end;
-      gap: 4rem;
+      gap: 3rem;
     }
 
     .product-choices h2 {

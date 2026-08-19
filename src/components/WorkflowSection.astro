@@ -97,7 +97,7 @@ const {
 
 <style>
   .workflow-section {
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
     background-color: var(--color-background);
   }
 
@@ -147,7 +147,6 @@ const {
 
   .workflow-card {
     display: flex;
-    min-height: 30rem;
     flex-direction: column;
     padding: 2rem;
     border: 1px solid var(--color-border);
@@ -236,11 +235,19 @@ const {
     flex: 0 0 auto;
   }
 
-  @media (min-width: 64rem) {
-    .workflow-section {
-      padding-block: 6rem;
+  @media (min-width: 48rem) {
+    .workflow-section__steps {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .workflow-section__steps > li:last-child {
+      grid-column: 1 / -1;
+      width: calc(50% - 1rem);
+      justify-self: center;
+    }
+  }
+
+  @media (min-width: 64rem) {
     .workflow-section__header {
       grid-template-columns: minmax(0, 1fr) auto;
       align-items: end;
@@ -250,13 +257,17 @@ const {
     .workflow-section h2 {
       margin-bottom: 1.5rem;
     }
+  }
 
+  @media (min-width: 80rem) {
     .workflow-section__steps {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .workflow-card {
-      min-height: 29rem;
+    .workflow-section__steps > li:last-child {
+      grid-column: auto;
+      width: auto;
+      justify-self: stretch;
     }
   }
 </style>

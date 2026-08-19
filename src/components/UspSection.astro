@@ -54,7 +54,13 @@ const uspItems = [
     color: var(--color-secondary);
   }
 
-  @media (min-width: 64rem) {
+  @media (min-width: 48rem) {
+    .usp-section__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 80rem) {
     .usp-section__list {
       display: flex;
       align-items: center;

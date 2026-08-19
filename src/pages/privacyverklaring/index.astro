@@ -289,7 +289,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 <style>
   .privacy-page {
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
     background-color: var(--color-white);
   }
 
@@ -349,10 +349,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   }
 
   @media (min-width: 64rem) {
-    .privacy-page {
-      padding-block: 6rem;
-    }
-
     .privacy-page__content {
       gap: 2.5rem;
     }

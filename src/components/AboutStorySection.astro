@@ -40,7 +40,7 @@ import aboutImage from "../assets/images/Over-ons.webp";
 
 <style>
   .about-story {
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
     background: var(--color-white);
   }
 
@@ -83,14 +83,20 @@ import aboutImage from "../assets/images/Over-ons.webp";
   }
 
   @media (min-width: 64rem) {
-    .about-story {
-      padding-block: 6rem;
-    }
-
     .about-story__inner {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 4rem;
+      gap: 3rem;
       align-items: center;
+    }
+
+    .about-story__image {
+      height: 24rem;
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .about-story__inner {
+      gap: 4rem;
     }
 
     .about-story__image {

@@ -24,7 +24,7 @@ const { title, parentLabel = 'Home', parentHref = '/' } = Astro.props;
 <style>
   .category-hero {
     position: relative;
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
     overflow: hidden;
     color: var(--color-white);
     background-color: var(--color-primary);
@@ -103,10 +103,9 @@ const { title, parentLabel = 'Home', parentHref = '/' } = Astro.props;
     color: var(--color-white);
   }
 
-  @media (min-width: 64rem) {
+  @media (min-width: 80rem) {
     .category-hero {
       min-height: 20rem;
-      padding-block: 6rem;
     }
   }
 </style>

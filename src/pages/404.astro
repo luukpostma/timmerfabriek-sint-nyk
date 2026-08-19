@@ -31,7 +31,7 @@ import CategoryHero from '../components/CategoryHero.astro';
 
 <style>
   .not-found {
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
     background-color: var(--color-white);
   }
 
@@ -77,9 +77,4 @@ import CategoryHero from '../components/CategoryHero.astro';
     outline-offset: 4px;
   }
 
-  @media (min-width: 64rem) {
-    .not-found {
-      padding-block: 6rem;
-    }
-  }
 </style>

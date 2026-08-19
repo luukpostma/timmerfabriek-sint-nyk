@@ -41,7 +41,7 @@ const { heading, introduction, benefits } = Astro.props;
 
 <style>
   .detail-benefits {
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
     background-color: var(--color-background);
   }
 
@@ -110,15 +110,19 @@ const { heading, introduction, benefits } = Astro.props;
     line-height: var(--text-h5-line-height);
   }
 
-  @media (min-width: 64rem) {
-    .detail-benefits {
-      padding-block: 6rem;
+  @media (min-width: 48rem) {
+    .detail-benefits__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+  }
 
+  @media (min-width: 64rem) {
     .detail-benefits h2 {
       margin-bottom: 1.5rem;
     }
+  }
 
+  @media (min-width: 80rem) {
     .detail-benefits__list {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       margin-top: 4rem;

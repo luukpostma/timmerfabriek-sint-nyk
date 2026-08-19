@@ -71,7 +71,7 @@ const products: ProductCardItem[] = items.map((item, index) => {
 
 <style>
   .window-types {
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
     background-color: var(--color-white);
   }
 
@@ -151,17 +151,14 @@ const products: ProductCardItem[] = items.map((item, index) => {
   }
 
   @media (min-width: 64rem) {
-    .window-types {
-      padding-block: 6rem;
-    }
-
     .window-types h2 {
       margin-bottom: 1.5rem;
     }
+  }
 
+  @media (min-width: 80rem) {
     .window-types__grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
-
   }
 </style>

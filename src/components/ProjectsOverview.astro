@@ -24,7 +24,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
 
 <style>
   .projects-page {
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
     background-color: var(--color-white);
   }
 
@@ -60,13 +60,4 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
     }
   }
 
-  @media (min-width: 64rem) {
-    .projects-page {
-      padding-block: 6rem;
-    }
-
-    .projects-page__grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
 </style>

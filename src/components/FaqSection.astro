@@ -111,7 +111,7 @@ const faqs = items
 
 <style>
   .faq-section {
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
     background-color: var(--color-white);
   }
 
@@ -229,13 +229,9 @@ const faqs = items
   }
 
   @media (min-width: 64rem) {
-    .faq-section {
-      padding-block: 6rem;
-    }
-
     .faq-section__layout {
       grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-      gap: 6rem;
+      gap: 3rem;
     }
 
     .faq-section h2 {
@@ -244,6 +240,12 @@ const faqs = items
 
     .faq-section__list {
       gap: 2.5rem;
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .faq-section__layout {
+      gap: 6rem;
     }
   }
 

@@ -42,7 +42,7 @@ const { Content } = await render(project);
     display: grid;
     justify-items: center;
     max-width: 52rem;
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
     text-align: center;
   }
 
@@ -66,7 +66,7 @@ const { Content } = await render(project);
   }
 
   .project-detail__media {
-    padding-bottom: 4rem;
+    padding-bottom: var(--space-section-y);
   }
 
   .project-detail :global(.project-detail__image) {
@@ -91,25 +91,17 @@ const { Content } = await render(project);
     margin: 0;
   }
 
-  @media (min-width: 48rem) {
-    .project-detail :global(.project-detail__image) {
-      height: 34rem;
-    }
-  }
-
   @media (min-width: 64rem) {
-    .project-detail__header {
-      padding-block: 6rem;
-    }
-
     .project-detail h1 {
       margin-bottom: 1.5rem;
     }
 
-    .project-detail__media {
-      padding-bottom: 6rem;
+    .project-detail :global(.project-detail__image) {
+      height: 30rem;
     }
+  }
 
+  @media (min-width: 80rem) {
     .project-detail :global(.project-detail__image) {
       height: 40rem;
     }

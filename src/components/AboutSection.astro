@@ -43,7 +43,7 @@ const { buttonLabel = 'Meer lezen' } = Astro.props;
     min-height: 42.75rem;
     align-items: center;
     overflow: hidden;
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
     background-color: var(--color-primary);
   }
 
@@ -108,24 +108,40 @@ const { buttonLabel = 'Meer lezen' } = Astro.props;
     background-color: var(--color-sub-navigation-background);
   }
 
-  @media (min-width: 64rem) {
+  @media (min-width: 48rem) {
     .about-section {
-      min-height: 45rem;
-      padding-block: 6rem;
+      min-height: 37rem;
     }
 
+    .about-section__card {
+      max-width: 41rem;
+      margin-inline: auto;
+      padding: 2.5rem;
+    }
+
+    :global(.about-section__button.button) {
+      width: fit-content;
+    }
+  }
+
+  @media (min-width: 64rem) {
     .about-section__background {
       object-position: center;
     }
 
     .about-section__card {
-      max-width: 45rem;
       margin-inline: auto 2rem;
-      padding: 4rem;
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .about-section {
+      min-height: 45rem;
     }
 
-    :global(.about-section__button.button) {
-      width: fit-content;
+    .about-section__card {
+      max-width: 45rem;
+      padding: 4rem;
     }
   }
 </style>

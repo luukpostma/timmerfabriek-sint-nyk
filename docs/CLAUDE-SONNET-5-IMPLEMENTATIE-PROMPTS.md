@@ -68,7 +68,7 @@ Rapporteer nu alleen:
 - welke bestaande gewijzigde of nieuwe bestanden je aantrof;
 - de relevante breakpointlocaties;
 - eventuele blokkades of risico's voor de geplande implementatie;
-- dat je klaar bent voor prompt 1.
+- dat je klaar bent voor prompt.
 ```
 
 ### Controle na de startprompt
@@ -318,11 +318,11 @@ Rapporteer per component de gerealiseerde gridstates, eventuele sizes-wijziginge
 
 ### Acceptatiecriteria prompt 4
 
-- [ ] Producten zijn twee kolommen op tablet en pas vanaf 1280px een carousel.
-- [ ] Workflow gebruikt twee kolommen op tablet en drie vanaf 1280px.
-- [ ] USP en footer hebben een echte tabletcompositie.
-- [ ] CSS en JavaScript van de carousel gebruiken hetzelfde breakpoint.
-- [ ] De build slaagt.
+- [x] Producten zijn twee kolommen op tablet en pas vanaf 1280px een carousel.
+- [x] Workflow gebruikt twee kolommen op tablet en drie vanaf 1280px.
+- [x] USP en footer hebben een echte tabletcompositie.
+- [x] CSS en JavaScript van de carousel gebruiken hetzelfde breakpoint.
+- [x] De build slaagt.
 
 ---
 
@@ -370,10 +370,10 @@ Rapporteer de breakpointstates, aangepaste bestanden, beeld/sizes-keuzes en het 
 
 ### Acceptatiecriteria prompt 5
 
-- [ ] Tablet toont twee verticale kaarten en een beeld eronder.
-- [ ] Mosaic en horizontale kaartvariant beginnen op 1280px.
-- [ ] Kaarttitels hebben voldoende ruimte.
-- [ ] De build slaagt.
+- [x] Tablet toont twee verticale kaarten en een beeld eronder.
+- [x] Mosaic en horizontale kaartvariant beginnen op 1280px.
+- [x] Kaarttitels hebben voldoende ruimte.
+- [x] De build slaagt.
 
 ---
 
@@ -434,11 +434,11 @@ Rapporteer de uiteindelijke gridverhoudingen, gaps, beeldhoogtes, sizes-keuze, H
 
 ### Acceptatiecriteria prompt 6
 
-- [ ] Tabletbeeld is niet langer een ondiepe 280px-banner.
-- [ ] 1024–1279px gebruikt een compacte split met 48px-H1.
-- [ ] Volledige desktopstate begint op 1280px.
-- [ ] Geen abrupte beeldverhoudingssprong.
-- [ ] De build slaagt.
+- [x] Tabletbeeld is niet langer een ondiepe 280px-banner.
+- [x] 1024–1279px gebruikt een compacte split met 48px-H1.
+- [x] Volledige desktopstate begint op 1280px.
+- [x] Geen abrupte beeldverhoudingssprong.
+- [x] De build slaagt.
 
 ---
 
@@ -895,14 +895,14 @@ Vink dit zelf af terwijl je de prompts aan Claude geeft:
 - [x] Prompt 1 — typografie en spacingtoken
 - [x] Prompt 2 — header
 - [x] Prompt 3 — CTA-breedtes
-- [ ] Prompt 4 — USP, producten, workflow en footer
-- [ ] Prompt 5 — homepageprojecten
-- [ ] Prompt 6 — homepagehero
-- [ ] Prompt 7 — overlays
-- [ ] Prompt 8 — productdetailhero en benefits
-- [ ] Prompt 9 — categoriepagina's
-- [ ] Prompt 10 — FAQ, contact en over-ons-story
-- [ ] Prompt 11 — projectenoverzicht en projectdetail
+- [x] Prompt 4 — USP, producten, workflow en footer
+- [x] Prompt 5 — homepageprojecten
+- [x] Prompt 6 — homepagehero
+- [x] Prompt 7 — overlays
+- [x] Prompt 8 — productdetailhero en benefits
+- [x] Prompt 9 — categoriepagina's
+- [x] Prompt 10 — FAQ, contact en over-ons-story
+- [x] Prompt 11 — projectenoverzicht en projectdetail
 - [ ] Prompt 12 — spacing, hoogtes en images
 - [ ] Prompt 13 — volledige QA
 

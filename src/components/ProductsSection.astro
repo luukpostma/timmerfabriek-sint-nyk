@@ -54,7 +54,7 @@ const {
     const track = carousel.querySelector<HTMLElement>('[data-carousel-track]');
     const previous = carousel.querySelector<HTMLButtonElement>('[data-carousel-previous]');
     const next = carousel.querySelector<HTMLButtonElement>('[data-carousel-next]');
-    const desktopMedia = window.matchMedia('(min-width: 64rem)');
+    const desktopMedia = window.matchMedia('(min-width: 80rem)');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     if (!viewport || !track || !previous || !next) return;
@@ -99,7 +99,7 @@ const {
 <style>
   .products-section {
     overflow: hidden;
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
     background-color: var(--color-white);
   }
 
@@ -142,11 +142,13 @@ const {
     list-style: none;
   }
 
-  @media (min-width: 64rem) {
-    .products-section {
-      padding-block: 6rem;
+  @media (min-width: 48rem) {
+    .products-section__track {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+  }
 
+  @media (min-width: 80rem) {
     .products-section__header {
       grid-template-columns: minmax(0, 1fr) auto;
       align-items: end;

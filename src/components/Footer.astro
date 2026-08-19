@@ -111,12 +111,16 @@ const footerUtilityNavigation = [
   }
 
   .site-footer__cta {
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
   }
 
   .site-footer__cta-inner,
   .site-footer__cta-copy {
     display: grid;
+  }
+
+  .site-footer__cta-inner {
+    gap: 2rem;
   }
 
   .site-footer__cta-copy {
@@ -138,14 +142,12 @@ const footerUtilityNavigation = [
 
   :global(.site-footer__cta-button.button) {
     width: 100%;
-    margin-top: 2rem;
   }
 
   @media (min-width: 48rem) {
     :global(.site-footer__cta-button.button) {
       justify-self: start;
       width: auto;
-      margin-top: 0;
     }
   }
 
@@ -155,7 +157,7 @@ const footerUtilityNavigation = [
   }
 
   .site-footer__main {
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
   }
 
   .site-footer--without-cta .site-footer__main {
@@ -165,6 +167,12 @@ const footerUtilityNavigation = [
   .site-footer__main-grid {
     display: grid;
     gap: 3rem;
+  }
+
+  @media (min-width: 48rem) {
+    .site-footer__main-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   .site-footer__logo-link {
@@ -242,10 +250,6 @@ const footerUtilityNavigation = [
   }
 
   @media (min-width: 64rem) {
-    .site-footer__cta {
-      padding-block: 6rem;
-    }
-
     .site-footer__cta-inner {
       grid-template-columns: minmax(0, 1fr) auto;
       align-items: end;
@@ -255,11 +259,9 @@ const footerUtilityNavigation = [
     .site-footer__cta h2 {
       margin-bottom: 1.5rem;
     }
+  }
 
-    .site-footer__main {
-      padding-block: 6rem;
-    }
-
+  @media (min-width: 80rem) {
     .site-footer__main-grid {
       grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr)) minmax(0, 1.4fr);
       gap: 4rem;
@@ -281,6 +283,7 @@ const footerUtilityNavigation = [
 
     .site-footer__bottom ul {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 2.5rem;
     }

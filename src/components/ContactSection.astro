@@ -237,7 +237,7 @@ import Phone from '../assets/icons/phone.svg';
 <style>
   .contact-section {
     position: relative;
-    padding-block: 4rem;
+    padding-block: var(--space-section-y);
     overflow: hidden;
     color: var(--color-white);
     background-color: var(--color-primary);
@@ -527,18 +527,20 @@ import Phone from '../assets/icons/phone.svg';
   }
 
   @media (min-width: 64rem) {
-    .contact-section {
-      padding-block: 6rem;
-    }
-
     .contact-section__layout {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       align-items: start;
-      gap: 6rem;
+      gap: 3rem;
     }
 
     .contact-section__content {
       padding-top: 0.25rem;
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .contact-section__layout {
+      gap: 6rem;
     }
 
     .contact-form__fields {
