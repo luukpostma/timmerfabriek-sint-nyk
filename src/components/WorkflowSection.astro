@@ -130,6 +130,13 @@ const {
     width: 100%;
   }
 
+  @media (min-width: 48rem) {
+    :global(.workflow-section__cta.button) {
+      justify-self: start;
+      width: auto;
+    }
+  }
+
   .workflow-section__steps {
     display: grid;
     gap: 2rem;
@@ -242,10 +249,6 @@ const {
 
     .workflow-section h2 {
       margin-bottom: 1.5rem;
-    }
-
-    :global(.workflow-section__cta.button) {
-      width: auto;
     }
 
     .workflow-section__steps {

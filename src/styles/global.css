@@ -83,10 +83,25 @@
 
   --text-body-small-size: var(--font-size-14);
   --text-body-small-line-height: var(--line-height-22);
+
+  /* 5. Semantic layout tokens */
+  --space-section-y: 4rem;
 }
 
-/* 5. Responsive typography overrides */
+/* 6. Responsive typography overrides */
 @media (min-width: 64rem) {
+  :root {
+    --text-h1-size: var(--font-size-48);
+    --text-h1-line-height: var(--line-height-56);
+
+    --text-h2-size: var(--font-size-40);
+    --text-h2-line-height: var(--line-height-48);
+
+    --space-section-y: 5rem;
+  }
+}
+
+@media (min-width: 80rem) {
   :root {
     --text-h1-size: var(--font-size-60);
     --text-h1-line-height: var(--line-height-68);
@@ -102,10 +117,12 @@
 
     --text-h5-size: var(--font-size-22);
     --text-h5-line-height: var(--line-height-30);
+
+    --space-section-y: 6rem;
   }
 }
 
-/* 6. Reset/base styles */
+/* 7. Reset/base styles */
 *,
 *::before,
 *::after {
@@ -148,7 +165,7 @@ select {
   font: inherit;
 }
 
-/* 7. Global element styles */
+/* 8. Global element styles */
 body,
 p {
   font-family: var(--font-family-body);
@@ -253,7 +270,7 @@ button {
   cursor: pointer;
 }
 
-/* 8. Layout utilities */
+/* 9. Layout utilities */
 .container {
   width: 100%;
   max-width: 1280px;
@@ -267,7 +284,7 @@ button {
   }
 }
 
-/* 9. Typography utility classes */
+/* 10. Typography utility classes */
 .text-eyebrow {
   font-family: var(--font-family-body);
   font-size: var(--text-eyebrow-size);

@@ -102,6 +102,13 @@ const icons = {
     width: 100%;
   }
 
+  @media (min-width: 48rem) {
+    .product-choices__header :global(.button) {
+      justify-self: start;
+      width: auto;
+    }
+  }
+
   .product-choices__grid {
     display: grid;
     gap: 1.5rem;
@@ -156,10 +163,6 @@ const icons = {
 
     .product-choices h2 {
       margin-bottom: 1.5rem;
-    }
-
-    .product-choices__header :global(.button) {
-      width: auto;
     }
 
     .product-choices__grid {

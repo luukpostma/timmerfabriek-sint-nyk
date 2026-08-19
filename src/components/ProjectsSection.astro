@@ -91,6 +91,14 @@ const projects = (await getCollection('projects'))
     background-color: var(--color-sub-navigation-background);
   }
 
+  @media (min-width: 48rem) {
+    :global(.projects-overview__cta.button) {
+      justify-self: start;
+      width: auto;
+      margin-top: 0;
+    }
+  }
+
   .projects-overview__grid {
     display: grid;
     gap: 2rem;
@@ -127,11 +135,6 @@ const projects = (await getCollection('projects'))
 
     .projects-overview h2 {
       margin-bottom: 1.5rem;
-    }
-
-    :global(.projects-overview__cta.button) {
-      width: auto;
-      margin-top: 0;
     }
 
     .projects-overview__grid {

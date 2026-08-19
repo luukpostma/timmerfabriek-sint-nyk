@@ -138,6 +138,17 @@ import Button from './Button.astro';
     width: 100%;
   }
 
+  @media (min-width: 36rem) {
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    :global(.hero__actions .button) {
+      width: auto;
+    }
+  }
+
   .hero__media {
     width: 100%;
     height: 17.5rem;
@@ -165,15 +176,6 @@ import Button from './Button.astro';
 
     .hero__content {
       gap: 3rem;
-    }
-
-    .hero__actions {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    :global(.hero__actions .button) {
-      width: auto;
     }
 
     .hero__media {

@@ -148,11 +148,11 @@ Stop daarna. Voer nog geen header- of componentwijzigingen uit.
 
 ### Acceptatiecriteria prompt 1
 
-- [ ] H1 is 48/56px op 1024–1279px.
-- [ ] H2 is 40/48px op 1024–1279px.
-- [ ] De volledige desktoptypografie begint op 1280px.
-- [ ] De spacingtoken heeft 64/80/96px als drie vaste states.
-- [ ] De build slaagt.
+- [x] H1 is 48/56px op 1024–1279px.
+- [x] H2 is 40/48px op 1024–1279px.
+- [x] De volledige desktoptypografie begint op 1280px.
+- [x] De spacingtoken heeft 64/80/96px als drie vaste states.
+- [x] De build slaagt.
 
 ---
 
@@ -199,11 +199,11 @@ Rapporteer aangepaste bestanden, het gebruikte breakpoint, de uitgevoerde intera
 
 ### Acceptatiecriteria prompt 2
 
-- [ ] Compacte header blijft actief tot en met 1279px.
-- [ ] Desktopheader begint bij 1280px.
-- [ ] Geen logo-/navigatieoverlap.
-- [ ] Menu en dropdowns blijven toegankelijk bedienbaar.
-- [ ] De build slaagt.
+- [x] Compacte header blijft actief tot en met 1279px.
+- [x] Desktopheader begint bij 1280px.
+- [x] Geen logo-/navigatieoverlap.
+- [x] Menu en dropdowns blijven toegankelijk bedienbaar.
+- [x] De build slaagt.
 
 ---
 
@@ -248,11 +248,11 @@ Rapporteer per aangepast component welk full-widthgedrag is behouden of gewijzig
 
 ### Acceptatiecriteria prompt 3
 
-- [ ] CTA's zijn vanaf 576px niet onnodig paginabreed.
-- [ ] CTA-groepen wrappen zonder overflow.
-- [ ] Contact-submit blijft full-width.
-- [ ] De basisbuttonstijl is niet onnodig gewijzigd.
-- [ ] De build slaagt.
+- [x] CTA's zijn vanaf 576px niet onnodig paginabreed.
+- [x] CTA-groepen wrappen zonder overflow.
+- [x] Contact-submit blijft full-width.
+- [x] De basisbuttonstijl is niet onnodig gewijzigd.
+- [x] De build slaagt.
 
 ---
 
@@ -891,10 +891,10 @@ Stop na dit eindrapport.
 
 Vink dit zelf af terwijl je de prompts aan Claude geeft:
 
-- [ ] Startprompt — nulmeting
-- [ ] Prompt 1 — typografie en spacingtoken
-- [ ] Prompt 2 — header
-- [ ] Prompt 3 — CTA-breedtes
+- [x] Startprompt — nulmeting
+- [x] Prompt 1 — typografie en spacingtoken
+- [x] Prompt 2 — header
+- [x] Prompt 3 — CTA-breedtes
 - [ ] Prompt 4 — USP, producten, workflow en footer
 - [ ] Prompt 5 — homepageprojecten
 - [ ] Prompt 6 — homepagehero

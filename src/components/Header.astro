@@ -140,7 +140,7 @@ const currentPath = Astro.url.pathname.endsWith('/')
     const openIcon = header.querySelector<HTMLImageElement>('[data-menu-open-icon]');
     const closeIcon = header.querySelector<HTMLImageElement>('[data-menu-close-icon]');
     const mobileLogo = header.querySelector<HTMLElement>('[data-mobile-logo-link]');
-    const desktopMedia = window.matchMedia('(min-width: 64rem)');
+    const desktopMedia = window.matchMedia('(min-width: 80rem)');
     const hoverCloseTimers = new WeakMap<HTMLElement, number>();
     const inertedBackgroundElements = new Set<HTMLElement>();
 
@@ -483,7 +483,7 @@ const currentPath = Astro.url.pathname.endsWith('/')
     display: none;
   }
 
-  @media (min-width: 64rem) {
+  @media (min-width: 80rem) {
     .site-header__mobile,
     .mobile-menu {
       display: none;

@@ -161,6 +161,12 @@ const {
     margin-top: 2rem;
   }
 
+  @media (min-width: 36rem) {
+    .product-detail-hero :global(.product-detail-hero__cta) {
+      width: auto;
+    }
+  }
+
   .product-detail-hero :global(.product-detail-hero__image) {
     width: 100%;
     height: 17.5rem;
@@ -181,10 +187,6 @@ const {
 
     .product-detail-hero :global(.product-detail-hero__image) {
       height: 24rem;
-    }
-
-    .product-detail-hero :global(.product-detail-hero__cta) {
-      width: auto;
     }
   }
 </style>
