@@ -39,6 +39,7 @@ const currentPath = Astro.url.pathname.endsWith('/')
     class="mobile-menu"
     id="mobile-navigation"
     aria-label="Mobiele hoofdnavigatie"
+    tabindex="-1"
     data-mobile-menu
   >
     <div class="mobile-menu__inner container">
@@ -210,8 +211,7 @@ const currentPath = Astro.url.pathname.endsWith('/')
 
       if (open) {
         window.requestAnimationFrame(() => {
-          const firstMenuItem = mobileMenu.querySelector<HTMLElement>(focusableSelector);
-          firstMenuItem?.focus();
+          mobileMenu.focus();
         });
         return;
       }
