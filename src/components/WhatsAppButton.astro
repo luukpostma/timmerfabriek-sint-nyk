@@ -1,0 +1,57 @@
+---
+import WhatsAppIcon from '../assets/icons/whatsapp.svg';
+---
+
+<a
+  class="whatsapp-button"
+  href="https://wa.me/31683418527"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat via WhatsApp"
+>
+  <WhatsAppIcon class="whatsapp-button__icon" aria-hidden="true" />
+</a>
+
+<style>
+  .whatsapp-button {
+    position: fixed;
+    z-index: 90;
+    right: 24px;
+    bottom: max(24px, env(safe-area-inset-bottom));
+    display: grid;
+    width: 56px;
+    height: 56px;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--color-white);
+    background-color: #25D366;
+    box-shadow: 0 4px 12px rgb(3 7 18 / 18%);
+    transition: transform 200ms ease-out;
+  }
+
+  .whatsapp-button__icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .whatsapp-button:hover,
+  .whatsapp-button:focus-visible {
+    transform: scale(1.06);
+  }
+
+  .whatsapp-button:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .whatsapp-button {
+      transition: none;
+    }
+
+    .whatsapp-button:hover,
+    .whatsapp-button:focus-visible {
+      transform: none;
+    }
+  }
+</style>
